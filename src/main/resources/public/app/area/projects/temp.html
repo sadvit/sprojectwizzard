@@ -1,5 +1,7 @@
-<div ng-controller="controller" id="content">
-    <div id="breadcrumbs"><a href="index.html">Главная</a> :: Проекты</div> <!--TODO обсудить, переделать-->
+<div ng-controller="ProjectsController as projectsController" id="content">
+
+    <slinks></slinks>
+
     <h2>Проекты</h2>
     <div id="page">
 
@@ -19,12 +21,12 @@
                     <th>Название</th>
                     <th>Менеджер</th>
                 </tr>
-                <tr ng-repeat="project in projects" ng-click="editProject($index)">
+                <tr ng-repeat="project in projectsController.projects" ng-click="projectsController.editProject($index)">
                     <td class="insignificant">{{$index + 1}}</td>
                     <td>{{project.name}}</td>
                     <td>{{project.manager.name}}</td>
                 </tr>
-                <tr ng-hide="projects.length || projects.isUndefined"> <!-- TODO check -->
+                <tr ng-hide="projectsController.projects.length || projectsController.projects.isUndefined"> <!-- TODO check -->
                     <td class="insignificant"></td>
                     <td>No items found</td>
                     <td></td>
@@ -77,5 +79,7 @@
             </ul>
         </div>
     </div>
-    <div class="footer" ng-footer/>
+
+    <sfooter></sfooter>
+
 </div>

@@ -19,7 +19,7 @@ gulp.task('scripts', function() {
 
 gulp.task('bower-scripts', function() {
     return gulp.src(['bower_components/**/*.js',
-    'node_components/**/*.js'])
+        'node_components/**/*.js'])
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(concat('bower-main.js'))
