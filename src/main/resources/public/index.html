@@ -1,58 +1,50 @@
 <!doctype html>
+<!--suppress ALL -->
 <html ng-app="spwizzard">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Управление проектами</title>
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <!--<script src="assets/js/main.js"></script>-->
+    <script src="assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-route.min.js"></script>
-    <script src="app/app.module.js"></script>
-    <!--<script src="app/app.routes.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-resource.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/projects/controller.js"></script>
 </head>
-<body ng-controller="headerController">
+<body>
 <div id="header">
     <h1>Управление<br>проектами</h1>
     <ul class="right">
-        <li class="item"><a ng-click="go('persons')">Проекты</a></li>  <!--href="project-list.html"-->
-        <li class="item"><a ng-click="go('employees')">Работники</a></li> <!--href="employee-list.html"-->
-        <li class="item"><a ng-click="go('roles')">Роли</a></li> <!--href="role-list.html"-->
+        <li class="item"><a href="#projects">Проекты</a></li>
+        <li class="item"><a href="#employees">Работники</a></li>
+        <li class="item"><a href="#roles">Роли</a></li>
         <li class="item">
             <a href="#" class="current">Требования <img class="arrow" src="assets/img/arrow-white-bottom.gif"></a>
             <ol class="drop">
-                <li><a href="user-requirement-by-category-list.html">пользовательские (по категориям)</a></li>
-                <li><a href="user-requirement-by-role-list.html">пользовательские (по ролям)</a></li>
+                <li><a href="#requirement/user_categories">Пользовательские по категориям</a></li>
+                <li><a href="#requirement/user_roles">Пользовательские по ролям</a></li>
             </ol>
         </li>
-        <li class="item"><a href="user-list.html">Пользователи</a></li>
+        <li class="item"><a href="#users">Пользователи</a></li>
         <li class="item">
             <a href="#" class="current">Категории <img class="arrow" src="assets/img/arrow-white-bottom.gif"></a>
             <ol class="drop">
-                <li><a href="user-requirements-category-list.html">Пользовательских требований</a></li>
-                <li><a href="functional-requirements-category-list.html">Функциональных требований</a></li>
+                <li><a href="#categories/functional_requirements">Пользовательских требований</a></li>
+                <li><a href="#categories/user_requirements">Функциональных требований</a></li>
             </ol>
         </li>
         <li class="item">
             <a href="#" class="current">Admin <img class="arrow" src="assets/img/arrow-white-bottom.gif"></a>
             <ol class="drop">
-                <li><a href="profile.html">Профиль</a></li>
-                <li><a href="login.html">Выход</a></li>
+                <li><a href="#profile/view">Профиль</a></li>
+                <li><a href="#profile/logout">Выход</a></li>
             </ol>
         </li>
     </ul>
 </div>
 <div id="wrapper">
     <ng-view></ng-view>
-    <div id="content">
-        <div id="breadcrumbs">главная</div>
-        <h2>&lt;заголовок страницы&gt;</h2>
-        <div id="page">
-            <div class="single-column">
-                &lt;содержимое страницы&gt;
-            </div>
-        </div>
-        <div id="copyright">&copy; лаборатория компьютерных технологий вгу имени п.&nbsp;м.&nbsp;машерова</div>
-    </div>
 </div>
 </body>
 </html>

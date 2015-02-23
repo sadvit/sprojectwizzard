@@ -1,0 +1,18 @@
+<DIV id="content">
+    <DIV id="breadcrumbs"><A href="index.html">Главная</A> :: <A href="role-list.html">Роли</A> :: Создание/редактирование роли</DIV>
+    <H2>Создание/редактирование роли</H2>
+    <DIV id="page">
+        <DIV class="single-column">
+            <FORM action="role-list.html">
+                <LABEL for="text-1">Название:</LABEL>
+                <INPUT type="text" id="text-1">
+                <LABEL for="text-2">Описание:</LABEL>
+                <INPUT type="text" id="text-2">
+                <BUTTON type="submit">Сохранить</BUTTON>
+                <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
+            </FORM>
+            <FORM id="delete-form" action="role-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить роль «Менеджер»')"></FORM>
+        </DIV>
+    </DIV>
+    <DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+</DIV>

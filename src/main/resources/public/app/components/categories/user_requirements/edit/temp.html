@@ -1,0 +1,31 @@
+<DIV id="content">
+    <DIV id="breadcrumbs"><A href="index.html">Главная</A> :: <A href="user-requirements-category-list.html">Категории пользовательских требований</A> :: Создание/редактирование категории пользовательских требований</DIV>
+    <H2>Создание/редактирование категории пользовательских требований</H2>
+    <DIV id="page">
+        <DIV class="single-column">
+            <FORM action="user-requirements-category-list.html">
+                <LABEL for="name">Название категории:</LABEL>
+                <INPUT type="text" id="name" value="Управление пользователями">
+                <LABEL for="parent">Родительская категория:</LABEL>
+                <SELECT id="parent">
+                    <OPTION></OPTION>
+                    <OPTION>Управление проектами</OPTION>
+                    <OPTION selected>&nbsp;&nbsp;&nbsp;&nbsp;Управление исполнителями</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Управление проектами и работниками на проектах</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Управление процессом разработки</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Управление требованиями</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Управление заданиями</OPTION>
+                    <OPTION>Игра</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Игровой процесс</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Настройки игры</OPTION>
+                    <OPTION>Текстовый редактор</OPTION>
+                </SELECT>
+                <BUTTON type="submit">Сохранить</BUTTON>
+                <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
+                <BUTTON type="reset">Сбросить</BUTTON>
+            </FORM>
+            <FORM id="delete-form" action="user-requirements-category-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить категорию пользовательских требований')"></FORM>
+        </DIV>
+    </DIV>
+    <DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+</DIV>

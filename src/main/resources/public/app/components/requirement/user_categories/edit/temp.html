@@ -1,0 +1,32 @@
+<DIV id="content">
+    <DIV id="breadcrumbs"><A href="index.html">Главная</A> :: <A href="user-requirement-by-category-list.html">Пользовательские требования</A> :: Создание/редактирование требования</DIV>
+    <H2>Создание/редактирование требования</H2>
+    <DIV id="page">
+        <DIV class="single-column">
+            <FORM>
+                <LABEL for="category">Категория:</LABEL>
+                <SELECT id="category">
+                    <OPTION>Без категории</OPTION>
+                    <OPTION>Управление проектами</OPTION>
+                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Управление категориями</OPTION>
+                    <OPTION>Управление заданиями</OPTION>
+                </SELECT>
+                <LABEL for="role">Роль:</LABEL>
+                <SELECT id="role">
+                    <OPTION>Любой пользователь</OPTION>
+                    <OPTION>Авторизованный пользователь</OPTION>
+                    <OPTION>Администратор</OPTION>
+                    <OPTION>Менеджер</OPTION>
+                </SELECT>
+                <LABEL for="name">Название:</LABEL>
+                <INPUT type="text" id="name" value="Создание проекта">
+                <LABEL for="description">Описание:</LABEL>
+                <TEXTAREA id="description">Создание пустого проекта без менеджера</TEXTAREA>
+                <BUTTON type="submit">Сохранить</BUTTON>
+                <BUTTON type="button" onclick="submitFormById('delete-ur')">Удалить</BUTTON>
+            </FORM>
+            <FORM id="delete-ur" action="user-requirement-by-category-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить пользовательское требование')"></FORM>
+        </DIV>
+    </DIV>
+    <DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+</DIV>

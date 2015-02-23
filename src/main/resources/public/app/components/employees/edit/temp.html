@@ -1,0 +1,53 @@
+<DIV id="content">
+    <DIV id="breadcrumbs"><A href="index.html">Главная</A> :: <A href="employee-list.html">Работники</A> :: Роли пользователя</DIV>
+    <H2>Роли пользователя в проекте</H2>
+    <DIV id="page">
+        <DIV class="single-column">
+            <H3>Корхонен&nbsp;О.&nbsp;М.</H3>
+            <FORM  onsubmit="return confirmation(this, 'В данной команде уже есть старший разработчик Корхонен&nbsp;О.&nbsp;М., желаете заменить старшего разработчика, а Корхонен&nbsp;О.&nbsp;М. перевести в разработчики в той же команде?')">
+                <TABLE>
+                    <TR>
+                        <TH>Роль</TH>
+                        <TH>Команда</TH>
+                    </TR>
+                    <TR>
+                        <TD>аналитик</TD>
+                        <TD>
+                            <SELECT name="role-1">
+                                <OPTION>не задана</OPTION>
+                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
+                                <OPTION value="3" selected>Лайне&nbsp;Т.&nbsp;Т.</OPTION>
+                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
+                            </SELECT>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD>старший разработчик</TD>
+                        <TD>
+                            <SELECT name="role-2">
+                                <OPTION>не задана</OPTION>
+                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
+                                <OPTION value="3">Лайне&nbsp;Т.&nbsp;Т.</OPTION>
+                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
+                                <OPTION>новая команда</OPTION>
+                            </SELECT>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD>разработчик</TD>
+                        <TD>
+                            <SELECT name="role-3">
+                                <OPTION>не задана</OPTION>
+                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
+                                <OPTION value="3" selected>Лайне&nbsp;Т.&nbsp;Т.</OPTION>
+                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
+                            </SELECT>
+                        </TD>
+                    </TR>
+                </TABLE>
+                <BUTTON type="submit">Сохранить</BUTTON>
+            </FORM>
+        </DIV>
+    </DIV>
+    <DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+</DIV>

@@ -8,25 +8,29 @@ window.onload = function() {
 		menus[index].style.display = "none";
 		menus[index].parentNode.getElementsByTagName("a")[0].onclick = dropMenu;
 	}
-	var lists = document.getElementById("page").getElementsByClassName("drop");
-	for(var index = 0, size = lists.length; index < size; index++) {
-		var element = lists[index];
-		if(element.tagName == "ul" || element.tagName == "div") {
-			var parent = element.parentNode;
-			var child = document.createElement("img");
-			child.className = "arrow";
-			child.onclick = dropList;
-			child.style.cursor = "pointer";
-			child.style.marginRight = "10px";
-			child.src = "../img/arrow-gray-right.gif";
-			parent.insertBefore(child, parent.firstChild);
-			element.style.display = "none";
+	try {
+		var lists = document.getElementById("page").getElementsByClassName("drop");
+		for(var index = 0, size = lists.length; index < size; index++) {
+			var element = lists[index];
+			if(element.tagName == "ul" || element.tagName == "div") {
+				var parent = element.parentNode;
+				var child = document.createElement("img");
+				child.className = "arrow";
+				child.onclick = dropList;
+				child.style.cursor = "pointer";
+				child.style.marginRight = "10px";
+				child.src = "../img/arrow-gray-right.gif";
+				parent.insertBefore(child, parent.firstChild);
+				element.style.display = "none";
+			}
 		}
+	} catch (e) {
+		console.log(":(");
 	}
 	if(startMessage !== null) {
 		show(startMessage);
 	}
-}
+};
 
 window.onclick = function() {
 	if(currentMenu != null) {

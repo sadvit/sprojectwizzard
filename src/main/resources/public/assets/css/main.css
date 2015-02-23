@@ -201,7 +201,7 @@ body {
 #page button, #confirm-message button {
 	height: 50px;
 	line-height: 50px;
-	margin: 20px 20px 0 0;
+	/*margin: 20px 20px 0 0;*/
 	background: #007FFF;
 	color: white;
 	padding: 0 20px;
@@ -349,3 +349,38 @@ img.arrow[onclick] {
 #login-form {
 	margin: 100px 315px 100px 0;
 }
+
+tr:hover td {
+	cursor: pointer;
+	background: #EEEEEE;
+}
+
+.main-column form button {
+	margin-top: 0;
+}
+
+.main-column-buttons form {
+	display: block;
+	float: left;
+	margin: 15px;
+}
+
+.main-column-buttons {
+	position: relative;
+	margin: auto;
+	width: 460px;
+	overflow: auto;
+	display: block;
+}
+
+.category-buttons form {
+	width: 300px;
+	display: block;
+	overflow: auto;
+	margin: 15px;
+}
+
+.footer {
+	display: inline-block;
+}
+

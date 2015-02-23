@@ -1,0 +1,143 @@
+<DIV id="content">
+    <DIV id="breadcrumbs"><A href="index.html">Главная</A> :: Пользователи</DIV>
+    <H2>Пользователи</H2>
+    <DIV id="page">
+        <DIV class="main-column">
+            <H3>Список пользователей группы «Группа Г»</H3>
+            <FORM action="user-edit.html">
+                <BUTTON type="submit">Создать пользователя</BUTTON>
+                <BUTTON type="button" onclick="submitFormById('edit-group-form')">Редактировать группу</BUTTON>
+            </FORM>
+            <FORM action="group-edit.html" id="edit-group-form"></FORM>
+            <TABLE>
+                <TR>
+                    <TH class="insignificant">№</TH>
+                    <TH>Псевдоним</TH>
+                    <TH>Фамилия</TH>
+                    <TH>Имя</TH>
+                    <TH>Отчество</TH>
+                    <TH>Администратор</TH>
+                </TR>
+                <TR onclick="submitFormById('table-1')">
+                    <TD class="insignificant">1<FORM id="table-1" action="user-edit.html"><INPUT type="hidden" name="id" value="1"></FORM></TD>
+                    <TD>admin</TD>
+                    <TD>Васильев</TD>
+                    <TD>Василий</TD>
+                    <TD>Васильевич</TD>
+                    <TD>Да</TD>
+                </TR>
+                <TR onclick="submitFormById('table-2')">
+                    <TD class="insignificant">2<FORM id="table-2" action="user-edit.html"><INPUT type="hidden" name="id" value="2"></FORM></TD>
+                    <TD>petrov</TD>
+                    <TD>Петров</TD>
+                    <TD>Пётр</TD>
+                    <TD>Петрович</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-3')">
+                    <TD class="insignificant">3<FORM id="table-3" action="user-edit.html"><INPUT type="hidden" name="id" value="3"></FORM></TD>
+                    <TD>ivanov</TD>
+                    <TD>Иванов</TD>
+                    <TD>Иван</TD>
+                    <TD>Иванович</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-4')">
+                    <TD class="insignificant">4<FORM id="table-4" action="user-edit.html"><INPUT type="hidden" name="id" value="4"></FORM></TD>
+                    <TD>sidorova</TD>
+                    <TD>Сидорова</TD>
+                    <TD>Надежда</TD>
+                    <TD>Васильевна</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-5')">
+                    <TD class="insignificant">5<FORM id="table-5" action="user-edit.html"><INPUT type="hidden" name="id" value="5"></FORM></TD>
+                    <TD>sergeev</TD>
+                    <TD>Сергеев</TD>
+                    <TD>Сергей</TD>
+                    <TD>Сергеевич</TD>
+                    <TD>Да</TD>
+                </TR>
+                <TR onclick="submitFormById('table-6')">
+                    <TD class="insignificant">6<FORM id="table-6" action="user-edit.html"><INPUT type="hidden" name="id" value="6"></FORM></TD>
+                    <TD>igorev</TD>
+                    <TD>Игорев</TD>
+                    <TD>Игорь</TD>
+                    <TD>Игоревич</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-7')">
+                    <TD class="insignificant">7<FORM id="table-7" action="user-edit.html"><INPUT type="hidden" name="id" value="7"></FORM></TD>
+                    <TD>olegov</TD>
+                    <TD>Олегов</TD>
+                    <TD>Олег</TD>
+                    <TD>Олегович</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-8')">
+                    <TD class="insignificant">8<FORM id="table-8" action="user-edit.html"><INPUT type="hidden" name="id" value="8"></FORM></TD>
+                    <TD>ruslanov</TD>
+                    <TD>Русланов</TD>
+                    <TD>Руслан</TD>
+                    <TD>Русланович</TD>
+                    <TD>Да</TD>
+                </TR>
+                <TR onclick="submitFormById('table-9')">
+                    <TD class="insignificant">9<FORM id="table-9" action="user-edit.html"><INPUT type="hidden" name="id" value="9"></FORM></TD>
+                    <TD>ivanova</TD>
+                    <TD>Иванова</TD>
+                    <TD>Вера</TD>
+                    <TD>Павловна</TD>
+                    <TD>Нет</TD>
+                </TR>
+                <TR onclick="submitFormById('table-10')">
+                    <TD class="insignificant">10<FORM id="table-10" action="user-edit.html"><INPUT type="hidden" name="id" value="10"></FORM></TD>
+                    <TD>petrova</TD>
+                    <TD>Петрова</TD>
+                    <TD>Любовь</TD>
+                    <TD>Никифоровна</TD>
+                    <TD>Да</TD>
+                </TR>
+            </TABLE>
+            <FORM action="user-edit.html">
+                <BUTTON type="submit">Создать пользователя</BUTTON>
+            </FORM>
+        </DIV>
+        <DIV class="side-column">
+            <H3>Группы</H3>
+            <FORM action="group-edit.html">
+                <BUTTON type="submit">Создать группу</BUTTON>
+            </FORM>
+            <UL>
+                <LI class="drop"><A href="user-list.html">Разработчики</A>
+                    <UL class="drop">
+                        <LI class="drop"><A href="user-list.html">Java разработчики</A>
+                            <UL class="drop">
+                                <LI class="drop"><A href="user-list.html">Специалисты по JDBC</A></LI>
+                            </UL>
+                        </LI>
+                        <LI class="drop"><A href="user-list.html">C++ разработчики</A></LI>
+                    </UL>
+                </LI>
+                <LI class="drop"><A href="user-list.html">Тестировщики</A>
+                    <UL class="drop">
+                        <LI class="drop"><A href="user-list.html">Автоматизаторы</A></LI>
+                    </UL>
+                </LI>
+                <LI class="drop"><A href="user-list.html">Менеджеры</A></LI>
+                <LI class="drop"><A href="user-list.html">Специалисты по UI</A>
+                    <UL class="drop">
+                        <LI class="drop"><A href="user-list.html">Дизайнеры</A></LI>
+                        <LI class="drop"><A href="user-list.html">Верстальщики</A></LI>
+                    </UL>
+                </LI>
+                <LI class="drop"><A href="user-list.html">Архитекторы</A></LI>
+                <LI class="drop"><A href="user-list.html">Аналитики</A></LI>
+            </UL>
+            <FORM action="group-edit.html">
+                <BUTTON type="submit">Создать группу</BUTTON>
+            </FORM>
+        </DIV>
+    </DIV>
+    <DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+</DIV>
