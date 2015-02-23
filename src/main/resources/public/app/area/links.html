@@ -1,0 +1,6 @@
+<div class="breadcrumb">
+    <div class="blink"><a href="#">Главная</a></div>
+    <div class="blink" ng-repeat="breadcrumb in linksController.breadcrumbs.get() track by breadcrumb.path">
+        <a ng-href="#{{ breadcrumb.path }}" ng-bind="linksController.getLinkName(breadcrumb.label)"></a>
+    </div>
+</div>
