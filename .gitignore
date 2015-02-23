@@ -11,4 +11,4 @@
 /images
 *.*~
 /prototypes
-/**/bower_components/
+bower_components/
