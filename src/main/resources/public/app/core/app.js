@@ -1,6 +1,6 @@
-var app = angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs']);
+angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs']);
 
-app.config(function($routeProvider) {
+angular.module('spwizzard').config(function($routeProvider) {
     $routeProvider
         .when('/:pagename', {
             templateUrl: function(urlattr) {
