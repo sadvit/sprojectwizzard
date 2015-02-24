@@ -1,36 +1,40 @@
 var gulp = require('gulp');
-var bower = require('main-bower-files');
+var gulpsync = require('gulp-sync')(gulp);
+var bowerFiles = require('main-bower-files');
+var bower = require('gulp-bower');
 var filter = require('gulp-filter');
 var concat = require('gulp-concat-util');
 var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('scripts', function() {
-    return gulp.src(['app/**/*.js'])
-        .pipe(plumber())
-        .pipe(sourcemaps.init())
-        //.pipe(concat.header('(function() {\n\'use strict\';\n'))
-        //.pipe(concat.footer('\n})();\n'))
-        .pipe(concat('main.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('lib/'));
+var output = 'assets/lib/';
+
+gulp.task('bower-install', function() {
+    return bower()
+        .pipe(gulp.dest('/bower_components'))
 });
 
 gulp.task('bower-scripts', function() {
-    return gulp.src(['bower_components/**/*.js',
-        'node_components/**/*.js'])
+    return gulp.src(bowerFiles())
+        .pipe(filter(['*.js']))
+        .pipe(uglify())
+        .pipe(concat('bower-scripts.js'))
+        .pipe(gulp.dest(output));
+});
+
+gulp.task('our-scripts', function() {
+    return gulp.src(['app/core/app.js', 'assets/js/main.js', 'app/**/*.js'])
         .pipe(plumber())
         .pipe(sourcemaps.init())
-        .pipe(concat('bower-main.js'))
+        .pipe(concat('our-scripts.js'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('lib/'));
+        .pipe(gulp.dest(output));
 });
 
 gulp.task('live', function() {
-    gulp.watch('lib/**/*.js', ['scripts']);
-    gulp.watch('bower_components/**/*.js', ['bower-scripts']);
-    gulp.watch('node_modules/**/*.js', ['bower-scripts']);
+    gulp.watch('app/**/*.js', ['our-scripts']);
+    gulp.watch(bowerFiles(), ['bower-scripts']);
 });
 
-gulp.task('default', ['scripts', 'bower-scripts', 'live']);
+gulp.task('default', gulpsync.sync(['bower-install', 'bower-scripts', 'our-scripts']));
