@@ -5,9 +5,11 @@ function LinksController(breadcrumbs) {
 LinksController.prototype.getLinkName = function(str) {
     switch (str) {
         case 'projects': return 'Проекты';
+        case 'employees': return 'Работники';
+        case 'roles': return 'Роли';
+        case 'users': return 'Пользователи';
         case 'project_edit': return 'Создание/редактирование проекта';
     }
 };
 
 angular.module('spwizzard').controller('LinksController', LinksController);
-
