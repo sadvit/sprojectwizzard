@@ -1,65 +1,34 @@
 <DIV ng-controller="TasksController as tasksController" id="content">
     <slinks></slinks>
+
     <DIV id="page">
         <DIV class="main-column">
             <H3>Задачи:</H3>
             <TABLE>
-                <TR>
-                    <TH>Название</TH>
-                    <TH>Описание</TH>
-                    <TH>Требование</TH>
-                    <TH>Срок</TH>
-                </TR>
-                <TR ng-click="tasksController.editTask($index)">
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
-                <TR>
-                    <TD>Задача 1</TD>
-                    <TD>отсутствует</TD>
-                    <TD>отсутствует</TD>
-                    <TD>сегодня</TD>
-                </TR>
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <TH>Описание</TH>
+                        <TH>Требование</TH>
+                        <TH>Срок</TH>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="task in tasksController.tasksForProject">
+                    <tr ng-click="tasksController.editTask($index)">
+                        <td>{{task.name}}</td>
+                        <td>{{task.description}}</td>
+                        <td>none</td>
+                        <td>today</td>
+                    </tr>
+                </tbody>
             </TABLE>
         </DIV>
         <div class="side-column">
             <h3>Проекты:</h3>
             <UL>
-                <LI><A>Проект 1</A></LI> <!-- TODO переход разным задачам по разным проектам -->
-                <LI><A>Проект 2</A></LI>
-                <LI><A>Проект 3</A></LI>
+                <LI><A ng-click="tasksController.updateTasks(10)">Проект 1</A></LI> <!-- TODO переход разным задачам по разным проектам -->
+                <LI><A ng-click="tasksController.updateTasks(2)">Проект 2</A></LI>
+                <LI><A ng-click="tasksController.updateTasks(4)">Проект 3</A></LI>
             </UL>
             <br/>
             <h3>Действия:</h3>

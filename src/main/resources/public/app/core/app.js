@@ -1,4 +1,4 @@
-angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs']);
+angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs', 'ui.bootstrap']);
 
 angular.module('spwizzard').config(function($routeProvider) {
     $routeProvider
@@ -8,6 +8,11 @@ angular.module('spwizzard').config(function($routeProvider) {
             }
         })
         .when('/:pagename/:editname', {
+            templateUrl: function(urlattr) {
+                return 'app/area/' + urlattr.pagename + '/' + urlattr.editname + '/temp.html';
+            }
+        })
+        .when('/:pagename/:editname/:id', {
             templateUrl: function(urlattr) {
                 return 'app/area/' + urlattr.pagename + '/' + urlattr.editname + '/temp.html';
             }

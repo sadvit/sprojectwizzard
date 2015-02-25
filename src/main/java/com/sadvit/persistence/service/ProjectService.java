@@ -17,6 +17,10 @@ public class ProjectService {
         return projectDAO.readAll();
     }
 
+    public Project getById(int id) {
+        return projectDAO.read(id);
+    }
+
     public void save(Project project) {
         projectDAO.create(project);
     }
