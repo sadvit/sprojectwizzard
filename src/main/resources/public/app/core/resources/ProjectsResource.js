@@ -1,8 +1,8 @@
 angular.module('spwizzard').factory('ProjectsResource', function($resource) {
     return {
-        'projects' : $resource('/projects', {}, {
+        'projects' : $resource('/all_projects', {}, {
             'getAll': {
-                url: '/projects',
+                url: '/all_projects',
                 method: 'GET',
                 isArray: true
             }

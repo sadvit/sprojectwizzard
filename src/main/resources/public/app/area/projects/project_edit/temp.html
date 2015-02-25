@@ -1,24 +1,17 @@
 <DIV id="content">
     <slinks></slinks>
-    <H2>Создание/редактирование проекта</H2>
+
     <DIV id="page">
         <DIV class="single-column">
-            <FORM action="project-list.html">
+            <H3>Редактирование проекта:</H3>
+            <FORM action="#projects">
                 <LABEL for="name">Название проекта:</LABEL>
-                <INPUT type="text" id="name" value="{projectName}">
-                <LABEL for="categories">Категория проекта:</LABEL>
+                <INPUT type="text" id="name" value="">
+                <LABEL for="categories">Команда проекта:</LABEL>
                 <SELECT id="categories">
-                    <OPTION>категория 1</OPTION>
-                    <OPTION>категория 2</OPTION>
-                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;категория 2.1</OPTION>
-                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;категория 2.1.1</OPTION>
-                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;категория 2.1.2</OPTION>
-                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;категория 2.2</OPTION>
-                    <OPTION>категория 3</OPTION>
+                    <OPTION>Команда 1</OPTION>
+                    <OPTION>Команда 2</OPTION>
                 </SELECT>
-                <BUTTON type="submit">Сохранить</BUTTON>
-                <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
-                <BUTTON type="reset">Сбросить</BUTTON>
                 <BR>
                 <BR>
                 <H3>Менеджер проекта</H3>
@@ -36,10 +29,12 @@
                     <LI><A href="contact-edit.html">+375&nbsp;(29)&nbsp;123-45-67</A></LI>
                     <LI><A href="contact-edit.html">+375&nbsp;(33)&nbsp;123-45-67</A></LI>
                 </UL>
-                <BUTTON type="button" onclick="submitFormById('manager-form')">Назначить менеджера</BUTTON>
             </FORM>
             <FORM id="delete-form" action="project-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить проект «{projectName}»')"></FORM>
-            <FORM id="manager-form" action="manager-edit.html"></FORM>
+            <br/>
+
+            <BUTTON type="submit">Сохранить</BUTTON>
+            <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
         </DIV>
     </DIV>
     <sfooter></sfooter>
