@@ -1,6 +1,7 @@
 package com.sadvit.persistence.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Project {
@@ -15,11 +16,26 @@ public class Project {
     @Column
     private String description;
 
-    // TODO categoru
+    @ManyToOne
+    @JoinColumn(name="projects")
+    private Team team;
 
-    // TODO manager
+    @OneToMany(mappedBy="project")
+    private List<Requirement> requirements;
+
+    public Project(String name, String description, Team team, List<Requirement> requirements) {
+        this.name = name;
+        this.description = description;
+        this.team = team;
+        this.requirements = requirements;
+    }
+
+    public Project() {
+
+    }
 
     public int getId() {
+
         return id;
     }
 
@@ -35,11 +51,27 @@ public class Project {
         this.name = name;
     }
 
-    public Project(String name) {
-        this.name = name;
+    public String getDescription() {
+        return description;
     }
 
-    public Project() {
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public List<Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(List<Requirement> requirements) {
+        this.requirements = requirements;
+    }
 }

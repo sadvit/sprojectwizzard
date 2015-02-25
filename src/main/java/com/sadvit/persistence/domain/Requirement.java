@@ -1,9 +1,7 @@
 package com.sadvit.persistence.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Requirement {
@@ -21,11 +19,71 @@ public class Requirement {
     @Column
     private double importance;
 
-    @Column
-    private double changeProbability;
+    @ManyToOne
+    @JoinColumn(name="requirements")
+    private Project project;
 
-    // TODO use case
+    @OneToMany(mappedBy="requirement")
+    private List<Task> tasks; // список задач для его реализации
 
-    // TODO module
+    public Requirement() {
+    }
 
+    public Requirement(String name, String description, double importance, Project project, List<Task> tasks) {
+
+        this.name = name;
+        this.description = description;
+        this.importance = importance;
+        this.project = project;
+        this.tasks = tasks;
+    }
+
+    public int getId() {
+
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getImportance() {
+        return importance;
+    }
+
+    public void setImportance(double importance) {
+        this.importance = importance;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 }
