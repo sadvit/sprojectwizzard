@@ -43,7 +43,9 @@ public class AppPersistenceConfig {
 	@Bean
 	@Autowired
 	public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
-		return new HibernateTemplate(sessionFactory);
+		HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
+		hibernateTemplate.setCheckWriteOperations(false);
+		return hibernateTemplate;
 	}
 
 	@Bean

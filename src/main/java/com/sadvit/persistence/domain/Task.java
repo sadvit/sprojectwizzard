@@ -41,7 +41,7 @@ public class Task {
     private Requirement requirement;
 
     @ManyToOne
-    @JoinColumn(name="tasks")
+    @JoinColumn(name="taskList")
     private Employee employee;
 
     public Task(String name, String description, int planTime, double difficulty, Date openDate, Date acceptDate, Date closeDate, Status status, Requirement requirement, Employee employee) {
@@ -140,5 +140,22 @@ public class Task {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", planTime=" + planTime +
+                ", difficulty=" + difficulty +
+                ", openDate=" + openDate +
+                ", acceptDate=" + acceptDate +
+                ", closeDate=" + closeDate +
+                ", status=" + status +
+                ", requirement=" + requirement +
+                ", employee=" + employee +
+                '}';
     }
 }

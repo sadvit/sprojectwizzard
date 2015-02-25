@@ -1,5 +1,8 @@
 package com.sadvit.persistence.domain;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,6 +24,7 @@ public class Project {
     private Team team;
 
     @OneToMany(mappedBy="project")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Requirement> requirements;
 
     public Project(String name, String description, Team team, List<Requirement> requirements) {
@@ -73,5 +77,16 @@ public class Project {
 
     public void setRequirements(List<Requirement> requirements) {
         this.requirements = requirements;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", team=" + team +
+                ", requirements=" + requirements +
+                '}';
     }
 }
