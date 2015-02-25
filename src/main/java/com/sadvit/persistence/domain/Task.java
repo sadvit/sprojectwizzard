@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Entity
 public class Task {
-
     @Id
     @GeneratedValue
     private int id;
@@ -64,6 +63,14 @@ public class Task {
     public String getName() {
 
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
