@@ -3,41 +3,52 @@ package com.sadvit.spring;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
-//@EnableWebMvc
-//@Configuration
-//@ComponentScan({ "com.sadvit.*" })
-//@EnableTransactionManagement
+@EnableWebMvc
+@Configuration
+@ComponentScan({"com.sadvit"})
+@EnableTransactionManagement
 public class AppPersistenceConfig {
 
 	@Bean
 	@Autowired
-    public SessionFactory sessionFactory(DataSource dataSource) {
+    public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setPackagesToScan("com.sadvit"); // TODO check
 		sessionFactory.setHibernateProperties(getHibernateProperties());
-        return sessionFactory.getObject();
+        return sessionFactory;
     }
 
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("");
-		dataSource.setUrl("");
-		dataSource.setUsername("");
+		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+		dataSource.setUrl("jdbc:hsqldb:hsql:database/testdb");
+		dataSource.setUsername("sa");
 		return dataSource;
 	}
 
 	@Bean
 	@Autowired
-	public HibernateTransactionManager txManager(SessionFactory sessionFactory) {
+	public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
+		return new HibernateTemplate(sessionFactory);
+	}
+
+	@Bean
+	@Autowired
+	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 		return new HibernateTransactionManager(sessionFactory);
 	}
 
@@ -45,7 +56,8 @@ public class AppPersistenceConfig {
         Properties prop = new Properties();
         prop.put("hibernate.format_sql", "true");
         prop.put("hibernate.show_sql", "true");
-        prop.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        prop.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+		prop.put("hibernate.hbm2ddl.auto", "update"); // TODO config
         return prop;
     }
 
