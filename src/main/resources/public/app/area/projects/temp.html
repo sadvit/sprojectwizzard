@@ -1,20 +1,8 @@
 <div ng-controller="ProjectsController as projectsController" id="content">
-
     <slinks></slinks>
-
-    <h2>Проекты</h2>
     <div id="page">
-
         <div class="main-column">
-            <h3>Список проектов категории «категория 1»</h3>
-            <div class="main-column-buttons">
-                <form action="#projects/project_edit">
-                    <button type="submit">Создать проект</button>
-                </form>
-                <form action="#projects/category_edit">
-                    <button type="submit">Редактировать категорию</button>
-                </form>
-            </div>
+            <h3>Список текущих проектов:</h3>
             <table class="projects-table">
                 <tr>
                     <th class="insignificant">№</th>
@@ -33,53 +21,14 @@
                 </tr>
             </table>
         </div>
-
         <div class="side-column">
-            <h3>Категории</h3>
-
-            <div class="category-buttons">
-                <form action="#projects/category_edit">
-                    <button type="submit">Создать категорию</button>
+            <h3>Действия:</h3>
+            <div class="main-column-buttons">
+                <form action="#projects/project_edit">
+                    <button type="submit">Создать проект</button>
                 </form>
             </div>
-
-            <ul>
-                <li class="drop"><a href="project-list.html">категория 1</a>
-                    <ul class="drop">
-                        <li class="drop"><a href="project-list.html">подкатегория 1.1</a>
-                            <ul class="drop">
-                                <li class="drop"><a href="project-list.html">подподкатегория 1.1.1</a></li>
-                                <li class="drop"><a href="project-list.html">подподкатегория 1.1.2</a></li>
-                            </ul>
-                        </li>
-                        <li class="drop"><a href="project-list.html">подкатегория 1.2</a>
-                            <ul class="drop">
-                                <li class="drop"><a href="project-list.html">подподкатегория 1.2.1</a></li>
-                                <li class="drop"><a href="project-list.html">подподкатегория 1.2.2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="drop"><a href="project-list.html">категория 2</a>
-                    <ul class="drop">
-                        <li class="drop"><a href="project-list.html">подкатегория 2.1</a>
-                            <ul class="drop">
-                                <li class="drop"><a href="project-list.html">подподкатегория 2.1.1</a></li>
-                                <li class="drop"><a href="project-list.html">подподкатегория 2.1.2</a></li>
-                            </ul>
-                        </li>
-                        <li class="drop"><a href="project-list.html">подкатегория 2.2</a>
-                            <ul class="drop">
-                                <li class="drop"><a href="project-list.html">подподкатегория 2.2.1</a></li>
-                                <li class="drop"><a href="project-list.html">подподкатегория 2.2.2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </div>
-
     <sfooter></sfooter>
-
 </div>

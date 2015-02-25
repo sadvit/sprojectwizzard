@@ -1,23 +1,24 @@
 package com.sadvit.controller;
 
-import com.sadvit.collection.Tree;
-import com.sadvit.persistence.domain.Category;
+import com.sadvit.persistence.domain.ProjectsCategory;
+import com.sadvit.persistence.service.CategoriesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class CategoriesController {
 
-    @RequestMapping("/categories")
-    public List<Tree<Category>> categories() {
-        /*
-        List<Category> categories = new ArrayList<Category>();
-        for (int i = 0; i < 10; i++) {
-            projects.add(new Project("Achievethis" + i, new Manager("Sad", "Vit")));
-        }*/
-        return null;
+    @Autowired
+    private CategoriesService service;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/all_categories")
+    public @ResponseBody List<ProjectsCategory> all_categories() {
+        return service.getAll();
     }
 
 }

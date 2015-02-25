@@ -8,6 +8,7 @@ LinksController.prototype.getLinkName = function(str) {
         case 'employees': return 'Работники';
         case 'roles': return 'Роли';
         case 'users': return 'Пользователи';
+        case 'user_categories': return 'Пользовательские категории';
         case 'project_edit': return 'Создание/редактирование проекта';
     }
 };

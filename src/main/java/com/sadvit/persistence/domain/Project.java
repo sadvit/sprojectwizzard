@@ -1,13 +1,23 @@
 package com.sadvit.persistence.domain;
 
+import javax.persistence.*;
 
+@Entity
 public class Project {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @Column
     private String name;
 
-    private Manager manager;
+    @Column
+    private String description;
+
+    // TODO categoru
+
+    // TODO manager
 
     public int getId() {
         return id;
@@ -25,16 +35,11 @@ public class Project {
         this.name = name;
     }
 
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
-
-    public Project(String name, Manager manager) {
+    public Project(String name) {
         this.name = name;
-        this.manager = manager;
     }
+
+    public Project() {
+    }
+
 }

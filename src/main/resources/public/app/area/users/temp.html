@@ -3,12 +3,7 @@
     <H2>Пользователи</H2>
     <DIV id="page">
         <DIV class="main-column">
-            <H3>Список пользователей группы «Группа Г»</H3>
-            <FORM action="user-edit.html">
-                <BUTTON type="submit">Создать пользователя</BUTTON>
-                <BUTTON type="button" onclick="submitFormById('edit-group-form')">Редактировать группу</BUTTON>
-            </FORM>
-            <FORM action="group-edit.html" id="edit-group-form"></FORM>
+            <H3>Список пользователей:</H3>
             <TABLE>
                 <TR>
                     <TH class="insignificant">№</TH>
@@ -99,43 +94,12 @@
                     <TD>Да</TD>
                 </TR>
             </TABLE>
-            <FORM action="user-edit.html">
-                <BUTTON type="submit">Создать пользователя</BUTTON>
-            </FORM>
         </DIV>
         <DIV class="side-column">
-            <H3>Группы</H3>
-            <FORM action="group-edit.html">
-                <BUTTON type="submit">Создать группу</BUTTON>
-            </FORM>
-            <UL>
-                <LI class="drop"><A href="user-list.html">Разработчики</A>
-                    <UL class="drop">
-                        <LI class="drop"><A href="user-list.html">Java разработчики</A>
-                            <UL class="drop">
-                                <LI class="drop"><A href="user-list.html">Специалисты по JDBC</A></LI>
-                            </UL>
-                        </LI>
-                        <LI class="drop"><A href="user-list.html">C++ разработчики</A></LI>
-                    </UL>
-                </LI>
-                <LI class="drop"><A href="user-list.html">Тестировщики</A>
-                    <UL class="drop">
-                        <LI class="drop"><A href="user-list.html">Автоматизаторы</A></LI>
-                    </UL>
-                </LI>
-                <LI class="drop"><A href="user-list.html">Менеджеры</A></LI>
-                <LI class="drop"><A href="user-list.html">Специалисты по UI</A>
-                    <UL class="drop">
-                        <LI class="drop"><A href="user-list.html">Дизайнеры</A></LI>
-                        <LI class="drop"><A href="user-list.html">Верстальщики</A></LI>
-                    </UL>
-                </LI>
-                <LI class="drop"><A href="user-list.html">Архитекторы</A></LI>
-                <LI class="drop"><A href="user-list.html">Аналитики</A></LI>
-            </UL>
-            <FORM action="group-edit.html">
-                <BUTTON type="submit">Создать группу</BUTTON>
+            <H3>Действия:</H3>
+            <br/>
+            <FORM action="user-edit.html">
+                <BUTTON type="submit">Создать пользователя</BUTTON>
             </FORM>
         </DIV>
     </DIV>
