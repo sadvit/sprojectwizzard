@@ -1,13 +1,17 @@
 function ProjectsController(ProjectsResource, $location) {
     Object.defineProperty(this, '$location', { writable: true, value: $location });
-    Object.defineProperty(this, 'ProjectsResource', { writable: true, value: ProjectsResource });
+    Object.defineProperty(this, 'resource', { writable: true, value: ProjectsResource });
     this.init();
 }
 
 ProjectsController.prototype.init = function() {
     var self = this;
-    self.ProjectsResource.projects.getAll({}, function(data) {
-        self.projects = data;
+    self.resource.loadAll({}, function(data) {
+        console.log("data: " + data[0].id + ' ' + data[0].name);
+        self.resource.save({project: data[0]}, function() {
+            console.log('save');
+        });
+        //self.projects = data;
     });
 };
 
