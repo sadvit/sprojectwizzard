@@ -24,8 +24,7 @@ public class Requirement {
     private Project project;
 
     @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER)
-    //@LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Task> tasks; // список задач для его реализации
+    private Set<Task> tasks;
 
     public Requirement() {
     }
@@ -88,6 +87,10 @@ public class Requirement {
         this.tasks = tasks;
     }
 
+    public boolean hasTasks() {
+        return tasks != null && tasks.size() > 0;
+    }
+
     @Override
     public String toString() {
         return "Requirement{" +
@@ -96,7 +99,7 @@ public class Requirement {
                 ", description='" + description + '\'' +
                 ", importance=" + importance +
                 ", project=" + project +
-                ", tasks=" + tasks +
+                ", hasTasks=" + hasTasks() +
                 '}';
     }
 }

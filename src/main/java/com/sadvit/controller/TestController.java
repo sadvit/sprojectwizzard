@@ -2,8 +2,10 @@ package com.sadvit.controller;
 
 import com.sadvit.persistence.domain.Project;
 import com.sadvit.persistence.domain.Requirement;
+import com.sadvit.persistence.domain.Task;
 import com.sadvit.persistence.service.ProjectService;
 import com.sadvit.persistence.service.RequirementService;
+import com.sadvit.persistence.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,9 @@ public class TestController {
 
     @Autowired
     private RequirementService requirementService;
+
+    @Autowired
+    private TaskService taskService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/test/save")
     public @ResponseBody
@@ -48,6 +53,10 @@ public class TestController {
         System.out.println("REQUIREMENTS: ");
         for (Requirement r : requirementService.getAll()) {
             System.out.println(r);
+        }
+        System.out.println("TASKS: ");
+        for (Task t : taskService.getAll()) {
+            System.out.println(t);
         }
     }
 

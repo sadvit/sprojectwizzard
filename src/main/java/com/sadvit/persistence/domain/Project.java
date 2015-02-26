@@ -24,7 +24,6 @@ public class Project {
 
     @JsonIgnore
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
-    //@LazyCollection(LazyCollectionOption.FALSE)
     private Set<Requirement> requirements;
 
     public Project(String name, String description, Team team, Set<Requirement> requirements) {
@@ -79,6 +78,10 @@ public class Project {
         this.requirements = requirements;
     }
 
+    public boolean hasRequirements() {
+        return requirements != null && requirements.size() > 0;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -86,7 +89,7 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", team=" + team +
-                ", HASRequirements=" + (requirements != null ? requirements.size() : "EMPTY") +
+                ", hasRequirements=" + hasRequirements() +
                 '}';
     }
 }

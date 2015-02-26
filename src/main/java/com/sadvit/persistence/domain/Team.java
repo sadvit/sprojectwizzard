@@ -14,11 +14,9 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
-    //@LazyCollection(LazyCollectionOption.FALSE)
     private Set<Employee> employees;
 
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
-    //@LazyCollection(LazyCollectionOption.FALSE)
     private Set<Project> projects;
 
     public Team(String name, Set<Employee> employees, Set<Project> projects) {
@@ -64,13 +62,21 @@ public class Team {
         this.projects = projects;
     }
 
+    public boolean hasEmployees() {
+        return employees != null && projects.size() > 0;
+    }
+
+    public boolean hasProjects() {
+        return projects != null && projects.size() > 0;
+    }
+
     @Override
     public String toString() {
         return "Team{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", employees=" + employees +
-                ", projects=" + projects +
+                ", hasEmployees=" + hasEmployees() +
+                ", hasProjects=" + hasProjects() +
                 '}';
     }
 }

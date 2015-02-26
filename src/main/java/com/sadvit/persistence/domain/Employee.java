@@ -20,12 +20,11 @@ public class Employee {
     private User user;
 
     @ManyToOne
-    //@JoinColumn(name="employees")
+    @JoinColumn(name="employees")
     private Team team;
 
     @OneToMany(mappedBy="employee", fetch = FetchType.EAGER)
-    //@LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Task> taskList; // список задач работника
+    private Set<Task> taskList;
 
     public Employee(Role role, User user, Team team, Set<Task> tasks) {
         this.role = role;
@@ -79,6 +78,10 @@ public class Employee {
         this.taskList = taskList;
     }
 
+    public boolean hasTaskList() {
+        return taskList != null && taskList.size() > 0;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -86,7 +89,7 @@ public class Employee {
                 ", role=" + role +
                 ", user=" + user +
                 ", team=" + team +
-                ", taskList=" + taskList +
+                ", hasTaskList=" + hasTaskList() +
                 '}';
     }
 }
