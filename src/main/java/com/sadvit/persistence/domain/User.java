@@ -25,6 +25,9 @@ public class User {
     @Column
     private String lastName;
 
+    @Column
+    private String email;
+
     @OneToOne(mappedBy = "user")
     private Employee employee; // если пользователь - работник
 
@@ -85,6 +88,14 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public User() {

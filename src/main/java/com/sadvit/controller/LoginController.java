@@ -16,8 +16,8 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "?{login}&{pass}")
-    public @ResponseBody User getProjects(@PathVariable("login") String login, @PathVariable("pass") String pass) {
+    @RequestMapping(method = RequestMethod.GET, value = "{login}&{pass}")
+    public @ResponseBody User getAuth(@PathVariable("login") String login, @PathVariable("pass") String pass) {
         if (login != null && pass != null) return userService.getAuthUser(login, pass);
         return null;
     }

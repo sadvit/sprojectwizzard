@@ -442,3 +442,30 @@ tr:hover td {
 .projects-block li:hover {
 	cursor: pointer;
 }
+
+.single-column .left {
+	width: 300px;
+	display: block;
+	float: left;
+	margin-left: 50px;
+}
+
+.single-column .right {
+	width: 300px;
+	display: block;
+	float: left;
+	margin-left: 50px;
+}
+
+.single-column .head-labels {
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 50px;
+}
+
+.single-column .buttons {
+	width: 500px;
+	display: inline-block;
+	margin-left: 200px;
+	margin-bottom: 30px;
+}

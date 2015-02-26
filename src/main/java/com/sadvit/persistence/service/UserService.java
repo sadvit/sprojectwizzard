@@ -15,4 +15,14 @@ public class UserService {
         return userDAO.getAuth(loing, pass);
     }
 
+    public void save(User user) {
+        userDAO.save(user);
+    }
+
+    public void delete(Integer id) {
+        User user = userDAO.load(id);
+        if (user != null)
+            userDAO.delete(user);
+    }
+
 }

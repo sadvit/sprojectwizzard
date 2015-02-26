@@ -1,5 +1,5 @@
-angular.module('spwizzard').factory('ProjectsResource', function($resource) {
-    return $resource('/projects/', {}, {
+angular.module('spwizzard').factory('UsersResource', function($resource) {
+    return $resource('/users/', {}, {
         'loadAll': {
             url: '/projects/',
             method: 'GET',
@@ -22,4 +22,3 @@ angular.module('spwizzard').factory('ProjectsResource', function($resource) {
     });
 
 });
-
