@@ -1,11 +1,9 @@
 package com.sadvit.persistence.domain;
 
 import com.sadvit.persistence.domain.type.Role;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -22,14 +20,14 @@ public class Employee {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="employees")
+    //@JoinColumn(name="employees")
     private Team team;
 
-    @OneToMany(mappedBy="employee")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Task> taskList; // список задач работника
+    @OneToMany(mappedBy="employee", fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Task> taskList; // список задач работника
 
-    public Employee(Role role, User user, Team team, List<Task> tasks) {
+    public Employee(Role role, User user, Team team, Set<Task> tasks) {
         this.role = role;
         this.user = user;
         this.team = team;
@@ -73,11 +71,11 @@ public class Employee {
         this.team = team;
     }
 
-    public List<Task> getTaskList() {
+    public Set<Task> getTaskList() {
         return taskList;
     }
 
-    public void setTaskList(List<Task> taskList) {
+    public void setTaskList(Set<Task> taskList) {
         this.taskList = taskList;
     }
 

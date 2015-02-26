@@ -1,10 +1,7 @@
 package com.sadvit.persistence.domain;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Project {
@@ -23,11 +20,11 @@ public class Project {
     @JoinColumn(name="projects")
     private Team team;
 
-    @OneToMany(mappedBy="project")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Requirement> requirements;
+    @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Requirement> requirements;
 
-    public Project(String name, String description, Team team, List<Requirement> requirements) {
+    public Project(String name, String description, Team team, Set<Requirement> requirements) {
         this.name = name;
         this.description = description;
         this.team = team;
@@ -71,11 +68,11 @@ public class Project {
         this.team = team;
     }
 
-    public List<Requirement> getRequirements() {
+    public Set<Requirement> getRequirements() {
         return requirements;
     }
 
-    public void setRequirements(List<Requirement> requirements) {
+    public void setRequirements(Set<Requirement> requirements) {
         this.requirements = requirements;
     }
 
@@ -86,7 +83,7 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", team=" + team +
-                ", requirements=" + requirements +
+                ", HASRequirements=" + (requirements != null ? requirements.size() : "EMPTY") +
                 '}';
     }
 }

@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 public class TaskService {
 
     @Autowired
-    TaskDAO taskDAO;
+    private TaskDAO taskDAO;
 
     public void save(Task task) {
         taskDAO.create(task);
     }
+
 }

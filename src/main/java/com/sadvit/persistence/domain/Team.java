@@ -1,10 +1,7 @@
 package com.sadvit.persistence.domain;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Team {
@@ -16,15 +13,15 @@ public class Team {
     @Column
     private String name;
 
-    @OneToMany(mappedBy="team")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Employee> employees;
+    @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Employee> employees;
 
-    @OneToMany(mappedBy="team")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Project> projects;
+    @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Project> projects;
 
-    public Team(String name, List<Employee> employees, List<Project> projects) {
+    public Team(String name, Set<Employee> employees, Set<Project> projects) {
         this.name = name;
         this.employees = employees;
         this.projects = projects;
@@ -51,19 +48,19 @@ public class Team {
         this.name = name;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
 
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 

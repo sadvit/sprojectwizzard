@@ -5,13 +5,20 @@ import com.sadvit.persistence.domain.Requirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RequirementService {
 
     @Autowired
-    RequirementDAO requirementDAO;
+    private RequirementDAO requirementDAO;
+
+    public List<Requirement> getAll() {
+        return requirementDAO.readAll();
+    }
 
     public void save(Requirement requirement) {
         requirementDAO.create(requirement);
     }
+
 }

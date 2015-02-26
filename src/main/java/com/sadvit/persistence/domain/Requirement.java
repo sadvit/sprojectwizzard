@@ -1,10 +1,7 @@
 package com.sadvit.persistence.domain;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Requirement {
@@ -26,14 +23,14 @@ public class Requirement {
     @JoinColumn(name="requirements")
     private Project project;
 
-    @OneToMany(mappedBy="requirement")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Task> tasks; // список задач для его реализации
+    @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Task> tasks; // список задач для его реализации
 
     public Requirement() {
     }
 
-    public Requirement(String name, String description, double importance, Project project, List<Task> tasks) {
+    public Requirement(String name, String description, double importance, Project project, Set<Task> tasks) {
 
         this.name = name;
         this.description = description;
@@ -83,11 +80,11 @@ public class Requirement {
         this.project = project;
     }
 
-    public List<Task> getTasks() {
+    public Set<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
 
