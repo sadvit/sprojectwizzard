@@ -12,7 +12,7 @@ public class TaskService {
 
     @Autowired
     private TaskDAO taskDAO;
-    
+
     public void save(Task task) {
         taskDAO.save(task);
     }

@@ -16,6 +16,7 @@
     "angular": "~1.3.13",
     "angular-route": "~1.3.13",
     "angular-resource": "~1.3.13",
-    "ng-breadcrumbs": "~0.4.1"
+    "ng-breadcrumbs": "~0.4.1",
+    "angular-bootstrap": "~0.12.1"
   }
 }
