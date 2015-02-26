@@ -406,3 +406,39 @@ tr:hover td {
 	float: left;
 	margin-right: 6px;
 }
+
+.date-cell {
+	display: block;
+	float: left;
+	margin-top: 0;
+	margin-left: 20px;
+}
+
+.date-block {
+	width: 100%;
+	display: inline-block;
+}
+
+.project-link {
+	text-decoration: none;
+}
+
+.project-link:hover {
+	list-style-type: none;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.projects-block {
+	margin-left: 10px;
+}
+
+.projects-block li {
+	list-style-type: none;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.projects-block li:hover {
+	cursor: pointer;
+}

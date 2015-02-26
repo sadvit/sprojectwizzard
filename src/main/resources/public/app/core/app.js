@@ -1,4 +1,4 @@
-angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs', 'ui.bootstrap']);
+angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs']);
 
 angular.module('spwizzard').config(function($routeProvider) {
     $routeProvider

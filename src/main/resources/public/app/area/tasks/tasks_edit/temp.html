@@ -2,6 +2,7 @@
     <slinks></slinks>
     <div id="page">
         <div class="single-column">
+
             <!-- TODO выодить просмотр либо редактирование в зависимости от задачи -->
             <h3>Редактирование задачи</h3>
             <form>
@@ -13,31 +14,16 @@
                 <label for="name">Название:</label>
                 <input type="text" id="name" value="Сделать большую красную кнопку на главной странице">
 
-                <label for="description">Срок:</label>
+                <div class="date-block">
+                    <label class="date-cell"> Дата начала работ:
+                        <input type="date" name="bday" max="01-02-2020" min="01-01-2014">
+                    </label>
 
-                <pre>Selected date is: <em>{{tasksEditController.dt | date:'fullDate' }}</em></pre>
-                <h4>Popup</h4>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="input-group">
-                            <input type="text" class="form-control" datepicker-popup="{{tasksEditController.format}}" ng-model="tasksEditController.dt" is-open="tasksEditController.opened" min-date="tasksEditController.minDate" max-date="'2016-06-22'" datepicker-options="tasksEditController.dateOptions" date-disabled="tasksEditController.disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="tasksEditController.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Format:</label> <select class="form-control" ng-model="tasksEditController.format" ng-options="f for f in tasksEditController.formats"><option></option></select>
-                    </div>
+                    <label class="date-cell"> Дата завершения работ:
+                        <input type="date" name="eday" max="01-02-2020" min="01-01-2014">
+                    </label>
                 </div>
 
-                <hr />
-                <button type="button" class="btn btn-sm btn-info" ng-click="tasksEditController.todayDate()">Today</button>
-                <button type="button" class="btn btn-sm btn-default" ng-click="tasksEditController.dt = '2009-08-24'">2009-08-24</button>
-                <button type="button" class="btn btn-sm btn-danger" ng-click="tasksEditController.clearDate()">Clear</button>
-                <button type="button" class="btn btn-sm btn-default" ng-click="tasksEditController.toggleMin()" tooltip="After today restriction">Min date</button>
 
                 <label for="description">Описание:</label>
                 <textarea id="description">Создание пустого проекта без менеджера</textarea>
