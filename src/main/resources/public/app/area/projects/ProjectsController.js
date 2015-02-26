@@ -20,4 +20,8 @@ ProjectsController.prototype.editProject = function(index) {
     this.$location.path('projects/project_edit');
 };
 
+Projectscontroller.prototype.createProject = function() {
+
+};
+
 angular.module('spwizzard').controller('ProjectsController', ProjectsController);

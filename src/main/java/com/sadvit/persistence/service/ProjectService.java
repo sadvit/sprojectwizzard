@@ -17,6 +17,10 @@ public class ProjectService {
         return projectDAO.loadAll();
     }
 
+    public Project get(Integer id) {
+        return projectDAO.load(id);
+    }
+
     public void save(Project project) {
         projectDAO.save(project);
     }

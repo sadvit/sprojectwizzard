@@ -19,8 +19,12 @@ public class Project {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="projects")
+    @JoinColumn(name = "team_id")
     private Team team;
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
     @JsonIgnore
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
@@ -89,7 +93,9 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", team=" + team +
+                ", manager=" + manager +
                 ", hasRequirements=" + hasRequirements() +
                 '}';
     }
+
 }

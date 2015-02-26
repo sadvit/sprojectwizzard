@@ -36,11 +36,11 @@ public class Task {
     private Status status;
 
     @ManyToOne
-    @JoinColumn(name="tasks")
+    @JoinColumn(name="requirement_id")
     private Requirement requirement;
 
     @ManyToOne
-    @JoinColumn(name="taskList")
+    @JoinColumn(name="employee_id")
     private Employee employee;
 
     public Task(String name, String description, int planTime, double difficulty, Date openDate, Date acceptDate, Date closeDate, Status status, Requirement requirement, Employee employee) {

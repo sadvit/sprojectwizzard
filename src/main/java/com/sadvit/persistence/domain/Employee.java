@@ -20,17 +20,17 @@ public class Employee {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="employees")
+    @JoinColumn(name="team_id")
     private Team team;
 
     @OneToMany(mappedBy="employee", fetch = FetchType.EAGER)
-    private Set<Task> taskList;
+    private Set<Task> tasks;
 
     public Employee(Role role, User user, Team team, Set<Task> tasks) {
         this.role = role;
         this.user = user;
         this.team = team;
-        this.taskList = tasks;
+        this.tasks = tasks;
     }
 
     public Employee() {
@@ -70,16 +70,16 @@ public class Employee {
         this.team = team;
     }
 
-    public Set<Task> getTaskList() {
-        return taskList;
+    public Set<Task> getTasks() {
+        return tasks;
     }
 
-    public void setTaskList(Set<Task> taskList) {
-        this.taskList = taskList;
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public boolean hasTaskList() {
-        return taskList != null && taskList.size() > 0;
+        return tasks != null && tasks.size() > 0;
     }
 
     @Override

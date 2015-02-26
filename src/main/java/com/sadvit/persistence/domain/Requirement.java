@@ -20,7 +20,7 @@ public class Requirement {
     private double importance;
 
     @ManyToOne
-    @JoinColumn(name="requirements")
+    @JoinColumn(name="project_id")
     private Project project;
 
     @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER)

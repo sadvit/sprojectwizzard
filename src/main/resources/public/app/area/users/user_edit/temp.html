@@ -26,12 +26,12 @@
                 <LABEL for="admin"><INPUT type="checkbox" id="admin" checked>Администратор</LABEL>
                 <BUTTON type="submit">Сохранить</BUTTON>
                 <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
-                <BUTTON type="button" onclick="submitFormById('password-reset-form')">Сбросить пароль</BUTTON>
+                <BUTTON type="button" onclick="submitFormById('pass-reset-form')">Сбросить пароль</BUTTON>
                 <BUTTON type="button" onclick="submitFormById('roles-form')">Роли в текущем проекте</BUTTON>
             </FORM>
             <FORM action="employee-edit.html" id="roles-form"></FORM>
             <FORM action="user-list.html" id="delete-form" onsubmit="return confirmation(this, 'Вы действительно хотите удалить пользователя Иванов И. И. (root)')"></FORM>
-            <FORM id="password-reset-form" onsubmit="return confirmation(this, 'Вы действительно хотите сбросить пароль пользователю Иванов И. И. (root)')"></FORM>
+            <FORM id="pass-reset-form" onsubmit="return confirmation(this, 'Вы действительно хотите сбросить пароль пользователю Иванов И. И. (root)')"></FORM>
             <BR>
             <H3>Адреса электронной почты</H3>
             <UL>

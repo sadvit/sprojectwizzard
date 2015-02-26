@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @Column
-    private String name;
+    @Column(unique = true)
+    private String login;
 
-    @Column
-    private String password;
+    @Column(unique = true)
+    private String pass;
 
     @Column
     private String firstName;
@@ -26,7 +26,10 @@ public class User {
     private String lastName;
 
     @OneToOne(mappedBy = "user")
-    private Employee employee;
+    private Employee employee; // если пользователь - работник
+
+    @OneToOne(mappedBy = "user")
+    private Manager manager; // если пользователь - менеджер
 
     public Employee getEmployee() {
         return employee;
@@ -44,20 +47,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPass() {
+        return pass;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public String getFirstName() {
@@ -84,12 +79,28 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public User() {
     }
 
-    public User(String name, String password, String firstName, String middleName, String lastName) {
-        this.name = name;
-        this.password = password;
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public User(String login, String password, String firstName, String middleName, String lastName) {
+        this.login = login;
+        this.pass = password;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -99,8 +110,8 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
+                ", login='" + login + '\'' +
+                ", pass='" + pass + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +

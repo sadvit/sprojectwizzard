@@ -1,7 +1,5 @@
 package com.sadvit.controller;
 
-import com.sadvit.persistence.domain.Project;
-import com.sadvit.persistence.domain.Requirement;
 import com.sadvit.persistence.domain.Task;
 import com.sadvit.persistence.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
+
     @Autowired
     private ProjectService projectService;
 
@@ -26,7 +25,7 @@ public class TaskController {
             t.setDescription(i + " task's description");
             tasks.add(t);
         }
-
         return tasks;
     }
+
 }
