@@ -11,13 +11,13 @@ import java.util.List;
 public class UserDAO extends AbstractDAO<User> {
 
     @Override
-    public User read(Integer id) {
-        return getHibernateTemplate().load(User.class, id);
+    public User load(Integer id) {
+        return super._load(User.class, id);
     }
 
     @Override
-    public List<User> readAll() {
-        return getHibernateTemplate().loadAll(User.class);
+    public List<User> loadAll() {
+        return super._loadAll(User.class);
     }
 
 }

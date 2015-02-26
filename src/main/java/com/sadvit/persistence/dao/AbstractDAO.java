@@ -10,21 +10,25 @@ public abstract class AbstractDAO<T> {
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
-    public void create(T object) {
-        getHibernateTemplate().save(object);
-    }
-
-    public void update(T object) {
-        getHibernateTemplate().update(object);
+    public void save(T object) {
+        getHibernateTemplate().saveOrUpdate(object);
     }
 
     public void delete(T object) {
         getHibernateTemplate().delete(object);
     }
 
-    public abstract T read(Integer id);
+    public abstract T load(Integer id);
 
-    public abstract List<T> readAll();
+    public abstract List<T> loadAll();
+
+    protected T _load(Class<T> clazz, Integer id) {
+        return getHibernateTemplate().get(clazz, id);
+    }
+
+    protected List<T> _loadAll(Class<T> clazz) {
+        return getHibernateTemplate().loadAll(clazz);
+    }
 
     public HibernateTemplate getHibernateTemplate() {
         return hibernateTemplate;

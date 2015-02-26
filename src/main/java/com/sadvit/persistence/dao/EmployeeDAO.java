@@ -11,13 +11,13 @@ import java.util.List;
 public class EmployeeDAO extends AbstractDAO<Employee> {
 
     @Override
-    public Employee read(Integer id) {
-        return getHibernateTemplate().load(Employee.class, id);
+    public Employee load(Integer id) {
+        return super._load(Employee.class, id);
     }
 
     @Override
-    public List<Employee> readAll() {
-        return getHibernateTemplate().loadAll(Employee.class);
+    public List<Employee> loadAll() {
+        return super._loadAll(Employee.class);
     }
 
 }

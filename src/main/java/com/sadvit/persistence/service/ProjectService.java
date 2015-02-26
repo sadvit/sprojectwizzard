@@ -14,11 +14,11 @@ public class ProjectService {
     private ProjectDAO projectDAO;
 
     public List<Project> getAll() {
-        return projectDAO.readAll();
+        return projectDAO.loadAll();
     }
 
     public void save(Project project) {
-        projectDAO.create(project);
+        projectDAO.save(project);
     }
 
 }

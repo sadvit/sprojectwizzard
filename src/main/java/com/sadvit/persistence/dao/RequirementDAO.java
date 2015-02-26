@@ -11,13 +11,13 @@ import java.util.List;
 public class RequirementDAO extends AbstractDAO<Requirement> {
 
     @Override
-    public Requirement read(Integer id) {
-        return getHibernateTemplate().load(Requirement.class, id);
+    public Requirement load(Integer id) {
+        return super._load(Requirement.class, id);
     }
 
     @Override
-    public List<Requirement> readAll() {
-        return getHibernateTemplate().loadAll(Requirement.class);
+    public List<Requirement> loadAll() {
+        return super._loadAll(Requirement.class);
     }
 
 }

@@ -11,13 +11,13 @@ import java.util.List;
 public class ProjectDAO extends AbstractDAO<Project> {
 
     @Override
-    public Project read(Integer id) {
-        return getHibernateTemplate().load(Project.class, id);
+    public Project load(Integer id) {
+        return super._load(Project.class, id);
     }
 
     @Override
-    public List<Project> readAll() {
-        return getHibernateTemplate().loadAll(Project.class);
+    public List<Project> loadAll() {
+        return super._loadAll(Project.class);
     }
 
 }

@@ -14,11 +14,11 @@ public class RequirementService {
     private RequirementDAO requirementDAO;
 
     public List<Requirement> getAll() {
-        return requirementDAO.readAll();
+        return requirementDAO.loadAll();
     }
 
     public void save(Requirement requirement) {
-        requirementDAO.create(requirement);
+        requirementDAO.save(requirement);
     }
 
 }

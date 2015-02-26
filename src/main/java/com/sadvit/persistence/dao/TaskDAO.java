@@ -11,13 +11,13 @@ import java.util.List;
 public class TaskDAO extends AbstractDAO<Task> {
 
     @Override
-    public Task read(Integer id) {
-        return getHibernateTemplate().load(Task.class, id);
+    public Task load(Integer id) {
+        return super._load(Task.class, id);
     }
 
     @Override
-    public List<Task> readAll() {
-        return getHibernateTemplate().loadAll(Task.class);
+    public List<Task> loadAll() {
+        return super._loadAll(Task.class);
     }
 
 }

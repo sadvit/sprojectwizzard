@@ -1,5 +1,7 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,6 +22,7 @@ public class Project {
     @JoinColumn(name="projects")
     private Team team;
 
+    @JsonIgnore
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
     //@LazyCollection(LazyCollectionOption.FALSE)
     private Set<Requirement> requirements;

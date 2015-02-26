@@ -1,5 +1,6 @@
 package com.sadvit.spring;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -56,11 +57,16 @@ public class AppPersistenceConfig {
 
 	private Properties getHibernateProperties() {
         Properties prop = new Properties();
-        prop.put("hibernate.format_sql", "true");
-        prop.put("hibernate.show_sql", "true");
+        //prop.put("hibernate.format_sql", "true");
+        //prop.put("hibernate.show_sql", "true");
         prop.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
 		prop.put("hibernate.hbm2ddl.auto", "update"); // TODO config
         return prop;
     }
+
+	@Bean
+	public ObjectMapper mapper() {
+		return new ObjectMapper();
+	}
 
 }
