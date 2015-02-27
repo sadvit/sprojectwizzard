@@ -2,11 +2,9 @@
     <slinks></slinks>
     <div id="page">
         <div class="single-column">
-
-            <!-- TODO выодить просмотр либо редактирование в зависимости от задачи -->
             <h3>{{controller.title}}</h3>
             <form>
-                <label for="difficulty">Сложность</label>
+                <label for="difficulty">Сложность:</label>
                 <input type="range" id="difficulty" min="0" max="100"
                        value="{{controller.task.difficulty}}" ng-model="controller.task.difficulty">
 

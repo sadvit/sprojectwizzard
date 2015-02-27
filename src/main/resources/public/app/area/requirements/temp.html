@@ -1,108 +1,39 @@
-<DIV id="content">
+<div id="content" ng-controller="RequirementController as controller">
     <slinks></slinks>
-    <DIV id="page">
-        <DIV class="main-column">
-            <H3>Требования:</H3>
-            <TABLE>
-                <TR>
-                    <TH>Название</TH>
-                    <TH>Описание</TH>
-                </TR>
-                <TR>
-                    <TD colspan="2">Администратор</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-1')">
-                    <TD><FORM id="requirement-1" action="user-requirement-edit.html"></FORM>Просмотр категорий проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-2')">
-                    <TD><FORM id="requirement-2" action="user-requirement-edit.html"></FORM>Добавление новой категории проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-3')">
-                    <TD><FORM id="requirement-3" action="user-requirement-edit.html"></FORM>Удаление категории проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-4')">
-                    <TD><FORM id="requirement-4" action="user-requirement-edit.html"></FORM>Редактирование категории проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-5')">
-                    <TD><FORM id="requirement-5" action="user-requirement-edit.html"></FORM>Создание нового пустого проекта</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-6')">
-                    <TD><FORM id="requirement-6" action="user-requirement-edit.html"></FORM>Просмотр списка всех проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-7')">
-                    <TD><FORM id="requirement-7" action="user-requirement-edit.html"></FORM>Переименование любого проекта</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-8')">
-                    <TD><FORM id="requirement-8" action="user-requirement-edit.html"></FORM>Удаление пустого проекта</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-9')">
-                    <TD><FORM id="requirement-9" action="user-requirement-edit.html"></FORM>Назначение менеджера (в том числе и нового) на проект</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR>
-                    <TD colspan="2">Авторизованный пользователь</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-10')">
-                    <TD><FORM id="requirement-10" action="user-requirement-edit.html"></FORM>Просмотр списка своих проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-11')">
-                    <TD><FORM id="requirement-11" action="user-requirement-edit.html"></FORM>Выбор одного из своих проектов</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR>
-                    <TD colspan="2">Менеджер</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-12')">
-                    <TD><FORM id="requirement-12" action="user-requirement-edit.html"></FORM>Просмотр списка команд в выбранном проекте</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-13')">
-                    <TD><FORM id="requirement-13" action="user-requirement-edit.html"></FORM>Создание новой команды в выбранном проекте</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-14')">
-                    <TD><FORM id="requirement-14" action="user-requirement-edit.html"></FORM>Назначение любому пользователю ролей и команд на выбранном проекте</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-15')">
-                    <TD><FORM id="requirement-15" action="user-requirement-edit.html"></FORM>Просмотр списка ролей работников выбранного проекта</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-16')">
-                    <TD><FORM id="requirement-16" action="user-requirement-edit.html"></FORM>Изменение работнику ролей и команд на выбранном проекте</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-                <TR onclick="submitFormById('requirement-17')">
-                    <TD><FORM id="requirement-17" action="user-requirement-edit.html"></FORM>Отмена работнику ролей и команд в выбранном проекте</TD>
-                    <TD>отсутствует</TD>
-                </TR>
-            </TABLE>
-        </DIV>
+    <div id="page">
+        <div class="main-column">
+            <h3>Требования:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="requirement in controller.requirementsForProject">
+                    <tr ng-click="controller.editRequirement(requirement.id)">
+                        <td>{{requirement.name}}</td>
+                        <td>{{requirement.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="side-column">
             <h3>Проекты:</h3>
-            <UL>
-                <LI><A href="employee-list.html">Проект 1</A></LI>
-                <LI><A href="employee-list.html">Проект 2</A></LI>
-                <LI><A href="employee-list.html">Проект 3</A></LI>
-            </UL>
+            <ul>
+                <li ng-repeat="project in controller.projects">
+                    <a ng-click="controller.updateRequirements(project.id)">{{project.name}}</a>
+                </li>
+            </ul>
             <br/>
             <h3>Действия:</h3>
             <br/>
             <div class="main-column-buttons">
-                <FORM action="user-requirement-edit.html">
-                    <BUTTON type="submit">Создать требование</BUTTON>
-                </FORM>
+                <form action="user-requirement-edit.html">
+                    <button type="submit">Создать требование</button>
+                </form>
             </div>
         </div>
-    </DIV>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>

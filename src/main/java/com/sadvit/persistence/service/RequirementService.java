@@ -21,4 +21,7 @@ public class RequirementService {
         requirementDAO.save(requirement);
     }
 
+    public Requirement get(Integer id) {
+        return requirementDAO.load(id);
+    }
 }
