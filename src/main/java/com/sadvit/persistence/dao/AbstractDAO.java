@@ -14,6 +14,10 @@ public abstract class AbstractDAO<T> {
         getHibernateTemplate().saveOrUpdate(object);
     }
 
+    public void update(T object) {
+        getHibernateTemplate().update(object);
+    }
+
     public void delete(T object) {
         getHibernateTemplate().delete(object);
     }

@@ -1,34 +1,36 @@
-<DIV id="content">
+<div ng-controller="UsersController as controller" id="content">
     <slinks></slinks>
-    <H2>Пользователи</H2>
-    <DIV id="page">
-        <DIV class="main-column">
-            <H3>Список пользователей:</H3>
-            <TABLE>
-                <TR>
-                    <TH class="insignificant">№</TH>
-                    <TH>Псевдоним</TH>
-                    <TH>Фамилия</TH>
-                    <TH>Имя</TH>
-                    <TH>Отчество</TH>
-                </TR>
-                <TR onclick="submitFormById('table-1')">
-                    <TD class="insignificant">1<FORM id="table-1" action="user-edit.html"><INPUT type="hidden" name="id" value="1"></FORM></TD>
-                    <TD>admin</TD>
-                    <TD>Васильев</TD>
-                    <TD>Василий</TD>
-                    <TD>Васильевич</TD>
-                    <TD>Да</TD>
-                </TR>
-            </TABLE>
-        </DIV>
-        <DIV class="side-column">
-            <H3>Действия:</H3>
+    <h2>Пользователи</h2>
+    <div id="page">
+        <div class="main-column">
+            <h3>Список пользователей:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Логин</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчество</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="user in controller.users">
+                    <tr ng-click="controller.editUser(user.id)">
+                        <td>{{$index}}</td>
+                        <td>{{user.login}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.middleName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.firstName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="side-column">
+            <h3>Действия:</h3>
             <br/>
-            <FORM action="#users/users_edit">
-                <BUTTON type="submit">Создать пользователя</BUTTON>
-            </FORM>
-        </DIV>
-    </DIV>
+            <a href="#users/users_edit">Создать пользователя</a>
+        </div>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>

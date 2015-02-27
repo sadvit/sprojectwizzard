@@ -35,10 +35,16 @@ public class UserService {
         userDAO.save(user);
     }
 
+    public void update(User user) {
+        userDAO.refresh(user);
+    }
+
     public void delete(Integer id) {
         User user = userDAO.load(id);
         if (user != null)
             userDAO.delete(user);
     }
+
+
 
 }
