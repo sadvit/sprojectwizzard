@@ -4,10 +4,12 @@ import com.sadvit.persistence.dao.ProjectDAO;
 import com.sadvit.persistence.domain.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = false)
 public class ProjectService {
 
     @Autowired
