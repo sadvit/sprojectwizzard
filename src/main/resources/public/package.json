@@ -1,0 +1,19 @@
+{
+  "name": "sprojectwizzard",
+  "version": "0.0.1",
+  "description": "Projects Management",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-concat": "^2.2.0",
+    "gulp": "~3.8.11",
+    "gulp-sync": "^0.1.4",
+    "main-bower-files": "^2.5.0",
+    "gulp-bower": "^0.0.10",
+    "gulp-filter": "^2.0.2",
+    "gulp-uglify": "^0.3.0",
+    "gulp-plumber": "^0.6.4",
+    "gulp-sourcemaps": "^1.1.1",
+    "gulp-concat-util": "^0.2.3",
+    "gulp-watch": "^0.6.8"
+  }
+}

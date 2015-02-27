@@ -1,35 +1,38 @@
-<div ng-controller="TasksEditController as tasksEditController" id="content">
+<div ng-controller="TasksEditController as controller" id="content">
     <slinks></slinks>
     <div id="page">
         <div class="single-column">
 
             <!-- TODO выодить просмотр либо редактирование в зависимости от задачи -->
-            <h3>Редактирование задачи</h3>
+            <h3>{{controller.title}}</h3>
             <form>
+                <label for="difficulty">Сложность</label>
+                <input type="range" id="difficulty" min="0" max="100"
+                       value="{{controller.task.difficulty}}" ng-model="controller.task.difficulty">
+
                 <label for="category">Исполнитель:</label>
-                <select id="category">
-                    <option>Иван</option>
-                    <option>Алексей</option>
-                </select>
+                <select id="category" ng-model="controller.workerChoice"
+                        ng-options="worker as worker.name for worker in controller.workers"></select>
+
                 <label for="name">Название:</label>
-                <input type="text" id="name" value="Сделать большую красную кнопку на главной странице">
+                <input type="text" id="name" ng-model="controller.task.name"
+                       value="">
 
                 <div class="date-block">
                     <label class="date-cell"> Дата начала работ:
-                        <input type="date" name="bday" max="01-02-2020" min="01-01-2014">
+                        <input ng-model="controller.task.openDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
                     </label>
 
                     <label class="date-cell"> Дата завершения работ:
-                        <input type="date" name="eday" max="01-02-2020" min="01-01-2014">
+                        <input ng-model="controller.task.closeDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
                     </label>
                 </div>
 
-
                 <label for="description">Описание:</label>
-                <textarea id="description">Создание пустого проекта без менеджера</textarea>
+                <textarea ng-model="controller.task.description" id="description"></textarea>
             </form>
             <br/>
-            <button>Сохранить</button>
+            <button ng-click="controller.saveTask()">Сохранить</button>
             <button>Удалить</button>
         </div>
     </div>

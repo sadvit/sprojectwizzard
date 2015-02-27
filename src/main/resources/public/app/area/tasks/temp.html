@@ -4,7 +4,7 @@
     <DIV id="page">
         <DIV class="main-column">
             <H3>Задачи:</H3>
-            <TABLE>
+            <table>
                 <thead>
                     <tr>
                         <th>Название</th>
@@ -14,29 +14,29 @@
                     </tr>
                 </thead>
                 <tbody ng-repeat="task in tasksController.tasksForProject">
-                    <tr ng-click="tasksController.editTask($index)">
+                    <tr ng-click="tasksController.editTask(task.id)">
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
                         <td>none</td>
                         <td>today</td>
                     </tr>
                 </tbody>
-            </TABLE>
+            </table>
         </DIV>
         <div class="side-column">
             <h3>Проекты:</h3>
             <UL class="projects-block">
-                <LI><A ng-click="tasksController.updateTasks(10)">Проект 1</A></LI> <!-- TODO переход разным задачам по разным проектам -->
-                <LI><A ng-click="tasksController.updateTasks(2)">Проект 2</A></LI>
-                <LI><A ng-click="tasksController.updateTasks(4)">Проект 3</A></LI>
+                <!--<LI><A ng-click="tasksController.updateTasks(10)">Проект 1</A></LI> &lt;!&ndash; TODO переход разным задачам по разным проектам &ndash;&gt;-->
+                <li ng-repeat="project in tasksController.projects">
+                    <a ng-click="tasksController.updateTasks(project.id)">{{project.name}}</a>
+                </li>
             </UL>
             <br/>
             <h3>Действия:</h3>
             <br/>
             <div class="main-column-buttons">
-
-                    <BUTTON ng-click="tasksController.editTask($index)">Создать задачу</BUTTON>
-
+                <!--<button ng-click="tasksController.editTask('')">Создать задачу</button>-->
+                <a href="#tasks/tasks_edit/">Создать задачу</a>
             </div>
         </div>
     </DIV>

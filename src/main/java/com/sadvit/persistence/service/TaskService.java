@@ -5,6 +5,7 @@ import com.sadvit.persistence.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -21,4 +22,8 @@ public class TaskService {
         return taskDAO.loadAll();
     }
 
+    public Task load(Integer id) {
+        Task task = taskDAO.load(id);
+        return task;
+    }
 }

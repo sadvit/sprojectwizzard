@@ -26,9 +26,7 @@ TasksController.prototype.updateTasks = function(id) {
     });
 };
 
-TasksController.prototype.editTask = function(index) {
-    var taskId = this.tasksForProject[index].id;
-    console.log('index: ' + taskId);
+TasksController.prototype.editTask = function(taskId) {
     this.$location.path('tasks/tasks_edit/' + taskId);
 };
 
