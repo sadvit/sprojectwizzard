@@ -10,7 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var watch = require('gulp-watch');
 
 var output = 'assets/lib/';
-var ourScriptsPath = ['app/core/app.js', 'assets/js/main.js', 'app/**/*.js'];
+var ourScriptsPath = ['app/core/app.js', 'app/core/resources/*.js', 'app/**/*.js', 'assets/js/main.js'];
 
 gulp.task('bower-install', function() {
     return bower()

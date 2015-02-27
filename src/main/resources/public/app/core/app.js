@@ -1,4 +1,4 @@
-angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs']);
+angular.module('spwizzard', ['ngRoute', 'ngResource', 'ng-breadcrumbs', 'ngCookies']);
 
 angular.module('spwizzard').config(function($routeProvider) {
     $routeProvider
@@ -18,6 +18,6 @@ angular.module('spwizzard').config(function($routeProvider) {
             }
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/login'
         });
 });

@@ -1,41 +1,24 @@
-<DIV id="content">
+<div ng-controller="ProjectsEditController as controller" id="content">
     <slinks></slinks>
-
-    <DIV id="page">
-        <DIV class="single-column">
-            <H3>Редактирование проекта:</H3>
-            <FORM action="#projects">
-                <LABEL for="name">Название проекта:</LABEL>
-                <INPUT type="text" id="name" value="">
-                <LABEL for="categories">Команда проекта:</LABEL>
-                <SELECT id="categories">
-                    <OPTION>Команда 1</OPTION>
-                    <OPTION>Команда 2</OPTION>
-                </SELECT>
-                <BR>
-                <BR>
-                <H3>Менеджер проекта</H3>
-                <P>Иванов Иван Иванович</P>
-                <BR>
-                <P><STRONG>Адреса электронной почты:</STRONG></P>
-                <UL>
-                    <LI><A href="contact-edit.html">user@example.com</A></LI>
-                    <LI><A href="contact-edit.html">user@pisem.net</A></LI>
-                </UL>
-                <BR>
-                <P><STRONG>Номера телефонов:</STRONG></P>
-                <UL>
-                    <LI><A href="contact-edit.html">+375&nbsp;(212)&nbsp;11-22-33</A></LI>
-                    <LI><A href="contact-edit.html">+375&nbsp;(29)&nbsp;123-45-67</A></LI>
-                    <LI><A href="contact-edit.html">+375&nbsp;(33)&nbsp;123-45-67</A></LI>
-                </UL>
-            </FORM>
-            <FORM id="delete-form" action="project-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить проект «{projectName}»')"></FORM>
-            <br/>
-
-            <BUTTON type="submit">Сохранить</BUTTON>
-            <BUTTON type="button" onclick="submitFormById('delete-form')">Удалить</BUTTON>
-        </DIV>
-    </DIV>
+    <div id="page">
+        <div class="single-column">
+            <h3>Редактирование проекта:</h3>
+            <label> Название:
+                <input type="text" id="name">
+            </label>
+            <label> Команда:
+                <select id="team"></select>
+            </label>
+            <h3>Контактные данные:</h3>
+            <label> Менеджер:
+                <input type="text" id="manager" disabled>
+            </label>
+            <label> Электронная почта:
+                <input type="text" id="email" disabled>
+            </label>
+            <button type="submit" ng-click="controller.saveProject()">Сохранить</button>
+            <button type="button" ng-click="controller.deleteProject()">Удалить</button>
+        </div>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>

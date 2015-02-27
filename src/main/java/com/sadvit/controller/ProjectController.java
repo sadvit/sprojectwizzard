@@ -19,7 +19,7 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody List<Project> getProjects() {
         return projectService.getAll();
     }

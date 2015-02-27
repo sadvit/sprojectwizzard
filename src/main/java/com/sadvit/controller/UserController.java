@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * Добавить разграничение прав пользователей.
+ */
 @RestController
 @RequestMapping("users")
 public class UserController {
@@ -18,6 +21,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public @ResponseBody User getUser(@PathVariable("id") Integer id) {
+        return userService.get(id);
+    }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{user}")
     public @ResponseBody void putUser(@PathVariable("user") String suser) throws IOException {

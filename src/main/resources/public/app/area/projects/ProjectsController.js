@@ -7,11 +7,7 @@ function ProjectsController(ProjectsResource, $location) {
 ProjectsController.prototype.init = function() {
     var self = this;
     self.resource.loadAll({}, function(data) {
-        console.log("data: " + data[0].id + ' ' + data[0].name);
-        self.resource.save({project: data[0]}, function() {
-            console.log('save');
-        });
-        //self.projects = data;
+        self.projects = data;
     });
 };
 

@@ -11,6 +11,16 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
+    public User get(Integer id) {
+        User user = userDAO.load(id);
+        if (user != null) {
+            user.setLogin(null);
+            user.setPass(null);
+            return user;
+        }
+        return null;
+    }
+
     public User getAuthUser(String loing, String pass) {
         return userDAO.getAuth(loing, pass);
     }

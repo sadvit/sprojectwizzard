@@ -18,6 +18,14 @@ angular.module('spwizzard').factory('UsersResource', function($resource) {
                 project: '@project'
             },
             method: 'PUT'
+        },
+        'auth' : {
+            url: '/login/',
+            params: {
+                login: '@login',
+                pass: '@pass'
+            },
+            method: 'GET'
         }
     });
 
