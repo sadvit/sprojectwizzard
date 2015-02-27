@@ -1,23 +1,20 @@
 angular.module('spwizzard').factory('UsersResource', function($resource) {
     return $resource('/users/', {}, {
         'loadAll': {
-            url: '/projects/',
+            url: '/users',
             method: 'GET',
             isArray: true
         },
         'load' : {
-            url: '/project/:id',
+            url: '/user/:id',
             params: {
                 id: '@id'
             },
             method: 'GET'
         },
         'save' : {
-            url: '/project/',
-            params: {
-                project: '@project'
-            },
-            method: 'PUT'
+            url: '/users/',
+            method: 'POST'
         },
         'auth' : {
             url: '/login/',

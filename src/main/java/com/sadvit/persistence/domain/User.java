@@ -108,7 +108,7 @@ public class User {
     public void setManager(Manager manager) {
         this.manager = manager;
     }
-
+/*
     public User(String login, String password, String firstName, String middleName, String lastName) {
         this.login = login;
         this.pass = password;
@@ -116,6 +116,7 @@ public class User {
         this.middleName = middleName;
         this.lastName = lastName;
     }
+*/
 
     @Override
     public String toString() {
@@ -126,7 +127,9 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 ", employee=" + employee +
+                ", manager=" + manager +
                 '}';
     }
 }

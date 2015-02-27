@@ -1,0 +1,53 @@
+<div ng-controller="UsersEditController as controller" id="content">
+    <slinks></slinks>
+    <h2>Профиль пользователя</H2>
+    <div id="page">
+        <div class="single-column">
+            <h3>Данные пользователя:</H3>
+
+            <div class="head-labels">
+                <div class="left">
+                    <label>Имя:
+                        <input type="text" ng-model="controller.user.firstName">
+                    </label>
+                    <label>Фамилия:
+                        <input type="text" ng-model="controller.user.middleName">
+                    </label>
+                    <label>Отчество:
+                        <input type="text" ng-model="controller.user.lastName">
+                    </label>
+                    <label> Менеджер
+                        <input type="checkbox" ng-model="manager">
+                    </label>
+                    <label ng-if="!manager">Роль в команде: <!--TODO тут должно быть выбрано значение, если не выбрано - то менеджер-->
+                        <select ng-model="controller.user.employee.role">
+                            <option value="ANALYST">Аналитик</option>
+                            <option value="LEADER">Разработчик</option>
+                            <option value="PROGRAMMER">Старший разработчик</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="right">
+                    <label>Логин:
+                        <input type="text" ng-model="controller.user.login">
+                    </label>
+                    <label>Пароль:
+                        <input type="text" ng-model="controller.user.pass">
+                    </label>
+                    <label>Почта:
+                        <input type="text" ng-model="controller.user.email">
+                    </label>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button ng-click="controller.saveUser()">Сохранить</button>
+                <button ng-click="controller.deleteUser()">Удалить</button>
+            </div>
+
+            <br/>
+        </div>
+    </div>
+    <sfooter></sfooter>
+</div>
