@@ -25,4 +25,8 @@ public class ProjectService {
         projectDAO.save(project);
     }
 
+    public void update(Project project) {
+        projectDAO.update(project);
+    }
+
 }

@@ -4,30 +4,31 @@
         <div class="main-column">
             <h3>Список текущих проектов:</h3>
             <table class="projects-table">
+                <thead>
                 <tr>
                     <th class="insignificant">№</th>
                     <th>Название</th>
-                    <th>Менеджер</th>
+                    <th>Описание</th>
                 </tr>
-                <tr ng-repeat="project in projectsController.projects" ng-click="projectsController.editProject($index)">
-                    <td class="insignificant">{{$index + 1}}</td>
+                </thead>
+                <tbody ng-repeat="project in projectsController.projects">
+                <tr ng-click="projectsController.editProject(project.id)">
+                    <td class="insignificant">{{$index}}</td>
                     <td>{{project.name}}</td>
-                    <td>{{project.manager.name}}</td>
+                    <td>{{project.description}}</td>
                 </tr>
                 <tr ng-hide="projectsController.projects.length || projectsController.projects.isUndefined"> <!-- TODO check -->
                     <td class="insignificant"></td>
                     <td>No items found</td>
                     <td></td>
                 </tr>
+                </tbody>
             </table>
         </div>
         <div class="side-column">
             <h3>Действия:</h3>
-            <div class="main-column-buttons">
-                <form action="#projects/project_edit">
-                    <button type="submit">Создать проект</button>
-                </form>
-            </div>
+            <br/>
+            <a href="#projects/project_edit"></a>
         </div>
     </div>
     <sfooter></sfooter>

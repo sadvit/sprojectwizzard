@@ -6,18 +6,13 @@ function ProjectsController(ProjectsResource, $location) {
 
 ProjectsController.prototype.init = function() {
     var self = this;
-    self.resource.loadAll({}, function(data) {
-        self.projects = data;
+    self.resource.loadAll({}, function(projects) {
+        self.projects = projects;
     });
 };
 
-ProjectsController.prototype.editProject = function(index) {
-    console.log('index: ' + index);
-    this.$location.path('projects/project_edit');
-};
-
-ProjectsController.prototype.createProject = function() {
-
+ProjectsController.prototype.editProject = function(projectId) {
+    this.$location.path('projects/project_edit/' + projectId);
 };
 
 angular.module('spwizzard').controller('ProjectsController', ProjectsController);

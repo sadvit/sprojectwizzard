@@ -4,7 +4,10 @@
         <div class="single-column">
             <h3>Редактирование проекта:</h3>
             <label> Название:
-                <input type="text" id="name">
+                <input type="text" ng-model="controller.project.name">
+            </label>
+            <label> Описание:
+                <input type="text" ng-model="controller.project.description">
             </label>
             <label> Команда:
                 <select id="team"></select>

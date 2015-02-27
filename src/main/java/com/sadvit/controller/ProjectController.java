@@ -1,20 +1,15 @@
 package com.sadvit.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sadvit.persistence.domain.Project;
 import com.sadvit.persistence.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
-
-    @Autowired
-    private ObjectMapper mapper;
 
     @Autowired
     private ProjectService projectService;
@@ -29,10 +24,14 @@ public class ProjectController {
         return projectService.get(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/")
-    public @ResponseBody void putProject(@RequestParam(value = "project") String sproject) throws IOException {
-        Project project = mapper.readValue(sproject, Project.class);
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody void postProject(@RequestBody Project project) {
         projectService.save(project);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody void putProject(@RequestBody Project project) {
+        projectService.update(project);
     }
 
 }
