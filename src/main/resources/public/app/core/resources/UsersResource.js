@@ -16,6 +16,10 @@ angular.module('spwizzard').factory('UsersResource', function($resource) {
             url: '/users/',
             method: 'POST'
         },
+        'update' : {
+            url: '/users/',
+            method: 'PUT'
+        },
         'auth' : {
             url: '/login/',
             params: {

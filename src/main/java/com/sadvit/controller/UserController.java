@@ -19,10 +19,22 @@ public class UserController {
         return userService.getAll();
     }
 
+    /**
+     * Метод обновления пользователя.
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody void putUser(@RequestBody User user) {
+        System.out.println("update");
+        userService.update(user);
+    }
+
+    /**
+     * Метод сохранения пользователя.
+     */
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody void postUser(@RequestBody User user) {
-        System.out.println("User: " + user);
-        userService.update(user);
+        System.out.println("save");
+        userService.save(user);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
