@@ -11,7 +11,10 @@ angular.module('spwizzard').factory('RequirementsResource', function($resource) 
         },
         'save' : {
             url: '/requirements',
-            method: 'POST'
+            method: 'POST',
+            params: {
+                projectId: '@projectId'
+            }
         },
         'update' : {
             url: '/requirements',
