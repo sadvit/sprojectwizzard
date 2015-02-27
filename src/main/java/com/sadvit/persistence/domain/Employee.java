@@ -3,14 +3,11 @@ package com.sadvit.persistence.domain;
 import com.sadvit.persistence.domain.type.Role;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
-public class Employee {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Employee extends AbstractEntity {
 
     @Column
     private Role role;
@@ -35,15 +32,6 @@ public class Employee {
 
     public Employee() {
 
-    }
-
-    public int getId() {
-
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Role getRole() {
@@ -92,4 +80,16 @@ public class Employee {
                 ", hasTaskList=" + hasTaskList() +
                 '}';
     }
+
+    @Override
+    public void exchange(Object object) {
+        if (object instanceof Employee) {
+            Employee exchanged = (Employee) object;
+            role = exchanged.getRole();
+            user = exchanged.getUser();
+            team = exchanged.getTeam();
+            tasks = exchanged.getTasks();
+        }
+    }
+
 }

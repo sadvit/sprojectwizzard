@@ -6,7 +6,7 @@ angular.module('spwizzard').factory('UsersResource', function($resource) {
             isArray: true
         },
         'load' : {
-            url: '/user/:id',
+            url: '/users/:id',
             params: {
                 id: '@id'
             },

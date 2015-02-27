@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Requirement {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Requirement extends AbstractEntity {
 
     @Column
     private String name;
@@ -27,24 +23,7 @@ public class Requirement {
     private Set<Task> tasks;
 
     public Requirement() {
-    }
 
-    public Requirement(String name, String description, double importance, Project project, Set<Task> tasks) {
-
-        this.name = name;
-        this.description = description;
-        this.importance = importance;
-        this.project = project;
-        this.tasks = tasks;
-    }
-
-    public int getId() {
-
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -101,5 +80,10 @@ public class Requirement {
                 ", project=" + project +
                 ", hasTasks=" + hasTasks() +
                 '}';
+    }
+
+    @Override
+    public void exchange(Object object) {
+        // TODO realize
     }
 }

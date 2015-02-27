@@ -4,11 +4,7 @@ package com.sadvit.persistence.domain;
 import javax.persistence.*;
 
 @Entity
-public class User {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class User extends AbstractEntity {
 
     @Column(unique = true)
     private String login;
@@ -40,14 +36,6 @@ public class User {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getPass() {
@@ -108,15 +96,6 @@ public class User {
     public void setManager(Manager manager) {
         this.manager = manager;
     }
-/*
-    public User(String login, String password, String firstName, String middleName, String lastName) {
-        this.login = login;
-        this.pass = password;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-    }
-*/
 
     @Override
     public String toString() {
@@ -131,5 +110,20 @@ public class User {
                 ", employee=" + employee +
                 ", manager=" + manager +
                 '}';
+    }
+
+    @Override
+    public void exchange(Object object) {
+        if (object instanceof User) {
+            User exchanged = (User) object;
+            login = exchanged.getLogin();
+            pass = exchanged.getPass();
+            firstName = exchanged.getFirstName();
+            middleName = exchanged.getMiddleName();
+            lastName = exchanged.getLastName();
+            email = exchanged.getEmail();
+            employee = exchanged.getEmployee(); // TODO check
+            manager = exchanged.getManager(); // TODO check
+        }
     }
 }
