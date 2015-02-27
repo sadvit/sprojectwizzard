@@ -4,10 +4,12 @@ import com.sadvit.persistence.dao.UserDAO;
 import com.sadvit.persistence.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = false)
 public class UserService {
 
     @Autowired
@@ -36,7 +38,7 @@ public class UserService {
     }
 
     public void update(User user) {
-        userDAO.refresh(user);
+        userDAO.update(user);
     }
 
     public void delete(Integer id) {

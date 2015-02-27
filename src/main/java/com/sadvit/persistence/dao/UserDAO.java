@@ -31,23 +31,4 @@ public class UserDAO extends AbstractDAO<User> {
         return (users != null && users.size() > 0) ? users.get(0) : null;
     }
 
-    public void refresh(User user) {
-        User storage = exchange(user);
-        update(storage);
-    }
-
-    public User exchange(User user) {
-        if (user.getId() != 0) {
-            User storable = load(user.getId());
-            if (storable != null) {
-                System.out.println(11111);
-                storable.setFirstName(user.getFirstName());
-                storable.setLastName(user.getLastName());
-                storable.setMiddleName(user.getMiddleName());
-                return storable;
-            }
-        }
-        return null;
-    }
-
 }

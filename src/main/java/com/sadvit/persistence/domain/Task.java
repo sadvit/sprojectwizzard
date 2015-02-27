@@ -6,10 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Task {
-    @Id
-    @GeneratedValue
-    private int id;
+public class Task extends AbstractEntity {
 
     @Column
     private String name;
@@ -61,16 +58,7 @@ public class Task {
     }
 
     public String getName() {
-
         return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {
@@ -164,5 +152,10 @@ public class Task {
                 ", requirement=" + requirement +
                 ", employee=" + employee +
                 '}';
+    }
+
+    @Override
+    public void exchange(Object object) {
+        // TODO realize
     }
 }

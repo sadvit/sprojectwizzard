@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Team {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Team extends AbstractEntity {
 
     @Column
     private String name;
@@ -19,23 +15,8 @@ public class Team {
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
     private Set<Project> projects;
 
-    public Team(String name, Set<Employee> employees, Set<Project> projects) {
-        this.name = name;
-        this.employees = employees;
-        this.projects = projects;
-    }
-
     public Team() {
 
-    }
-
-    public int getId() {
-
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -78,5 +59,10 @@ public class Team {
                 ", hasEmployees=" + hasEmployees() +
                 ", hasProjects=" + hasProjects() +
                 '}';
+    }
+
+    @Override
+    public void exchange(Object object) {
+        // TODO realize
     }
 }

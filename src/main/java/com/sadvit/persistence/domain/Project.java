@@ -6,11 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Project {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Project extends AbstractEntity {
 
     @Column
     private String name;
@@ -30,24 +26,8 @@ public class Project {
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
     private Set<Requirement> requirements;
 
-    public Project(String name, String description, Team team, Set<Requirement> requirements) {
-        this.name = name;
-        this.description = description;
-        this.team = team;
-        this.requirements = requirements;
-    }
-
     public Project() {
 
-    }
-
-    public int getId() {
-
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -98,4 +78,8 @@ public class Project {
                 '}';
     }
 
+    @Override
+    public void exchange(Object object) {
+        // TODO realize
+    }
 }
