@@ -1,34 +1,35 @@
-<div id="content">
+<div ng-controller="EmployeesController as controller" id="content">
     <slinks></slinks>
     <div id="page">
         <div class="main-column">
             <h3>Список работников команды:</h3>
             <table>
+                <thead>
                 <tr>
                     <th>Работник</th>
                     <th>Роль</th>
                 </tr>
-                <tr class="insignificant">
-                    <td>Виртанен&nbsp;Й.&nbsp;К.</td>
-                    <td>менеджер</td>
+                </thead>
+                <tbody ng-repeat="employee in controller.employees">
+                <tr ng-click="controller.editEmployee(employee.id)">
+                    <td>{{employee.user.firstName + ' ' + employee.user.middleName}}</td>
+                    <td>{{employee.user.role}}</td>
                 </tr>
-                <tr>
-                    <td>Корхонен&nbsp;О.&nbsp;М.</td>
-                    <td>старший разработчик</td>
-                </tr>
+                </tbody>
             </table>
         </div>
         <div class="side-column">
             <h3>Команды:</h3>
             <ul>
-                <li><A href="employee-list.html">Корхонен&nbsp;О.&nbsp;М.</A></li>
-                <li><A href="employee-list.html">Мякеля&nbsp;Х.&nbsp;О.</A></li>
-                <li><A href="employee-list.html">Лайне&nbsp;Т.&nbsp;Т.</A></li>
+                <li ng-repeat="team in controller.teams">
+                    {{team.name}} <!--TODO переход на просмотр команды-->
+                </li>
             </ul>
             <br/>
+
             <h3>Действия:</h3>
             <br/>
-            <a href=#employees/employees_edit">Добавить команду</a>
+            <a href="#employees/employees_edit">Добавить команду</a>
         </div>
     </div>
     <sfooter></sfooter>

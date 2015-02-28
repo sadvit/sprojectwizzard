@@ -19,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan({"com.sadvit"})
 @EnableTransactionManagement
-public class AppPersistenceConfig {
+public class PersistenceConfiguration {
 
 	@Bean
 	@Autowired

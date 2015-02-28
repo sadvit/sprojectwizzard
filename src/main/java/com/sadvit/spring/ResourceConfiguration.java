@@ -12,9 +12,7 @@ public class ResourceConfiguration extends WebMvcAutoConfigurationAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/projects_list/**")
-                .addResourceLocations("classpath:/resources/public/app/area/projects/projects_list/");
+        registry.addResourceHandler("classpath:/resources/public/**").addResourceLocations("classpath:/resources/**");
         super.addResourceHandlers(registry);
     }
 
