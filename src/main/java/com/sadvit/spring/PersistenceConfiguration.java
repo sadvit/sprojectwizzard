@@ -10,19 +10,18 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@EnableWebMvc
+//@EnableWebMvc // TODO при непонятных ошибках - раскомментить
 @Configuration
 @ComponentScan({"com.sadvit"})
 @EnableTransactionManagement
 public class PersistenceConfiguration {
 
 	@Bean
-	@Autowired
+    @Autowired
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);

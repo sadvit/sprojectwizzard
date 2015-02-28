@@ -42,10 +42,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--Comment configuration block for simple start project without debug through mvn spring-boot:run-->
                 <configuration>
                     <jvmArguments>
-                        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+                        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
                     </jvmArguments>
                 </configuration>
             </plugin>

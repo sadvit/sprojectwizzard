@@ -1,11 +1,13 @@
 package com.sadvit.spring;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-//@ComponentScan({"com.sadvit"})
-//@EnableAutoConfiguration
-@SpringBootApplication
+@Configuration
+@ComponentScan({"com.sadvit"})
+@EnableAutoConfiguration
 public class Application {
 
     public static void main(String[] args) {
