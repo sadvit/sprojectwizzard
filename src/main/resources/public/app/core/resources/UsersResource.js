@@ -12,6 +12,13 @@ angular.module('spwizzard').factory('UsersResource', function($resource) {
             },
             method: 'GET'
         },
+        'delete' : {
+            url: '/users/:id',
+            params: {
+                id: '@id'
+            },
+            method: 'DELETE'
+        },
         'save' : {
             url: '/users/',
             method: 'POST'

@@ -1,5 +1,6 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sadvit.persistence.domain.type.Role;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Employee extends AbstractEntity {
     @Column
     private Role role;
 
+    @JsonIgnore
     @OneToOne
     @PrimaryKeyJoinColumn
     private User user;
@@ -20,6 +22,7 @@ public class Employee extends AbstractEntity {
     @JoinColumn(name="team_id")
     private Team team;
 
+    @JsonIgnore
     @OneToMany(mappedBy="employee", fetch = FetchType.EAGER)
     private Set<Task> tasks;
 
@@ -70,13 +73,21 @@ public class Employee extends AbstractEntity {
         return tasks != null && tasks.size() > 0;
     }
 
+    public boolean hasUser() {
+        return user != null;
+    }
+
+    public boolean hasTeam() {
+        return team != null;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", role=" + role +
-                ", user=" + user +
-                ", team=" + team +
+                ", hasUser=" + hasUser() +
+                ", hasTeam=" + hasTeam() +
                 ", hasTaskList=" + hasTaskList() +
                 '}';
     }

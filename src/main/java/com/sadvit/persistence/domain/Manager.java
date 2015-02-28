@@ -3,19 +3,20 @@ package com.sadvit.persistence.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
 public class Manager extends AbstractEntity {
 
     @JsonIgnore
-    @OneToMany(mappedBy= "manager", fetch = FetchType.EAGER)
-    private Set<Project> projects;
-
     @OneToOne
     @PrimaryKeyJoinColumn
     private User user;
+
+    @OneToMany(mappedBy= "manager", fetch = FetchType.EAGER)
+    private Set<Project> projects;
+
+    //----------------------------------------------------------
 
     public Set<Project> getProjects() {
         return projects;
@@ -46,12 +47,16 @@ public class Manager extends AbstractEntity {
         return projects != null && projects.size() > 0;
     }
 
+    public boolean hasUser() {
+        return user != null;
+    }
+
     @Override
     public String toString() {
         return "Manager{" +
                 "id=" + id +
                 ", hasProjects=" + hasProjects() +
-                ", user=" + user +
+                ", hasUser=" + hasUser() +
                 '}';
     }
 

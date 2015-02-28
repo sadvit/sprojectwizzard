@@ -17,9 +17,9 @@
                         <input type="text" ng-model="controller.user.lastName">
                     </label>
                     <label> Менеджер
-                        <input type="checkbox" ng-model="manager">
+                        <input type="checkbox" ng-model="controller.user.isManager">
                     </label>
-                    <label ng-if="!manager">Роль в команде: <!--TODO тут должно быть выбрано значение, если не выбрано - то менеджер-->
+                    <label ng-if="!controller.user.isManager">Роль в команде:
                         <select ng-model="controller.user.employee.role">
                             <option value="ANALYST">Аналитик</option>
                             <option value="LEADER">Разработчик</option>

@@ -24,9 +24,7 @@ window.onload = function() {
 				element.style.display = "none";
 			}
 		}
-	} catch (e) {
-		console.log(":(");
-	}
+	} catch (e) {}
 	if(startMessage !== null) {
 		show(startMessage);
 	}

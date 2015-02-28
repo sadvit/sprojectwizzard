@@ -24,10 +24,10 @@ public class User extends AbstractEntity {
     @Column
     private String email;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Employee employee; // если пользователь - работник
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Manager manager; // если пользователь - менеджер
 
     public Employee getEmployee() {

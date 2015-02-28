@@ -13,7 +13,6 @@ ProjectsEditController.prototype.init = function() {
     var self = this;
     if (self.isUpdate) {
         self.ProjectsResource.load({id: self.projectId}, function (project) {
-            console.log('user: ' + project);
             self.project = project;
         });
     } else {

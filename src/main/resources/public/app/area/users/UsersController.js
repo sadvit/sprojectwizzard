@@ -15,4 +15,8 @@ UsersController.prototype.editUser = function (userId) {
     this.$location.path('users/users_edit/' + userId);
 };
 
+UsersController.prototype.managerLabel = function (manager) {
+    return manager === undefined ? 'Нет' : 'Да';
+};
+
 angular.module('spwizzard').controller('UsersController', UsersController);
