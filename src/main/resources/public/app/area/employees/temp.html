@@ -22,7 +22,7 @@
             <h3>Команды:</h3>
             <ul>
                 <li ng-repeat="team in controller.teams">
-                    {{team.name}} <!--TODO переход на просмотр команды-->
+                    <span ng-click="controller.selectTeam(team.id)">{{team.name}}</span>
                 </li>
             </ul>
             <br/>

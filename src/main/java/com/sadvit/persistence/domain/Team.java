@@ -9,7 +9,7 @@ public class Team extends AbstractEntity {
     @Column
     private String name;
 
-    @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="team", fetch = FetchType.EAGER, cascade = CascadeType.ALL) // TODO check cascade
     private Set<Employee> employees;
 
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
@@ -44,7 +44,7 @@ public class Team extends AbstractEntity {
     }
 
     public boolean hasEmployees() {
-        return employees != null && projects.size() > 0;
+        return employees != null && employees.size() > 0;
     }
 
     public boolean hasProjects() {

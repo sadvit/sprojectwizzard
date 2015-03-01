@@ -1,6 +1,7 @@
 package com.sadvit.persistence.dao;
 
 import com.sadvit.persistence.domain.User;
+import com.sadvit.persistence.domain.type.Role;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,21 @@ public class UserDAO extends AbstractDAO<User> {
 
     public UserDAO() {
         super(User.class);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<User> findNotBusyUsers(Role role) {
+        return (List<User>) getHibernateTemplate().findByCriteria(notBusyEmployees(role));
+    }
+
+    /**
+     * Список работников без команды указанной специальности
+     */
+    private DetachedCriteria notBusyEmployees(Role role) {
+        return DetachedCriteria.forClass(User.class)
+                .createCriteria("employee")
+                    .add(Restrictions.isNull("team"))
+                    .add(Restrictions.eq("role", role));
     }
 
 }

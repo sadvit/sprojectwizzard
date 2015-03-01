@@ -2,10 +2,7 @@ package com.sadvit.controller;
 
 import com.sadvit.persistence.domain.*;
 import com.sadvit.persistence.domain.type.Role;
-import com.sadvit.persistence.service.ProjectService;
-import com.sadvit.persistence.service.RequirementService;
-import com.sadvit.persistence.service.TaskService;
-import com.sadvit.persistence.service.UserService;
+import com.sadvit.persistence.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +26,9 @@ public class TestController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TeamService teamService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/test/save")
     public @ResponseBody
@@ -75,7 +75,7 @@ public class TestController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/log")
     public @ResponseBody void log () {
-        System.out.println("PROJECTS: ");
+        /*System.out.println("PROJECTS: ");
         for (Project p : projectService.getAll()) {
             System.out.println(p);
         }
@@ -89,6 +89,10 @@ public class TestController {
         }
         System.out.println("TASKS: ");
         for (Task t : taskService.getAll()) {
+            System.out.println(t);
+        }*/
+        System.out.println("TEAMS: ");
+        for (Team t : teamService.getAll()) {
             System.out.println(t);
         }
     }

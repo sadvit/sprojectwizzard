@@ -21,7 +21,7 @@
                         <td>{{user.firstName}}</td>
                         <td>{{user.middleName}}</td>
                         <td>{{user.lastName}}</td>
-                        <td>{{user.employee.role}}</td>
+                        <td>{{controller.employeeLabel(user.employee.role)}}</td>
                         <td>{{controller.managerLabel(user.manager)}}</td>
                     </tr>
                 </tbody>

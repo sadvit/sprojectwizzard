@@ -38,7 +38,7 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody void postUser(@RequestBody Task task) {
+    public @ResponseBody void postTask(@RequestBody Task task) {
         taskService.save(task);
     }
 

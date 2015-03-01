@@ -19,6 +19,21 @@ angular.module('spwizzard').factory('EmployeesResource', function($resource) {
         'update' : {
             url: '/employees',
             method: 'PUT'
+        },
+        'loadLeaders' : {
+            url: '/employees/leaders/notbusy',
+            method: 'GET',
+            isArray: true
+        },
+        'loadProgrammers' : {
+            url: '/employees/programmers/notbusy',
+            method: 'GET',
+            isArray: true
+        },
+        'loadAnalysts' : {
+            url: '/employees/analysts/notbusy',
+            method: 'GET',
+            isArray: true
         }
     });
 });

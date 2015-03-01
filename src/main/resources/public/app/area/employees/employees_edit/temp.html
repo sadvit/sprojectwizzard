@@ -1,53 +1,49 @@
-<DIV ng-controller="EmployeesEditController as controller" id="content">
+<div ng-controller="EmployeesEditController as controller" id="content">
     <slinks></slinks>
-    <H2>Роли пользователя в проекте</H2>
-    <DIV id="page">
-        <DIV class="single-column">
-            <H3>Корхонен&nbsp;О.&nbsp;М.</H3>
-            <FORM>
-                <TABLE>
-                    <TR>
-                        <TH>Роль</TH>
-                        <TH>Команда</TH>
-                    </TR>
-                    <TR>
-                        <TD>аналитик</TD>
-                        <TD>
-                            <SELECT name="role-1">
-                                <OPTION>не задана</OPTION>
-                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
-                                <OPTION value="3" selected>Лайне&nbsp;Т.&nbsp;Т.</OPTION>
-                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
-                            </SELECT>
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD>старший разработчик</TD>
-                        <TD>
-                            <SELECT name="role-2">
-                                <OPTION>не задана</OPTION>
-                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
-                                <OPTION value="3">Лайне&nbsp;Т.&nbsp;Т.</OPTION>
-                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
-                                <OPTION>новая команда</OPTION>
-                            </SELECT>
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD>разработчик</TD>
-                        <TD>
-                            <SELECT name="role-3">
-                                <OPTION>не задана</OPTION>
-                                <OPTION value="1">Корхонен&nbsp;О.&nbsp;М.</OPTION>
-                                <OPTION value="3" selected>Лайне&nbsp;Т.&nbsp;Т.</OPTION>
-                                <OPTION value="2">Мякеля&nbsp;Х.&nbsp;О.</OPTION>
-                            </SELECT>
-                        </TD>
-                    </TR>
-                </TABLE>
-                <BUTTON type="submit">Сохранить</BUTTON>
-            </FORM>
-        </DIV>
-    </DIV>
+    <div id="page">
+        <div class="single-column">
+            <label> Название команды:
+                <input ng-model="controller.teamName" style="max-width: 300px" type="text">
+            </label>
+            <table class="team-table">
+                <thead>
+                <tr>
+                    <th class="team-table-column">Роль</th>
+                    <th class="team-table-column">Работник</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Аналитик</td>
+                    <td class="team-table-td">
+                        <select ng-model="controller.analyst"
+                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.analysts">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Старший разработчик</td>
+                    <td>
+                        <select ng-model="controller.leader"
+                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.leaders">
+                        </select>
+                    </td>
+                </tr>
+                <!-- TODO реализовать добавление нескольких разработчиков -->
+                <tr>
+                    <td>Разработчик</td>
+                    <td>
+                        <select ng-model="controller.programmer"
+                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.programmers">
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+            <br/>
+            <button ng-click="controller.saveTeam()">Сохранить</button>
+        </div>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>

@@ -1,6 +1,8 @@
 package com.sadvit.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sadvit.persistence.domain.type.Role;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Entity
 public class Employee {
 
+    @JsonSerialize
+    @JsonDeserialize
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
@@ -32,6 +36,7 @@ public class Employee {
     @PrimaryKeyJoinColumn
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="team_id")
     private Team team;
