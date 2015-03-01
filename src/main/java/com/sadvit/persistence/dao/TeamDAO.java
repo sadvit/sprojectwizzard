@@ -1,23 +1,15 @@
 package com.sadvit.persistence.dao;
 
-import com.sadvit.persistence.domain.Task;
+import com.sadvit.persistence.domain.Team;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Repository
 @Transactional(readOnly = false)
-public class TeamDAO extends AbstractDAO<Task> {
+public class TeamDAO extends AbstractDAO<Team> {
 
-    @Override
-    public Task load(Integer id) {
-        return super._load(Task.class, id);
-    }
-
-    @Override
-    public List<Task> loadAll() {
-        return super._loadAll(Task.class);
+    public TeamDAO() {
+        super(Team.class);
     }
 
 }

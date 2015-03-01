@@ -12,16 +12,6 @@ import java.util.List;
 @Transactional(readOnly = false)
 public class UserDAO extends AbstractDAO<User> {
 
-    @Override
-    public User load(Integer id) {
-        return super._load(User.class, id);
-    }
-
-    @Override
-    public List<User> loadAll() {
-        return super._loadAll(User.class);
-    }
-
     @SuppressWarnings("unchecked")
     public User getAuth(String login, String pass) {
         DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
@@ -29,6 +19,10 @@ public class UserDAO extends AbstractDAO<User> {
                 .add(Restrictions.eq("pass", pass));
         List<User> users = (List<User>) getHibernateTemplate().findByCriteria(criteria);
         return (users != null && users.size() > 0) ? users.get(0) : null;
+    }
+
+    public UserDAO() {
+        super(User.class);
     }
 
 }
