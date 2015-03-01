@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Entity
 public class User extends AbstractEntity {
 
-    @Column(unique = true)
+    @Column
     private String login;
 
-    @Column(unique = true)
+    @Column
     private String pass;
 
     @Column
@@ -25,10 +25,10 @@ public class User extends AbstractEntity {
     private String email;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Employee employee; // если пользователь - работник
+    private Employee employee;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Manager manager; // если пользователь - менеджер
+    private Manager manager;
 
     public Employee getEmployee() {
         return employee;

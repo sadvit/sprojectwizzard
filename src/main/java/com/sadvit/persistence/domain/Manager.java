@@ -1,12 +1,27 @@
 package com.sadvit.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
-public class Manager extends AbstractEntity {
+public class Manager {
+
+    @GenericGenerator(
+            name = "generator",
+            strategy = "foreign",
+            parameters = @Parameter(
+                    name = "property",
+                    value = "user"
+            )
+    )
+    @Id
+    @GeneratedValue(generator = "generator")
+    private Integer id;
 
     @JsonIgnore
     @OneToOne
@@ -60,7 +75,7 @@ public class Manager extends AbstractEntity {
                 '}';
     }
 
-    @Override
+    //@Override
     public void exchange(Object object) {
         // TODO realize
     }

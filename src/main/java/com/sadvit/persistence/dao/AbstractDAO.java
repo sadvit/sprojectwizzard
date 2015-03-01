@@ -1,13 +1,12 @@
 package com.sadvit.persistence.dao;
 
-import com.sadvit.persistence.domain.AbstractEntity;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import java.util.List;
 
-public abstract class AbstractDAO<T extends AbstractEntity> {
+public abstract class AbstractDAO<T> {
 
     private static Logger log = Logger.getLogger(AbstractDAO.class.getSimpleName());
 
@@ -25,14 +24,16 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
      * @param object сторонний обьект
      */
     public T update(T object) {
+        getHibernateTemplate().update(object);
+        /*
         if (object != null && object.getId() != null && object.getId() != 0) {
             T storeable = load(object.getId());
             storeable.exchange(object);
             log.info("UPDATE: " + storeable.toString());
             getHibernateTemplate().update(storeable);
             return storeable;
-        }
-        return null;
+        }*/
+        return object;
     }
 
     public void delete(T object) {

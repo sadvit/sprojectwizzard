@@ -1,15 +1,15 @@
 package com.sadvit.controller;
 
-import com.sadvit.persistence.domain.Project;
-import com.sadvit.persistence.domain.Requirement;
-import com.sadvit.persistence.domain.Task;
-import com.sadvit.persistence.domain.User;
+import com.sadvit.persistence.dao.StockDAO;
+import com.sadvit.persistence.domain.*;
+import com.sadvit.persistence.domain.type.Role;
 import com.sadvit.persistence.service.ProjectService;
 import com.sadvit.persistence.service.RequirementService;
 import com.sadvit.persistence.service.TaskService;
 import com.sadvit.persistence.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +49,35 @@ public class TestController {
 
     }
 
+    @Autowired
+    private StockDAO stockDAO;
+
+    @Transactional(readOnly = false)
+    @RequestMapping(method = RequestMethod.GET, value = "/suptest")
+    public @ResponseBody void suptest() {
+        /*Stock stock = new Stock();
+
+        StockDetail stockDetail = new StockDetail();
+
+        stock.setStockDetail(stockDetail);
+        stockDetail.setStock(stock);
+
+        stockDAO.save(stock);*/
+
+        User user = new User();
+        user.setLogin("dsvsfvsdf");
+        user.setPass("vzcvdfvsdfbsgb");
+
+        Employee employee = new Employee();
+        employee.setRole(Role.PROGRAMMER);
+
+        employee.setUser(user);
+        user.setEmployee(employee);
+
+        userService.save(user);
+
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/log")
     public @ResponseBody void log () {
         System.out.println("PROJECTS: ");
@@ -66,6 +95,10 @@ public class TestController {
         System.out.println("TASKS: ");
         for (Task t : taskService.getAll()) {
             System.out.println(t);
+        }
+        System.out.println("stock: ");
+        for (Stock s : stockDAO.loadAll()) {
+            System.out.println(s);
         }
     }
 

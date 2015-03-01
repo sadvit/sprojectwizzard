@@ -2,15 +2,29 @@ package com.sadvit.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sadvit.persistence.domain.type.Role;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
-public class Employee extends AbstractEntity {
+public class Employee {
+
+    @GenericGenerator(
+            name = "generator",
+            strategy = "foreign",
+            parameters = @Parameter(
+                    name = "property",
+                    value = "user"
+            )
+    )
+    @Id
+    @GeneratedValue(generator = "generator")
+    private Integer id;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @JsonIgnore
@@ -92,7 +106,7 @@ public class Employee extends AbstractEntity {
                 '}';
     }
 
-    @Override
+    //@Override
     public void exchange(Object object) {
         if (object instanceof Employee) {
             Employee exchanged = (Employee) object;
