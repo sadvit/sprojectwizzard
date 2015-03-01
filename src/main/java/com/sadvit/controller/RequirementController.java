@@ -26,7 +26,29 @@ public class RequirementController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody void postRequirement(@PathParam("projectId") Integer id) {
-        Project project = projectService.get(id);
+    public @ResponseBody void postRequirement(@RequestBody Requirement requirement) {
+        Project project = projectService.get(requirement.getProject().getId());
+        requirement.setProject(project);
+
+        requirementService.save(requirement);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public @ResponseBody Requirement getRequirement(@PathVariable("id") Integer id) {
+        return requirementService.get(id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody void updateRequirement(@RequestBody Requirement requirement) {
+        Project project = projectService.get(requirement.getProject().getId());
+        requirement.setProject(project);
+
+        requirementService.update(requirement);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody void deleteRequirement(@PathVariable("id") Integer id) {
+        requirementService.delete(id);
+    }
+
 }

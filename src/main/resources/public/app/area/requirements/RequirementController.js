@@ -13,12 +13,14 @@ RequirementController.prototype.init = function() {
     var self = this;
     self.ProjectsResource.loadAll({}, function(data) {
         self.projects = data;
-        self.updateRequirements(data[0].id);
+        self.currentProjectId = data[0].id;
+        self.updateRequirements(self.currentProjectId);
     });
 };
 
 RequirementController.prototype.updateRequirements = function(id) {
     var self = this;
+    self.currentProjectId = id;
     this.RequirementsResource.loadAllForProject({
         projectId: id
     }, function(data) {
@@ -27,7 +29,13 @@ RequirementController.prototype.updateRequirements = function(id) {
 };
 
 RequirementController.prototype.editRequirement = function(requirementId) {
-    this.$location.path('requirements/edit/' + requirementId);
+    var self = this;
+    this.$location.search('projectId', self.currentProjectId).path('requirements/edit/' + requirementId);
+};
+
+RequirementController.prototype.createRequirement = function() {
+    var self = this;
+    this.$location.search('projectId', self.currentProjectId).path('requirements/edit');
 };
 
 angular.module('spwizzard').controller('RequirementController', RequirementController);

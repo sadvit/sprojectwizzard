@@ -24,4 +24,12 @@ public class RequirementService {
     public Requirement get(Integer id) {
         return requirementDAO.load(id);
     }
+
+    public void update(Requirement requirement) {
+        requirementDAO.update(requirement);
+    }
+
+    public void delete(Integer id) {
+        requirementDAO.delete(id);
+    }
 }

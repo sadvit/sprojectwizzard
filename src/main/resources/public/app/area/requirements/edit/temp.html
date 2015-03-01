@@ -1,31 +1,19 @@
-<DIV id="content">
+<DIV id="content" ng-controller="RequirementsEditController as controller">
     <slinks></slinks>
-    <H2>Создание/редактирование требования</H2>
+    <H2>{{controller.action}} требование</H2>
     <DIV id="page">
         <DIV class="single-column">
             <FORM>
-                <LABEL for="category">Категория:</LABEL>
-                <SELECT id="category">
-                    <OPTION>Без категории</OPTION>
-                    <OPTION>Управление проектами</OPTION>
-                    <OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Управление категориями</OPTION>
-                    <OPTION>Управление заданиями</OPTION>
-                </SELECT>
-                <LABEL for="role">Роль:</LABEL>
-                <SELECT id="role">
-                    <OPTION>Любой пользователь</OPTION>
-                    <OPTION>Авторизованный пользователь</OPTION>
-                    <OPTION>Администратор</OPTION>
-                    <OPTION>Менеджер</OPTION>
-                </SELECT>
-                <LABEL for="name">Название:</LABEL>
-                <INPUT type="text" id="name" value="Создание проекта">
-                <LABEL for="description">Описание:</LABEL>
-                <TEXTAREA id="description">Создание пустого проекта без менеджера</TEXTAREA>
-                <BUTTON type="submit">Сохранить</BUTTON>
-                <BUTTON type="button" onclick="submitFormById('delete-ur')">Удалить</BUTTON>
+                <label for="name">Название:</label>
+                <input type="text" id="name" ng-model="controller.requirement.name">
+                <label for="description">Описание:</label>
+                <textarea id="description" ng-model="controller.requirement.description"></textarea>
+                <label for="difficulty">Важность:</label>
+                <input type="range" id="difficulty" min="0" max="100"
+                       value="{{controller.requirement.importance}}" ng-model="controller.requirement.importance">
+                <button ng-click="controller.submitRequirement()">{{controller.action}}</button>
+                <button ng-if="!controller.requirementCreation" ng-click="controller.deleteRequirement()">Удалить</button>
             </FORM>
-            <FORM id="delete-ur" action="user-requirement-by-category-list.html" onsubmit="return confirmation(this, 'Вы действительно хотите удалить пользовательское требование')"></FORM>
         </DIV>
     </DIV>
     <sfooter></sfooter>

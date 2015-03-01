@@ -19,6 +19,10 @@ angular.module('spwizzard').factory('RequirementsResource', function($resource) 
         'update' : {
             url: '/requirements',
             method: 'PUT'
+        },
+        'delete' : {
+            url: '/requirements/:id',
+            method: 'DELETE'
         }
     });
 
