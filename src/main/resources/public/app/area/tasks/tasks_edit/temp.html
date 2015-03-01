@@ -8,8 +8,8 @@
                 <input type="range" id="difficulty" min="0" max="100"
                        value="{{controller.task.difficulty}}" ng-model="controller.task.difficulty">
 
-                <label for="category">Исполнитель:</label>
-                <select id="category" ng-model="controller.workerChoice"
+                <label for="worker">Исполнитель:</label>
+                <select id="worker" ng-model="controller.workerChoice"
                         ng-options="worker as worker.name for worker in controller.workers"></select>
 
                 <label for="name">Название:</label>

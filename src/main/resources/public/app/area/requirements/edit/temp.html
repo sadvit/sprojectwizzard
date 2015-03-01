@@ -8,7 +8,7 @@
                 <input type="text" id="name" ng-model="controller.requirement.name">
                 <label for="description">Описание:</label>
                 <textarea id="description" ng-model="controller.requirement.description"></textarea>
-                <label for="difficulty">Важность:</label>
+                <label for="difficulty">Важность: {{controller.requirement.importance}}/100</label>
                 <input type="range" id="difficulty" min="0" max="100"
                        value="{{controller.requirement.importance}}" ng-model="controller.requirement.importance">
                 <button ng-click="controller.submitRequirement()">{{controller.action}}</button>

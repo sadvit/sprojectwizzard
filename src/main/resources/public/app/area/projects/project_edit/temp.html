@@ -2,7 +2,7 @@
     <slinks></slinks>
     <div id="page">
         <div class="single-column">
-            <h3>Редактирование проекта:</h3>
+            <h3>{{controller.action}} проект:</h3>
             <label> Название:
                 <input type="text" ng-model="controller.project.name">
             </label>
@@ -12,6 +12,7 @@
             <label> Команда:
                 <select id="team"></select>
             </label>
+
             <h3>Контактные данные:</h3>
             <label> Менеджер:
                 <input type="text" id="manager" disabled>
@@ -19,8 +20,9 @@
             <label> Электронная почта:
                 <input type="text" id="email" disabled>
             </label>
-            <button type="submit" ng-click="controller.saveProject()">Сохранить</button>
-            <button type="button" ng-click="controller.deleteProject()">Удалить</button>
+            <br/>
+            <button type="submit" ng-click="controller.saveProject()">{{controller.action}}</button>
+            <button ng-if="!controller.projectCreation" ng-click="controller.deleteProject()">Удалить</button>
         </div>
     </div>
     <sfooter></sfooter>

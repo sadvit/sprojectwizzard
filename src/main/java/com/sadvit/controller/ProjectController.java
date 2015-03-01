@@ -34,4 +34,9 @@ public class ProjectController {
         projectService.update(project);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody void deleteProject(@PathVariable("id") Integer id) {
+        projectService.delete(id);
+    }
+
 }

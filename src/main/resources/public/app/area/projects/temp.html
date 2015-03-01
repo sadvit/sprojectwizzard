@@ -1,4 +1,4 @@
-<div ng-controller="ProjectsController as projectsController" id="content">
+<div ng-controller="ProjectsController as controller" id="content">
     <slinks></slinks>
     <div id="page">
         <div class="main-column">
@@ -11,13 +11,13 @@
                     <th>Описание</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="project in projectsController.projects">
-                <tr ng-click="projectsController.editProject(project.id)">
+                <tbody ng-repeat="project in controller.projects">
+                <tr ng-click="controller.editProject(project.id)">
                     <td class="insignificant">{{$index}}</td>
                     <td>{{project.name}}</td>
                     <td>{{project.description}}</td>
                 </tr>
-                <tr ng-hide="projectsController.projects.length || projectsController.projects.isUndefined"> <!-- TODO check -->
+                <tr ng-hide="controller.projects.length || controller.projects.isUndefined"> <!-- TODO check -->
                     <td class="insignificant"></td>
                     <td>No items found</td>
                     <td></td>
@@ -28,7 +28,7 @@
         <div class="side-column">
             <h3>Действия:</h3>
             <br/>
-            <a href="#projects/project_edit">Добавить проект</a> <!--TODO пофиксить обновление проекта-->
+            <a href="#projects/project_edit">Добавить проект</a>
         </div>
     </div>
     <sfooter></sfooter>

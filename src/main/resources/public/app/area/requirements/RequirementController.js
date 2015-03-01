@@ -4,7 +4,6 @@ function RequirementController($location, ProjectsResource, RequirementsResource
     Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
 
     this.requirementsForProject = {};
-    this.projects = {};
 
     this.init();
 }

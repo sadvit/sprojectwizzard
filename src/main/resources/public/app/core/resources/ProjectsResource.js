@@ -7,9 +7,6 @@ angular.module('spwizzard').factory('ProjectsResource', function($resource) {
         },
         'load' : {
             url: '/projects/:id',
-            params: {
-                id: '@id'
-            },
             method: 'GET'
         },
         'save' : {
@@ -19,6 +16,10 @@ angular.module('spwizzard').factory('ProjectsResource', function($resource) {
         'update' : {
             url: '/projects',
             method: 'PUT'
+        },
+        'delete': {
+            url: '/projects/:id',
+            method: 'DELETE'
         }
     });
 

@@ -6,12 +6,14 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="insignificant">№</th>
                         <th>Название</th>
                         <th>Описание</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="requirement in controller.requirementsForProject">
                     <tr ng-click="controller.editRequirement(requirement.id)">
+                        <td class="insignificant">{{$index}}</td>
                         <td>{{requirement.name}}</td>
                         <td>{{requirement.description}}</td>
                     </tr>
@@ -29,7 +31,10 @@
             <h3>Действия:</h3>
             <br/>
             <div class="main-column-buttons">
-                <button ng-click="controller.createRequirement()">Создать требование</button>
+                <button ng-if="controller.projects[0] !== undefined" ng-click="controller.createRequirement()">Создать требование</button>
+                <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
+                    <a href="#projects/project_edit">Перейти к созданию</a>
+                </label>
             </div>
         </div>
     </div>

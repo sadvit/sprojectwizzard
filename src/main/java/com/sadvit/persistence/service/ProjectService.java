@@ -31,4 +31,8 @@ public class ProjectService {
         projectDAO.update(project);
     }
 
+    public void delete(Integer id) {
+        projectDAO.delete(id);
+    }
+
 }

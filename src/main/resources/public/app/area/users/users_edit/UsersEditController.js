@@ -10,9 +10,9 @@ UsersEditController.prototype.init = function() {
 
     self.userId = self.$routeParams.id;
     console.log('ID: ' + self.userId);
-    self.isUpdate = self.userId !== undefined;
+    self.projectCreation = self.userId !== undefined;
 
-    if (self.isUpdate) {
+    if (self.projectCreation) {
         self.UsersResource.load({id: self.userId}, function (user) {
             self.user = user;
             self.user.isManager = user.manager !== undefined;
@@ -27,7 +27,7 @@ UsersEditController.prototype.init = function() {
 UsersEditController.prototype.saveUser = function() {
     var self = this;
     var cleanUser = CleanProperties(self.user);
-    if (self.isUpdate) {
+    if (self.projectCreation) {
         self.UsersResource.update(cleanUser, function() {
             self.location.path('/users');
         });
