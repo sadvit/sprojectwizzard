@@ -10,10 +10,10 @@
                     <th>Роль</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="employee in controller.employees">
-                <tr ng-click="controller.editEmployee(employee.id)">
-                    <td>{{employee.user.firstName + ' ' + employee.user.middleName}}</td>
-                    <td>{{employee.user.role}}</td>
+                <tbody ng-repeat="user in controller.users">
+                <tr> <!--ng-click="controller.editEmployee(user.id)"-->
+                    <td>{{user.firstName + ' ' + user.middleName}}</td>
+                    <td>{{user.employee.role}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -22,7 +22,7 @@
             <h3>Команды:</h3>
             <ul>
                 <li ng-repeat="team in controller.teams">
-                    <span ng-click="controller.selectTeam(team.id)">{{team.name}}</span>
+                    <span class="span-team-button" ng-click="controller.selectTeam(team.id)">{{team.name}}</span>
                 </li>
             </ul>
             <br/>

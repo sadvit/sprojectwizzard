@@ -1,16 +1,18 @@
 package com.sadvit.persistence.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.util.Set;
 
 @Entity
 public class Manager {
 
+    @JsonProperty
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
@@ -23,11 +25,12 @@ public class Manager {
     @GeneratedValue(generator = "generator")
     private Integer id;
 
-    @JsonIgnore
+    @JsonBackReference("user-manager")
     @OneToOne
     @PrimaryKeyJoinColumn
     private User user;
 
+    @JsonManagedReference("manager-project")
     @OneToMany(mappedBy= "manager", fetch = FetchType.EAGER)
     private Set<Project> projects;
 

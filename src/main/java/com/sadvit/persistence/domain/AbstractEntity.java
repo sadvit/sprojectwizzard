@@ -1,11 +1,14 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractEntity {
 
+    @JsonProperty
     @Id
     @GeneratedValue
     protected Integer id;

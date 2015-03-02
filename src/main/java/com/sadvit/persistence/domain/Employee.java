@@ -1,8 +1,9 @@
 package com.sadvit.persistence.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sadvit.persistence.domain.type.Role;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -13,8 +14,7 @@ import java.util.Set;
 @Entity
 public class Employee {
 
-    @JsonSerialize
-    @JsonDeserialize
+    @JsonProperty
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
@@ -31,17 +31,17 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @JsonIgnore
+    @JsonBackReference("user-employee")
     @OneToOne
     @PrimaryKeyJoinColumn
     private User user;
 
-    @JsonIgnore
+    @JsonBackReference("team-employee")
     @ManyToOne
     @JoinColumn(name="team_id")
     private Team team;
 
-    @JsonIgnore
+    @JsonManagedReference("employee-task")
     @OneToMany(mappedBy="employee", fetch = FetchType.EAGER)
     private Set<Task> tasks;
 

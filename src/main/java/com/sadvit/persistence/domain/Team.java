@@ -1,5 +1,7 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,9 +11,11 @@ public class Team extends AbstractEntity {
     @Column
     private String name;
 
+    @JsonManagedReference("team-employee")
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER, cascade = CascadeType.ALL) // TODO check cascade
     private Set<Employee> employees;
 
+    @JsonManagedReference("team-project")
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
     private Set<Project> projects;
 

@@ -14,6 +14,11 @@ angular.module('spwizzard').factory('TeamsResource', function($resource) {
             url: '/teams/:id/employees',
             method: 'GET',
             isArray: true
+        },
+        'loadUsers' : {
+            url: '/teams/:id/users',
+            method: 'GET',
+            isArray: true
         }
     });
 });

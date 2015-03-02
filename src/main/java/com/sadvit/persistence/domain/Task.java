@@ -1,5 +1,8 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sadvit.persistence.domain.type.Status;
 
 import javax.persistence.*;
@@ -30,12 +33,15 @@ public class Task extends AbstractEntity {
     private Date closeDate;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Status status;
 
+    @JsonBackReference("requirement-task")
     @ManyToOne
     @JoinColumn(name="requirement_id")
     private Requirement requirement;
 
+    @JsonBackReference("employee-task")
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employee;

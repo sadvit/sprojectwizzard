@@ -1,5 +1,10 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,10 +20,12 @@ public class Requirement extends AbstractEntity {
     @Column
     private double importance;
 
+    @JsonBackReference("manager-requirement")
     @ManyToOne
     @JoinColumn(name="project_id")
     private Project project;
 
+    @JsonManagedReference("requirement-task")
     @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER)
     private Set<Task> tasks;
 

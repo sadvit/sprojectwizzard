@@ -12,17 +12,18 @@ EmployeesController.prototype.init = function() {
     });
 };
 
+// TODO not used хотя может быть по клику стоит переходить к редактированию команды?
 EmployeesController.prototype.editEmployee = function(employeeId) {
-    this.$location.path('employees/employees_edit/' + employeeId);
+    //this.$location.path('employees/employees_edit/' + employeeId);
 };
 
 EmployeesController.prototype.selectTeam = function(teamId) {
     var self = this;
-    console.log(teamId);
+    //console.log(teamId);
     if (teamId != undefined) {
-        self.TeamsResource.loadEmployees({id: teamId}, function(employees) {
-            console.log(JSON.stringify(employees));
-            self.employees = employees;
+        self.TeamsResource.loadUsers({id: teamId}, function(users) {
+            //console.log(JSON.stringify(users));
+            self.users = users;
         })
     }
 };

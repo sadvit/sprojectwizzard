@@ -1,7 +1,12 @@
 package com.sadvit.persistence.domain;
 
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User extends AbstractEntity {
@@ -24,9 +29,11 @@ public class User extends AbstractEntity {
     @Column
     private String email;
 
+    @JsonManagedReference("user-employee")
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Employee employee;
 
+    @JsonManagedReference("user-manager")
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Manager manager;
 

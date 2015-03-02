@@ -1,7 +1,9 @@
 package com.sadvit.persistence.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,15 +17,17 @@ public class Project extends AbstractEntity {
     @Column
     private String description;
 
+    @JsonBackReference("team-project")
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @JsonBackReference("manager-project")
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Manager manager;
 
-    @JsonIgnore
+    @JsonManagedReference("manager-requirement")
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
     private Set<Requirement> requirements;
 
