@@ -10,9 +10,10 @@
                 <input type="text" ng-model="controller.project.description">
             </label>
             <label> Команда:
-                <select id="team"></select>
+                <select ng-model="controller.project.team"
+                        ng-options="team as team.name for team in controller.teams"></select>
             </label>
-
+            <br/>
             <h3>Контактные данные:</h3>
             <label> Менеджер:
                 <input type="text" id="manager" disabled>

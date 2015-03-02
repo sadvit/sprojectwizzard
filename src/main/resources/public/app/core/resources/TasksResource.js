@@ -9,9 +9,17 @@ angular.module('spwizzard').factory('TasksResource', function($resource) {
             url: '/tasks',
             method: 'POST'
         },
-        'getById': {
+        'load': {
             url: '/tasks/:id',
             method: 'GET'
+        },
+        'update' : {
+            url: '/tasks',
+            method: 'PUT'
+        },
+        'delete': {
+            url: '/tasks/:id',
+            method: 'DELETE'
         }
     });
 });

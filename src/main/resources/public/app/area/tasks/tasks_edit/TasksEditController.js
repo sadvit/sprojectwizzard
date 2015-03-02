@@ -29,7 +29,7 @@ function TasksEditController(TasksResource, $routeParams) {
 TasksEditController.prototype.init = function() {
     var self = this;
 
-    self.TasksResource.getById({
+    self.TasksResource.load({
         id: self.taskId
     }, function (data) {
         self.task = data;

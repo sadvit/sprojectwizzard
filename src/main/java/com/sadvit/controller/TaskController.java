@@ -20,20 +20,12 @@ public class TaskController {
     private TaskService taskService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}")
-    public @ResponseBody List<Task> getAll(@PathVariable("projectId") Integer id) {
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        for(int i = 0; i < id; i++) {
-            Task t = new Task();
-            t.setId(i);
-            t.setName(id + " task's name");
-            t.setDescription(i + " task's description");
-            tasks.add(t);
-        }
-        return tasks;
+    public @ResponseBody List<Task> getAllForProject(@PathVariable("projectId") Integer id) {
+        return taskService.getAllForProject(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public @ResponseBody Task getById(@PathVariable("id") Integer id) {
+    public @ResponseBody Task getTask(@PathVariable("id") Integer id) {
         return taskService.load(id);
     }
 
@@ -42,4 +34,8 @@ public class TaskController {
         taskService.save(task);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody void deleteTask(@PathVariable("id") Integer id) {
+        taskService.delete(id);
+    }
 }

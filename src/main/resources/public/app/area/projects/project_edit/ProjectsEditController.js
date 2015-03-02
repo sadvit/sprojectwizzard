@@ -1,8 +1,9 @@
-function ProjectsEditController(ProjectsResource, $routeParams, $cookieStore, RequirementsResource) {
+function ProjectsEditController(ProjectsResource, $routeParams, $cookieStore, RequirementsResource, TeamsResource) {
     Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
     Object.defineProperty(this, 'ProjectsResource', { writable: true, value: ProjectsResource });
     Object.defineProperty(this, 'cookies', { writable: true, value: $cookieStore });
     Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
+    Object.defineProperty(this, 'TeamsResource', { writable: true, value: TeamsResource });
 
     this.projectId = this.$routeParams.id;
     this.projectCreation = this.projectId === undefined;
@@ -13,6 +14,15 @@ function ProjectsEditController(ProjectsResource, $routeParams, $cookieStore, Re
 // TODO получить контактные данные менеджера - создателя
 ProjectsEditController.prototype.init = function() {
     var self = this;
+
+    self.TeamsResource.loadAll({}, function (data) {
+        self.teams = data;
+        if(self.projectCreation) {
+            self.project = {};
+            self.project.team = data[0];
+        }
+    });
+
     if (!self.projectCreation) {
         self.action = "Обновить";
         self.ProjectsResource.load({
@@ -22,7 +32,6 @@ ProjectsEditController.prototype.init = function() {
         });
     } else {
         self.action = "Создать";
-        self.project = {};
     }
 };
 

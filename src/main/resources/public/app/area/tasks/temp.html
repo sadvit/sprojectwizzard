@@ -7,6 +7,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="insignificant">№</th>
                         <th>Название</th>
                         <TH>Описание</TH>
                         <TH>Требование</TH>
@@ -15,6 +16,7 @@
                 </thead>
                 <tbody ng-repeat="task in controller.tasksForProject">
                     <tr ng-click="controller.editTask(task.id)">
+                        <td class="insignificant">{{$index}}</td>
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
                         <td>none</td>
@@ -34,7 +36,10 @@
             <h3>Действия:</h3>
             <br/>
             <div class="main-column-buttons">
-                <a href="#tasks/tasks_edit/">Создать задачу</a>
+                <a ng-if="controller.projects[0] !== undefined" href="#tasks/tasks_edit/">Создать задачу</a>
+                <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
+                    <a href="#projects/project_edit">Перейти к созданию</a>
+                </label>
             </div>
         </div>
     </DIV>
