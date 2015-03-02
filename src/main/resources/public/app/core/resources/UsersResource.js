@@ -34,6 +34,11 @@ angular.module('spwizzard').factory('UsersResource', function($resource) {
                 pass: '@pass'
             },
             method: 'GET'
+        },
+        'loadAllForProject' : {
+            url: '/users/project/:projectId',
+            method: 'GET',
+            isArray: true
         }
     });
 

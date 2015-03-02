@@ -7,9 +7,6 @@ angular.module('spwizzard').factory('EmployeesResource', function($resource) {
         },
         'load' : {
             url: '/employees/:id',
-            params: {
-                id: '@id'
-            },
             method: 'GET'
         },
         'save' : {

@@ -19,8 +19,8 @@
                         <td class="insignificant">{{$index}}</td>
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
-                        <td>none</td>
-                        <td>today</td>
+                        <td>{{task.requirement.name}}</td>
+                        <td>до {{task.closeDate}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -36,7 +36,7 @@
             <h3>Действия:</h3>
             <br/>
             <div class="main-column-buttons">
-                <a ng-if="controller.projects[0] !== undefined" href="#tasks/tasks_edit/">Создать задачу</a>
+                <button ng-click="controller.createTask()" ng-if="controller.projects[0] !== undefined">Создать задачу</button>
                 <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
                     <a href="#projects/project_edit">Перейти к созданию</a>
                 </label>

@@ -1,28 +1,43 @@
-function TasksEditController(TasksResource, $routeParams) {
+function TasksEditController(TasksResource, $routeParams, $location, UsersResource, RequirementsResource) {
     Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
-    Object.defineProperty(this, 'TasksResource', { writable: true, value: TasksResource }); // TODO переделать под ресурсы задач tasks
+    Object.defineProperty(this, '$location', { writable: true, value: $location });
+    Object.defineProperty(this, 'TasksResource', { writable: true, value: TasksResource });
+    Object.defineProperty(this, 'UsersResource', { writable: true, value: UsersResource });
+    Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
 
     this.taskId = this.$routeParams.id;
-    this.taskCreation = this.taskId !== undefined;
+    this.projectId = this.$location.absUrl().split('=')[1];
+    this.taskCreation = this.taskId === undefined;
+    this.task = {};
 
-    this.workers = [{
-        name: 'Aleksey'
-    }, {
-        name: 'Vitaly'
-    }];
-    this.workerChoice = this.workers[0];
+    var self = this;
+
+    self.UsersResource.loadAllForProject({
+            projectId: self.projectId
+        }, function(data) {
+            self.employees = data;
+            if(self.taskCreation) self.task.employee = data[0];
+    });
+
+    self.RequirementsResource.loadAllForProject({
+        projectId: self.projectId
+    }, function(data) {
+        self.requirements = data;
+        if(self.taskCreation) self.task.requirement = data[0];
+    });
 
     if(this.taskCreation) {
-        this.title = "Редактирование задачи";
-        this.init();
-    } else {
-        this.title = "Создание задачи";
+        this.action = "Создать";
         this.task = {
             name: "",
             description: "",
+            difficulty: 0,
             openDate: new Date(),
             closeDate: new Date()
         };
+    } else {
+        this.action = "Обновить";
+        this.init();
     }
 }
 

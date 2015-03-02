@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("users")
@@ -37,6 +38,11 @@ public class UserController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public @ResponseBody void deleteUser(@PathVariable("id") Integer id) {
         userService.delete(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}")
+    public @ResponseBody Set<User> getAllForProject(@PathVariable("projectId") Integer projectId) {
+        return userService.getAllForProject(projectId);
     }
 
 }
