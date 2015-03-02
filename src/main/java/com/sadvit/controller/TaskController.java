@@ -1,5 +1,6 @@
 package com.sadvit.controller;
 
+import com.sadvit.persistence.domain.Requirement;
 import com.sadvit.persistence.domain.Task;
 import com.sadvit.persistence.service.ProjectService;
 import com.sadvit.persistence.service.TaskService;
@@ -27,6 +28,11 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody Task getTask(@PathVariable("id") Integer id) {
         return taskService.load(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/requirement")
+    public @ResponseBody Requirement getTaskRequirement(@PathVariable("id") Integer id) {
+        return taskService.load(id).getRequirement();
     }
 
     @RequestMapping(method = RequestMethod.POST)

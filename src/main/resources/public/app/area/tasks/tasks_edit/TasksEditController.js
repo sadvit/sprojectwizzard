@@ -16,14 +16,14 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
             projectId: self.projectId
         }, function(data) {
             self.employees = data;
-            if(self.taskCreation) self.task.employee = data[0];
+            self.task.employee = data[0];
     });
 
     self.RequirementsResource.loadAllForProject({
         projectId: self.projectId
     }, function(data) {
         self.requirements = data;
-        if(self.taskCreation) self.task.requirement = data[0];
+        self.task.requirement = data[0];
     });
 
     if(this.taskCreation) {
@@ -51,15 +51,24 @@ TasksEditController.prototype.init = function() {
         self.task.openDate = new Date(data.openDate);
         self.task.closeDate = new Date(data.closeDate);
     }, function(error) {
-        console.error('Error loading task.')
+        console.error('Error loading task.');
     });
 };
 
 TasksEditController.prototype.saveTask = function() {
     var self = this;
-    self.TasksResource.save(self.task, function() {
-        console.log('task saved');
-    });
+
+    if(self.taskCreation) {
+        self.TasksResource.save(self.task, function () {
+            console.log('task saved');
+            self.$location.path('tasks');
+        });
+    } else {
+        self.TasksResource.update(self.task, function() {
+            console.log('task updated');
+            self.$location.path('tasks');
+        });
+    }
 };
 
 angular.module('spwizzard').controller('TasksEditController', TasksEditController);

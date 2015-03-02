@@ -20,6 +20,10 @@ angular.module('spwizzard').factory('TasksResource', function($resource) {
         'delete': {
             url: '/tasks/:id',
             method: 'DELETE'
+        },
+        'loadTaskRequirement': {
+            url: '/tasks/:id/requirement',
+            method: 'GET'
         }
     });
 });

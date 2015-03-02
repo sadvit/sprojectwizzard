@@ -20,7 +20,7 @@
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
                         <td>{{task.requirement.name}}</td>
-                        <td>до {{task.closeDate}}</td>
+                        <td>до {{task.closeDate | date:'yyyy-MM-dd'}}</td>
                     </tr>
                 </tbody>
             </table>

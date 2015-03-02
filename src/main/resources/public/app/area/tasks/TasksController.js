@@ -25,6 +25,14 @@ TasksController.prototype.updateTasks = function(id) {
         projectId: id
     }, function(data) {
         self.tasksForProject = data;
+
+        self.tasksForProject.forEach(function(task) {
+            self.TasksResource.loadTaskRequirement({
+                id: task.id
+            }, function(data) {
+                task.requirement = data;
+            });
+        });
     });
 };
 
