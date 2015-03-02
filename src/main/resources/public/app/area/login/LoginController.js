@@ -16,9 +16,11 @@ LoginController.prototype.init = function() {
 };
 
 LoginController.prototype.auth = function(login, pass) {
+    console.log('auth');
     var self = this;
     self.UsersResource.auth({login: login, pass: pass}, function(user) {
         if (user.id != undefined) {
+            console.log('user: ' + JSON.stringify(user));
             self.cookies.user = user;
             self.location.path('projects');
         } else {
