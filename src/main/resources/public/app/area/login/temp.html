@@ -2,6 +2,7 @@
     <div id="page">
         <div id="login-form" class="side-column">
             <h3>Авторизация</h3>
+            <label class="error" ng-if="controller.isError">Неверный логин / пароль</label>
             <label>Псевдоним:
                 <input ng-model="login" type="text" autofocus>
             </label>

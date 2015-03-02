@@ -12,16 +12,19 @@ function LoginController(UsersResource, $location, $cookieStore) {
  * 3. Если не возвращается - введен неправильный логин / пароль.
  */
 LoginController.prototype.init = function() {
-
+    this.isError = false;
 };
 
 LoginController.prototype.auth = function(login, pass) {
+    console.log('auth');
     var self = this;
     self.UsersResource.auth({login: login, pass: pass}, function(user) {
-        if (user.id != undefined) {
+        if (user != undefined && user.id != undefined) {
+            console.log('user: ' + JSON.stringify(user));
             self.cookies.user = user;
             self.location.path('projects');
         } else {
+            self.isError = true;
             /*TODO вывести табличку "неверный логин/пароль"*/
         }
     });

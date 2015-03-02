@@ -15,7 +15,8 @@ function ProjectsEditController(ProjectsResource, $routeParams, $cookieStore, Re
 ProjectsEditController.prototype.init = function() {
     var self = this;
 
-    self.TeamsResource.loadAll({}, function (data) {
+    self.TeamsResource.loadAll(function (data) {
+        console.log('TEAMS: ' + JSON.stringify(data));
         self.teams = data;
         if(self.projectCreation) {
             self.project = {};

@@ -494,3 +494,7 @@ tr:hover td {
     cursor: pointer;
     color: #0066CC;
 }
+
+.error {
+    color: red;
+}
