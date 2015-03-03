@@ -8,17 +8,17 @@
     <script src="assets/lib/our-scripts.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
-<body>
+<body ng-controller="IndexController as controller">
 <div id="header">
     <h1>Управление<br>проектами</h1>
     <ul class="right">
-        <li class="item"><a href="#projects">Проекты</a></li>
-        <li class="item"><a href="#tasks">Задачи</a></li>
-        <li class="item"><a href="#employees">Работники</a></li>
-        <li class="item"><a href="#requirements">Требования</a></li>
-        <li class="item"><a href="#users">Пользователи</a></li>
-        <li class="item"><a href="#profile">Профиль</a></li>
-        <li class="item"><a href="#login">Выход</a></li>
+        <li ng-if="controller.projectsAccess" class="item"><a href="#projects">Проекты</a></li>
+        <li ng-if="controller.tasksAccess" class="item"><a href="#tasks">Задачи</a></li>
+        <li ng-if="controller.employeesAccess" class="item"><a href="#employees">Работники</a></li>
+        <li ng-if="controller.requirementsAccess" class="item"><a href="#requirements">Требования</a></li>
+        <li ng-if="controller.usersAccess" class="item"><a href="#users">Пользователи</a></li>
+        <li ng-if="controller.profileAccess" class="item"><a href="#profile">Профиль</a></li>
+        <li ng-click="controller.exit()" ng-if="controller.exitAccess" class="item"><a href="#login">Выход</a></li>
     </ul>
 </div>
 <div id="wrapper">

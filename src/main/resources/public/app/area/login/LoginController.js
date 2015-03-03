@@ -1,9 +1,14 @@
-function LoginController(UsersResource, $location, $cookieStore) {
+function LoginController(UsersResource, $location, $cookieStore, Session) {
     Object.defineProperty(this, 'location', { writable: true, value: $location });
     Object.defineProperty(this, 'UsersResource', { writable: true, value: UsersResource });
     Object.defineProperty(this, 'cookies', { writable: true, value: $cookieStore });
+    Object.defineProperty(this, 'session', { writable: true, value: Session });
     this.init();
 }
+
+LoginController.prototype.init = function() {
+    this.isError = false;
+};
 
 /**
  * Вход осуществляется следующим образом:
@@ -11,10 +16,6 @@ function LoginController(UsersResource, $location, $cookieStore) {
  * 2. Если возвращается обьект User - OK, сохраняем его в cookies и перенаправляемся в projects
  * 3. Если не возвращается - введен неправильный логин / пароль.
  */
-LoginController.prototype.init = function() {
-    this.isError = false;
-};
-
 LoginController.prototype.auth = function(login, pass) {
     console.log('auth');
     var self = this;
@@ -25,9 +26,18 @@ LoginController.prototype.auth = function(login, pass) {
             self.location.path('projects');
         } else {
             self.isError = true;
-            /*TODO вывести табличку "неверный логин/пароль"*/
         }
     });
+};
+
+/**
+ * Выход осуществляется следующим образом:
+ * 1. Стирается обьект user из cookies
+ * 2. Перенаправление на страницу входа в систему.
+ */
+LoginController.prototype.exit = function() {
+    this.cookies.user = undefined;
+    this.$location.path('login');
 };
 
 angular.module('spwizzard').controller('LoginController', LoginController);
