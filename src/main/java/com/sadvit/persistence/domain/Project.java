@@ -63,6 +63,14 @@ public class Project extends AbstractEntity {
         return requirements;
     }
 
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
     public void setRequirements(Set<Requirement> requirements) {
         this.requirements = requirements;
     }

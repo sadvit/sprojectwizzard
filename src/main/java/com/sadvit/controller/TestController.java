@@ -75,25 +75,25 @@ public class TestController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/log")
     public @ResponseBody void log () {
-        /*System.out.println("PROJECTS: ");
+        System.out.println("PROJECTS: ");
         for (Project p : projectService.getAll()) {
             System.out.println(p);
-        }
+        }/*
         System.out.println("REQUIREMENTS: ");
         for (Requirement r : requirementService.getAll()) {
             System.out.println(r);
-        }
+        }*/
         System.out.println("USERS: ");
         for (User u : userService.getAll()) {
             System.out.println(u);
-        }
+        }/*
         System.out.println("TASKS: ");
         for (Task t : taskService.getAll()) {
             System.out.println(t);
         }*/
         System.out.println("TEAMS: ");
         for (Team t : teamService.getAll()) {
-            System.out.println(t);
+            System.out.println(t + "PRJS: " + t.getProjects());
         }
     }
 

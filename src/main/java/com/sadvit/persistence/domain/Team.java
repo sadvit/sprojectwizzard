@@ -3,6 +3,7 @@ package com.sadvit.persistence.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -53,6 +54,11 @@ public class Team extends AbstractEntity {
 
     public boolean hasProjects() {
         return projects != null && projects.size() > 0;
+    }
+
+    public void addProject(Project project) {
+        if (!hasProjects()) projects = new HashSet<Project>();
+        projects.add(project);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.sadvit.persistence.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/projects")
@@ -15,7 +15,7 @@ public class ProjectController {
     private ProjectService projectService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Project> getProjects(@CookieValue Integer id) {
+    public @ResponseBody Set<Project> getProjects(@CookieValue Integer id) {
         System.out.println("USER ID FROM COOKIES: " + id);
         return projectService.getAllForId(id);
     }

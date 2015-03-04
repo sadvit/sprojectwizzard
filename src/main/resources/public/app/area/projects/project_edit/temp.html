@@ -16,10 +16,10 @@
             <br/>
             <h3>Контактные данные:</h3>
             <label> Менеджер:
-                <input type="text" id="manager" disabled>
+                <input type="text" ng-model="controller.contactName" disabled>
             </label>
             <label> Электронная почта:
-                <input type="text" id="email" disabled>
+                <input type="text" ng-model="controller.email" disabled>
             </label>
             <br/>
             <button type="submit" ng-click="controller.saveProject()">{{controller.action}}</button>

@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -75,6 +76,11 @@ public class Manager {
 
     public boolean hasUser() {
         return user != null;
+    }
+
+    public void addProject(Project project) {
+        if (!hasProjects()) projects = new HashSet<Project>();
+        projects.add(project);
     }
 
     @Override
