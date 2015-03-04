@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Employee {
 
-    @JsonProperty
+    @JsonProperty // TODO remove
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
@@ -54,6 +54,14 @@ public class Employee {
 
     public Employee() {
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Role getRole() {

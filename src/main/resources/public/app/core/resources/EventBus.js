@@ -4,7 +4,7 @@ angular.module('spwizzard').factory('EventBus', function() {
         map: {},
         // имя регистрации и сам обьект
         // у обьекта должен быть реализован метод handleMessage(object)
-        register: function(name, object) { // this???? TODO test
+        register: function(name, object) {
             this.map[name] = object; // регестрируем получателя
         },
         // имя получателя и сообщение

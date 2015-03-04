@@ -15,8 +15,9 @@ public class ProjectController {
     private ProjectService projectService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Project> getProjects() {
-        return projectService.getAll();
+    public @ResponseBody List<Project> getProjects(@CookieValue Integer id) {
+        System.out.println("USER ID FROM COOKIES: " + id);
+        return projectService.getAllForId(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")

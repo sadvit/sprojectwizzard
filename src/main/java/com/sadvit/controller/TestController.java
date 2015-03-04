@@ -97,4 +97,19 @@ public class TestController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/createAdmin")
+    public @ResponseBody void createAdmin() {
+        User user = new User();
+        user.setLogin("admin");
+        user.setPass("admin");
+
+        Employee employee = new Employee();
+        employee.setRole(Role.ADMIN);
+
+        employee.setUser(user);
+        user.setEmployee(employee);
+
+        userService.save(user);
+    }
+
 }

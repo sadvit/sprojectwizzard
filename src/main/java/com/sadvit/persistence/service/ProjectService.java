@@ -1,7 +1,9 @@
 package com.sadvit.persistence.service;
 
 import com.sadvit.persistence.dao.ProjectDAO;
+import com.sadvit.persistence.dao.UserDAO;
 import com.sadvit.persistence.domain.Project;
+import com.sadvit.persistence.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,19 @@ public class ProjectService {
     @Autowired
     private ProjectDAO projectDAO;
 
-    public List<Project> getAll() {
+    @Autowired
+    private UserDAO userDAO;
+
+    public List<Project> getAllForId(Integer id) {
+        User user = userDAO.load(id);
+        Integer uId;
+        if (user.getEmployee() != null) {
+             uId = user.getEmployee().getId();
+            projectDAO.getAllForEmployee(uId);
+        } else {
+            uId = user.getManager().getId();
+            projectDAO.getAllForManager(uId);
+        }
         return projectDAO.loadAll();
     }
 

@@ -17,12 +17,12 @@ LoginController.prototype.init = function() {
  * 3. Если не возвращается - введен неправильный логин / пароль.
  */
 LoginController.prototype.auth = function(login, pass) {
-    console.log('auth');
     var self = this;
     self.UsersResource.auth({login: login, pass: pass}, function(user) {
         if (user != undefined && user.id != undefined) {
-            console.log('user: ' + JSON.stringify(user));
+            //console.log('user: ' + JSON.stringify(user));
             self.cookies.put('user', user);
+            self.cookies.put('id', user.id); // TODO опять же для нормальной авторизации тут может быть большой и сложный код
             self.location.path('projects');
             self.EventBus.send('IndexController', 'do nothing my brother...');
         } else {

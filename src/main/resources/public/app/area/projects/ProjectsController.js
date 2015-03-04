@@ -1,11 +1,13 @@
-function ProjectsController(ProjectsResource, $location) {
+function ProjectsController(ProjectsResource, $location, Session) {
     Object.defineProperty(this, '$location', { writable: true, value: $location });
     Object.defineProperty(this, 'resource', { writable: true, value: ProjectsResource });
+    Object.defineProperty(this, 'session', { writable: true, value: Session });
 
     this.init();
 }
 
 ProjectsController.prototype.init = function() {
+    this.isEditMode = this.session().projects == 1;
     var self = this;
     self.resource.loadAll({}, function(projects) {
         self.projects = projects;

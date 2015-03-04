@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 public class Manager {
 
-    @JsonProperty
+    @JsonProperty  // TODO remove
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
@@ -35,6 +35,14 @@ public class Manager {
     private Set<Project> projects;
 
     //----------------------------------------------------------
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Set<Project> getProjects() {
         return projects;

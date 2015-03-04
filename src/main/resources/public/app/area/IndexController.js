@@ -16,18 +16,19 @@ IndexController.prototype.refresh = function() {
     this.exitAccess = session.exit >= 0;
 };
 
-IndexController.prototype.handleMessage = function(message) {
-    console.log('mmm ' + message);
+IndexController.prototype.handleMessage = function() {
     this.refresh();
 };
 
 /**
  * Выход осуществляется следующим образом:
  * 1. Стирается обьект user из cookies
- * 2. Перенаправление на страницу входа в систему.
+ * 2. Рефрешится index.html
+ * 3. Срабатывает перенаправление на страницу входа в систему.
  */
 IndexController.prototype.exit = function() {
     this.cookies.remove('user');
+    this.cookies.remove('id');
     this.refresh();
     this.$location.path('login');
 };
