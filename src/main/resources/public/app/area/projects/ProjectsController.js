@@ -8,6 +8,7 @@ function ProjectsController(ProjectsResource, $location, Session) {
 
 ProjectsController.prototype.init = function() {
     this.isEditMode = this.session().projects == 1;
+    this.leftStyle = this.isEditMode ? 'main-column' : 'single-column';
     var self = this;
     self.resource.loadAll({}, function(projects) {
         self.projects = projects;
