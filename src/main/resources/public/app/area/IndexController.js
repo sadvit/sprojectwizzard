@@ -3,10 +3,12 @@ function IndexController(Session, EventBus, $cookieStore, $location) {
     Object.defineProperty(this, 'cookies', { writable: true, value: $cookieStore });
     Object.defineProperty(this, '$location', { writable: true, value: $location });
     EventBus.register('IndexController', this);
+    this.refresh();
 }
 
 IndexController.prototype.refresh = function() {
     var session = this.session();
+    console.log('after refresh ' + JSON.stringify(session));
     this.projectsAccess = session.projects >= 0;
     this.tasksAccess = session.tasks >= 0;
     this.employeesAccess = session.employees >= 0;
