@@ -25,8 +25,23 @@ public class TeamController {
         teamService.save(team);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public @ResponseBody Team getTeam(@PathVariable("id") Integer id) {
+        return teamService.get(id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody void putTeam(@RequestBody Team team) {
+        teamService.update(team);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody void deleteTeam(@PathVariable("id") Integer id) {
+        teamService.delete(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Team> getTeam() {
+    public @ResponseBody List<Team> getTeams() {
         return teamService.getAll();
     }
 

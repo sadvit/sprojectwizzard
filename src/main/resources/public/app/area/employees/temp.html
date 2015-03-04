@@ -31,7 +31,7 @@
                 <br/>
                 <a href="#employees/employees_edit">Добавить команду</a>
                 <br/>
-                <a href="#employees/employees_edit/{{controller.currentTeamId}}">Изменить команду</a>
+                <a ng-if="controller.teams.length > 0" href="#employees/employees_edit/{{controller.currentTeamId}}">Изменить команду</a>
             </div>
         </div>
     </div>

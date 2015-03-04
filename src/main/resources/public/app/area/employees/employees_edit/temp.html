@@ -3,7 +3,7 @@
     <div id="page">
         <div class="single-column">
             <label> Название команды:
-                <input ng-disabled="!controller.isEditMode" ng-model="controller.teamName" style="max-width: 300px" type="text">
+                <input ng-model="controller.team.name" style="max-width: 300px" type="text">
             </label>
             <table class="team-table">
                 <thead>
@@ -16,7 +16,7 @@
                 <tr>
                     <td>Аналитик</td>
                     <td class="team-table-td">
-                        <select ng-disabled="!controller.isEditMode" ng-model="controller.analyst"
+                        <select ng-model="controller.analyst"
                                 ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.analysts">
                         </select>
                     </td>
@@ -24,7 +24,7 @@
                 <tr>
                     <td>Старший разработчик</td>
                     <td>
-                        <select ng-disabled="!controller.isEditMode" ng-model="controller.leader"
+                        <select ng-model="controller.leader"
                                 ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.leaders">
                         </select>
                     </td>
@@ -33,7 +33,7 @@
                 <tr>
                     <td>Разработчик</td>
                     <td>
-                        <select ng-disabled="!controller.isEditMode" ng-model="controller.programmer"
+                        <select ng-model="controller.programmer"
                                 ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.programmers">
                         </select>
                     </td>
@@ -42,7 +42,8 @@
             </table>
             <br/>
             <br/>
-            <button ng-if="controller.isEditMode" ng-click="controller.saveTeam()">Сохранить</button>
+            <button ng-click="controller.saveTeam()">Сохранить/Обновить</button>
+            <button ng-if="!controller.teamCreation" ng-click="controller.deleteTeam()">Удалить</button>
         </div>
     </div>
     <sfooter></sfooter>

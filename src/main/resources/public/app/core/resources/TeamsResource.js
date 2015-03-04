@@ -4,6 +4,18 @@ angular.module('spwizzard').factory('TeamsResource', function($resource) {
             url: '/teams',
             method: 'POST'
         },
+        'update' : {
+            url: '/teams',
+            method: 'PUT'
+        },
+        'delete' : {
+            url: '/teams/:id',
+            method: 'DELETE'
+        },
+        'load': {
+            url: 'teams/:id',
+            method: 'GET'
+        },
         'loadAll' : {
             url: '/teams',
             method: 'GET',
