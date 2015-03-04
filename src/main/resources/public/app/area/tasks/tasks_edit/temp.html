@@ -5,37 +5,37 @@
             <h3>{{controller.action}} задачу</h3>
             <form>
                 <label for="difficulty">Сложность: {{controller.task.difficulty}}/100</label>
-                <input type="range" id="difficulty" min="0" max="100"
+                <input ng-disabled="!controller.isEditMode" type="range" id="difficulty" min="0" max="100"
                        value="{{controller.task.difficulty}}" ng-model="controller.task.difficulty">
 
                 <label for="name">Название:</label>
-                <input type="text" id="name" ng-model="controller.task.name"
+                <input ng-disabled="!controller.isEditMode" type="text" id="name" ng-model="controller.task.name"
                        value="">
 
                 <label for="employee">Исполнитель:</label>
-                <select id="employee" ng-model="controller.task.employee"
+                <select ng-disabled="!controller.isEditMode" id="employee" ng-model="controller.task.employee"
                         ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees"></select>
 
                 <label for="requirement">Требование:</label>
-                <select id="requirement" ng-model="controller.task.requirement"
+                <select ng-disabled="!controller.isEditMode" id="requirement" ng-model="controller.task.requirement"
                         ng-options="requirement as requirement.name for requirement in controller.requirements"></select>
 
                 <div class="date-block">
                     <label class="date-cell"> Дата начала работ:
-                        <input ng-model="controller.task.openDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
+                        <input ng-disabled="!controller.isEditMode" ng-model="controller.task.openDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
                     </label>
 
                     <label class="date-cell"> Дата завершения работ:
-                        <input ng-model="controller.task.closeDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
+                        <input ng-disabled="!controller.isEditMode" ng-model="controller.task.closeDate" type="date" name="input" placeholder="yyyy-MM-dd" max="2020-01-02" min="2014-01-01">
                     </label>
                 </div>
 
                 <label for="description">Описание:</label>
-                <textarea ng-model="controller.task.description" id="description"></textarea>
+                <textarea ng-disabled="!controller.isEditMode" ng-model="controller.task.description" id="description"></textarea>
             </form>
             <br/>
-            <button ng-click="controller.saveTask()">{{controller.action}}</button>
-            <button ng-if="!controller.taskCreation">Удалить</button>
+            <button ng-if="controller.isEditMode" ng-click="controller.saveTask()">{{controller.action}}</button>
+            <button ng-if="!controller.taskCreation && controller.isEditMode">Удалить</button>
         </div>
     </div>
     <sfooter></sfooter>

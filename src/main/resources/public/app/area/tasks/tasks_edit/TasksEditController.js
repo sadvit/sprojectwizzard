@@ -1,14 +1,16 @@
-function TasksEditController(TasksResource, $routeParams, $location, UsersResource, RequirementsResource) {
+function TasksEditController(TasksResource, $routeParams, $location, UsersResource, RequirementsResource, Session) {
     Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
     Object.defineProperty(this, '$location', { writable: true, value: $location });
     Object.defineProperty(this, 'TasksResource', { writable: true, value: TasksResource });
     Object.defineProperty(this, 'UsersResource', { writable: true, value: UsersResource });
     Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
 
     this.taskId = this.$routeParams.id;
     this.projectId = this.$location.absUrl().split('=')[1];
     this.taskCreation = this.taskId === undefined;
     this.task = {};
+    this.isEditMode = this.Session().tasks == 1;
 
     var self = this;
 
@@ -39,6 +41,8 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
         this.action = "Обновить";
         this.init();
     }
+
+    if(!this.isEditMode) this.action = "Просмотреть";
 }
 
 TasksEditController.prototype.init = function() {
@@ -52,6 +56,18 @@ TasksEditController.prototype.init = function() {
         self.task.closeDate = new Date(data.closeDate);
     }, function(error) {
         console.error('Error loading task.');
+    });
+
+    self.TasksResource.loadTaskEmployee({
+        id: self.taskId
+    }, function(data) {
+        self.task.employee = data;
+    });
+
+    self.TasksResource.loadTaskRequirement({
+        id: self.taskId
+    }, function(data) {
+        self.task.requirement = data;
     });
 };
 

@@ -10,14 +10,16 @@ UsersEditController.prototype.init = function() {
 
     self.userId = self.$routeParams.id;
     console.log('ID: ' + self.userId);
-    self.projectCreation = self.userId !== undefined;
+    self.isUserCreation = self.userId === undefined;
 
-    if (self.projectCreation) {
+    if (!self.isUserCreation) {
+        self.action = "Обновить";
         self.UsersResource.load({id: self.userId}, function (user) {
             self.user = user;
             self.user.isManager = user.manager !== undefined;
         });
     } else {
+        self.action = "Создать";
         self.user = {isManager: false};
         self.user.employee = {};
         self.user.employee.role = 'ANALYST';
@@ -27,7 +29,7 @@ UsersEditController.prototype.init = function() {
 UsersEditController.prototype.saveUser = function() {
     var self = this;
     var cleanUser = CleanProperties(self.user);
-    if (self.projectCreation) {
+    if (!self.isUserCreation) {
         self.UsersResource.update(cleanUser, function() {
             self.location.path('/users');
         });

@@ -5,17 +5,17 @@
         <DIV class="single-column">
             <FORM>
                 <label for="name">Название:</label>
-                <input type="text" id="name" ng-model="controller.requirement.name">
+                <input ng-disabled="!controller.isEditMode" type="text" id="name" ng-model="controller.requirement.name">
 
                 <label for="description">Описание:</label>
-                <textarea id="description" ng-model="controller.requirement.description"></textarea>
+                <textarea ng-disabled="!controller.isEditMode" id="description" ng-model="controller.requirement.description"></textarea>
 
                 <label for="difficulty">Важность: {{controller.requirement.importance}}/100</label>
-                <input type="range" id="difficulty" min="0" max="100"
+                <input ng-disabled="!controller.isEditMode" type="range" id="difficulty" min="0" max="100"
                        value="{{controller.requirement.importance}}" ng-model="controller.requirement.importance">
 
-                <button ng-click="controller.submitRequirement()">{{controller.action}}</button>
-                <button ng-if="!controller.requirementCreation" ng-click="controller.deleteRequirement()">Удалить</button>
+                <button ng-if="controller.isEditMode" ng-click="controller.submitRequirement()">{{controller.action}}</button>
+                <button ng-if="!controller.requirementCreation && controller.isEditMode" ng-click="controller.deleteRequirement()">Удалить</button>
             </FORM>
         </DIV>
     </DIV>

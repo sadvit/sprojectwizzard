@@ -1,6 +1,10 @@
-function EmployeesController(EmployeesResource, TeamsResource) {
+function EmployeesController(EmployeesResource, TeamsResource, Session) {
     Object.defineProperty(this, 'EmployeesResource', { writable: true, value: EmployeesResource });
     Object.defineProperty(this, 'TeamsResource', { writable: true, value: TeamsResource });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
+
+    this.isEditMode = this.Session().employees == 1;
+
     this.init();
 }
 
@@ -9,20 +13,15 @@ EmployeesController.prototype.init = function() {
     self.TeamsResource.loadAll(function(teams) {
         console.log(JSON.stringify(teams));
         self.teams = teams;
+        self.selectTeam(teams[0].id);
     });
-};
-
-// TODO not used хотя может быть по клику стоит переходить к редактированию команды?
-EmployeesController.prototype.editEmployee = function(employeeId) {
-    //this.$location.path('employees/employees_edit/' + employeeId);
 };
 
 EmployeesController.prototype.selectTeam = function(teamId) {
     var self = this;
-    //console.log(teamId);
     if (teamId != undefined) {
+        self.currentTeamId = teamId;
         self.TeamsResource.loadUsers({id: teamId}, function(users) {
-            //console.log(JSON.stringify(users));
             self.users = users;
         })
     }

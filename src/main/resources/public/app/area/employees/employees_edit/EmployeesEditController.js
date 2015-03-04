@@ -1,6 +1,13 @@
-function EmployeesEditController(EmployeesResource, TeamsResource) {
+function EmployeesEditController(EmployeesResource, TeamsResource, $routeParams, Session) {
     Object.defineProperty(this, 'EmployeesResource', { writable: true, value: EmployeesResource });
     Object.defineProperty(this, 'TeamsResource', { writable: true, value: TeamsResource });
+    Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
+
+    this.isEditMode = this.Session().employees == 1;
+    this.teamId = this.$routeParams.id;
+    this.teamCreation = this.teamId === undefined;
+
     this.init();
 }
 
@@ -18,6 +25,14 @@ EmployeesEditController.prototype.init = function() {
         console.log(JSON.stringify(programmers));
         self.programmers = programmers;
     });
+
+    if(!self.teamCreation) {
+        self.TeamsResource.load({
+            id: self.teamId
+        }, function(data) {
+            alert(JSON.stringify(data));
+        });
+    }
 };
 
 EmployeesEditController.prototype.saveTeam = function() {

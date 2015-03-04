@@ -28,12 +28,12 @@
                 </li>
             </ul>
             <br/>
-            <h3>Действия:</h3>
-            <br/>
-            <div class="main-column-buttons">
+            <div ng-if="controller.isEditMode" class="main-column-buttons">
+                <h3>Действия:</h3>
+                <br/>
                 <button ng-if="controller.projects[0] !== undefined" ng-click="controller.createRequirement()">Создать требование</button>
                 <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
-                    <a href="#projects/project_edit">Перейти к созданию</a>
+                    <!--<a href="#projects/project_edit">Перейти к созданию</a>-->
                 </label>
             </div>
         </div>

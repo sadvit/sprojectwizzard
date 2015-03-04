@@ -1,11 +1,13 @@
-function RequirementsEditController(RequirementsResource, $routeParams, $location) {
+function RequirementsEditController(RequirementsResource, $routeParams, $location, Session) {
     Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
     Object.defineProperty(this, '$location', { writable: true, value: $location });
-    Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource }); // TODO переделать под ресурсы задач tasks
+    Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
 
     this.requirementId = this.$routeParams.id;
     this.projectId = this.$location.absUrl().split('=')[1];
     this.requirementCreation = this.requirementId === undefined;
+    this.isEditMode = this.Session().requirements == 1;
 
     var self = this;
 
@@ -23,6 +25,8 @@ function RequirementsEditController(RequirementsResource, $routeParams, $locatio
         this.init();
 
     }
+
+    if(!this.isEditMode) this.action = "Просмотреть";
 }
 
 RequirementsEditController.prototype.init = function() {

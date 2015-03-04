@@ -32,13 +32,14 @@
                     <a ng-click="controller.updateTasks(project.id)">{{project.name}}</a>
                 </li>
             </UL>
-            <br/>
-            <h3>Действия:</h3>
-            <br/>
-            <div class="main-column-buttons">
+
+            <div ng-if="controller.isEditMode" class="main-column-buttons">
+                <br/>
+                <h3>Действия:</h3>
+                <br/>
                 <button ng-click="controller.createTask()" ng-if="controller.projects[0] !== undefined">Создать задачу</button>
                 <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
-                    <a href="#projects/project_edit">Перейти к созданию</a>
+                    <!--<a href="#projects/project_edit">Перейти к созданию</a>-->
                 </label>
             </div>
         </div>

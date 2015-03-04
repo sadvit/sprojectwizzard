@@ -11,7 +11,7 @@
                 </tr>
                 </thead>
                 <tbody ng-repeat="user in controller.users">
-                <tr> <!--ng-click="controller.editEmployee(user.id)"-->
+                <tr>
                     <td>{{user.firstName + ' ' + user.middleName}}</td>
                     <td>{{user.employee.role}}</td>
                 </tr>
@@ -26,10 +26,13 @@
                 </li>
             </ul>
             <br/>
-
-            <h3>Действия:</h3>
-            <br/>
-            <a href="#employees/employees_edit">Добавить команду</a>
+            <div ng-if="controller.isEditMode">
+                <h3>Действия:</h3>
+                <br/>
+                <a href="#employees/employees_edit">Добавить команду</a>
+                <br/>
+                <a href="#employees/employees_edit/{{controller.currentTeamId}}">Изменить команду</a>
+            </div>
         </div>
     </div>
     <sfooter></sfooter>

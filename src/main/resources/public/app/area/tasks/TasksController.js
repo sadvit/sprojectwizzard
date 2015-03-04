@@ -1,10 +1,12 @@
-function TasksController(ProjectsResource, TasksResource, $location) {
+function TasksController(ProjectsResource, TasksResource, $location, Session) {
     Object.defineProperty(this, '$location', { writable: true, value: $location });
-    Object.defineProperty(this, 'ProjectsResource', { writable: true, value: ProjectsResource }); // TODO переделать под ресурсы задач tasks
-    Object.defineProperty(this, 'TasksResource', { writable: true, value: TasksResource }); // TODO переделать под ресурсы задач tasks
+    Object.defineProperty(this, 'ProjectsResource', { writable: true, value: ProjectsResource });
+    Object.defineProperty(this, 'TasksResource', { writable: true, value: TasksResource });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
 
     this.tasksForProject = {};
     this.projects = {};
+    this.isEditMode = this.Session().tasks == 1;
 
     this.init();
 }

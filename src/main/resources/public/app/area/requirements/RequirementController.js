@@ -1,7 +1,8 @@
-function RequirementController($location, ProjectsResource, RequirementsResource) {
+function RequirementController($location, ProjectsResource, RequirementsResource, Session) {
     Object.defineProperty(this, '$location', { writable: true, value: $location });
     Object.defineProperty(this, 'ProjectsResource', { writable: true, value: ProjectsResource });
     Object.defineProperty(this, 'RequirementsResource', { writable: true, value: RequirementsResource });
+    Object.defineProperty(this, 'Session', { writable: true, value: Session });
 
     this.requirementsForProject = {};
 
@@ -10,6 +11,8 @@ function RequirementController($location, ProjectsResource, RequirementsResource
 
 RequirementController.prototype.init = function() {
     var self = this;
+    self.isEditMode = self.Session().requirements == 1;
+
     self.ProjectsResource.loadAll({}, function(data) {
         self.projects = data;
         self.currentProjectId = data[0].id;

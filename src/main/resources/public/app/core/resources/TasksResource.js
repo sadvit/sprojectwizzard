@@ -24,6 +24,10 @@ angular.module('spwizzard').factory('TasksResource', function($resource) {
         'loadTaskRequirement': {
             url: '/tasks/:id/requirement',
             method: 'GET'
+        },
+        'loadTaskEmployee': {
+            url: '/tasks/:id/employee',
+            method: 'GET'
         }
     });
 });

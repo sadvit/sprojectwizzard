@@ -42,8 +42,8 @@
             </div>
 
             <div class="buttons">
-                <button ng-click="controller.saveUser()">Сохранить</button>
-                <button ng-click="controller.deleteUser()">Удалить</button>
+                <button ng-click="controller.saveUser()">{{controller.action}}</button>
+                <button ng-if="!controller.isUserCreation" ng-click="controller.deleteUser()">Удалить</button>
             </div>
 
             <br/>
