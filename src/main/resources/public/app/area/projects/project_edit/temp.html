@@ -11,15 +11,15 @@
             </label>
             <label> Команда:
                 <select ng-model="controller.project.team"
-                        ng-options="team as team.name for team in controller.teams"></select>
+                        ng-options="team.name for team in controller.teams"></select> <!--team as team.name for-->
             </label>
             <br/>
             <h3>Контактные данные:</h3>
             <label> Менеджер:
-                <input type="text" ng-model="controller.contactName" disabled>
+                <input type="text" ng-model="controller.project.manager.name" disabled>
             </label>
             <label> Электронная почта:
-                <input type="text" ng-model="controller.email" disabled>
+                <input type="text" ng-model="controller.project.manager.email" disabled>
             </label>
             <br/>
             <button type="submit" ng-click="controller.saveProject()">{{controller.action}}</button>

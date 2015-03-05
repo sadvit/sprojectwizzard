@@ -1,5 +1,6 @@
 package com.sadvit.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Team extends AbstractEntity {
 
     @Column

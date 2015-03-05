@@ -40,9 +40,14 @@ public class TeamController {
         teamService.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Team> getTeams() {
-        return teamService.getAll();
+    @RequestMapping(method = RequestMethod.GET, value = "/full")
+    public @ResponseBody List<Team> getTeamsFull() {
+        return teamService.getAllFull();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/short")
+    public @ResponseBody List<Team> getTeamsShort() {
+        return teamService.getAllShort();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/employees")

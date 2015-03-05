@@ -2,7 +2,6 @@ function ProjectsController(ProjectsResource, $location, Session) {
     Object.defineProperty(this, '$location', { writable: true, value: $location });
     Object.defineProperty(this, 'resource', { writable: true, value: ProjectsResource });
     Object.defineProperty(this, 'session', { writable: true, value: Session });
-
     this.init();
 }
 

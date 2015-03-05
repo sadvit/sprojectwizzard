@@ -53,8 +53,17 @@ public class TeamService {
         return teamDAO.load(id);
     }
 
-    public List<Team> getAll() {
+    public List<Team> getAllFull() {
         return teamDAO.loadAll();
+    }
+
+    public List<Team> getAllShort() {
+        List<Team> teams = teamDAO.loadAll();
+        for (Team team : teams) {
+            team.setEmployees(null);
+            team.setProjects(null);
+        }
+        return teams;
     }
 
     private void reference(Team team) {

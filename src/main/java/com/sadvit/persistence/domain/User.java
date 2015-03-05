@@ -1,6 +1,8 @@
 package com.sadvit.persistence.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
+@JsonInclude(Include.NON_EMPTY)
 public class User extends AbstractEntity {
 
     @Column

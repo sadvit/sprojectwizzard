@@ -9,6 +9,14 @@ angular.module('spwizzard').factory('ProjectsResource', function($resource) {
             url: '/projects/:id',
             method: 'GET'
         },
+        'loadContacts' : {
+            url: '/projects/contacts/:id',
+            method: 'GET'
+        },
+        'loadTeam' : {
+            url: '/projects/team/:id',
+            method: 'GET'
+        },
         'save' : {
             url: '/projects',
             method: 'POST'

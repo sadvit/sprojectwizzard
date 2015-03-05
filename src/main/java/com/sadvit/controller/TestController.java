@@ -92,7 +92,7 @@ public class TestController {
             System.out.println(t);
         }*/
         System.out.println("TEAMS: ");
-        for (Team t : teamService.getAll()) {
+        for (Team t : teamService.getAllFull()) {
             System.out.println(t + "PRJS: " + t.getProjects());
         }
     }

@@ -16,8 +16,13 @@ angular.module('spwizzard').factory('TeamsResource', function($resource) {
             url: 'teams/:id',
             method: 'GET'
         },
-        'loadAll' : {
-            url: '/teams',
+        'loadAllFull' : {
+            url: '/teams/full',
+            method: 'GET',
+            isArray: true
+        },
+        'loadAllShort' : {
+            url: '/teams/short',
             method: 'GET',
             isArray: true
         },
