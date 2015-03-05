@@ -20,9 +20,9 @@
         </div>
         <div class="side-column">
             <h3>Команды:</h3>
-            <ul>
+            <ul class="links-block">
                 <li ng-repeat="team in controller.teams">
-                    <span class="span-team-button" ng-click="controller.selectTeam(team.id)">{{team.name}}</span>
+                    <a ng-click="controller.selectTeam(team.id)">{{team.name}}</a>
                 </li>
             </ul>
             <br/>
