@@ -4,6 +4,7 @@ import com.sadvit.persistence.dao.ProjectDAO;
 import com.sadvit.persistence.dao.TaskDAO;
 import com.sadvit.persistence.domain.Requirement;
 import com.sadvit.persistence.domain.Task;
+import com.sadvit.persistence.domain.type.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class TaskService {
     private ProjectDAO projectDAO;
 
     public void save(Task task) {
+        task.setStatus(Status.NEW);
         taskDAO.save(task);
     }
 

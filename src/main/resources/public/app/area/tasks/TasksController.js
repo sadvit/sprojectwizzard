@@ -43,9 +43,4 @@ TasksController.prototype.editTask = function(taskId) {
     this.$location.search('projectId', self.currentProjectId).path('tasks/tasks_edit/' + taskId);
 };
 
-TasksController.prototype.createTask = function() {
-    var self = this;
-    this.$location.search('projectId', self.currentProjectId).path('tasks/tasks_edit');
-};
-
 angular.module('spwizzard').controller('TasksController', TasksController);

@@ -12,12 +12,17 @@
                 <input ng-disabled="!controller.isEditMode" type="text" id="name" ng-model="controller.task.name"
                        value="">
 
-                <label for="employee">Исполнитель:</label>
-                <select ng-disabled="!controller.isEditMode" id="employee" ng-model="controller.task.employee"
-                        ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees"></select>
+                <label for="employee">Исполнитель:
+                    <input type="text" value="{{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}" disabled>
 
-                <label for="requirement">Требование:</label>
-                <select ng-disabled="!controller.isEditMode" id="requirement" ng-model="controller.task.requirement"
+                </label>
+                <select ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'" id="employee" ng-model="controller.task.employee"
+                        ng-options="user as (user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees"></select>
+
+                <label for="requirement">Требование:
+                    <input type="text" ng-model="controller.task.requirement.name" disabled>
+                </label>
+                <select ng-if="controller.isEditMode" id="requirement" ng-model="controller.task.requirement"
                         ng-options="requirement as requirement.name for requirement in controller.requirements"></select>
 
                 <div class="date-block">
@@ -34,8 +39,15 @@
                 <textarea ng-disabled="!controller.isEditMode" ng-model="controller.task.description" id="description"></textarea>
             </form>
             <br/>
+            <label for="status">Статус:</label>
+            <p id="status">{{controller.task.status}}</p>
             <button ng-if="controller.isEditMode" ng-click="controller.saveTask()">{{controller.action}}</button>
-            <button ng-if="!controller.taskCreation && controller.isEditMode">Удалить</button>
+            <button ng-if="(controller.viewerRole === 'PROGRAMMER' || controller.viewerRole === 'LEADER')
+                    && (controller.task.status === 'NEW' || controller.task.status === 'NEW')"
+                    ng-click="controller.setTaskStatus('IN_PROGRESS')">Взять задачу</button>
+            <button ng-if="controller.isMyTask && controller.task.status === 'IN_PROGRESS'" ng-click="controller.setTaskStatus('DONE')">Выполнить задачу</button>
+            <button ng-if="controller.task.status === 'DONE' && controller.viewerRole === 'MANAGER'" ng-click="controller.setTaskStatus('REOPEN')">Открыть задачу заново</button>
+            <button ng-if="!controller.taskCreation && controller.isEditMode" ng-click="controller.deleteTask()">Удалить</button>
         </div>
     </div>
     <sfooter></sfooter>

@@ -17,6 +17,10 @@ angular.module('spwizzard').factory('TasksResource', function($resource) {
             url: '/tasks',
             method: 'PUT'
         },
+        'updateStatus' : {
+            url: '/tasks/:id/status',
+            method: 'PUT'
+        },
         'delete': {
             url: '/tasks/:id',
             method: 'DELETE'
@@ -27,6 +31,10 @@ angular.module('spwizzard').factory('TasksResource', function($resource) {
         },
         'loadTaskEmployee': {
             url: '/tasks/:id/employee',
+            method: 'GET'
+        },
+        'loadTaskUser': {
+            url: '/tasks/:id/user',
             method: 'GET'
         }
     });

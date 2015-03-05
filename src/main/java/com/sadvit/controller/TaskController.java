@@ -3,6 +3,8 @@ package com.sadvit.controller;
 import com.sadvit.persistence.domain.Employee;
 import com.sadvit.persistence.domain.Requirement;
 import com.sadvit.persistence.domain.Task;
+import com.sadvit.persistence.domain.User;
+import com.sadvit.persistence.domain.type.Status;
 import com.sadvit.persistence.service.ProjectService;
 import com.sadvit.persistence.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,22 @@ public class TaskController {
     public @ResponseBody Requirement getTaskRequirement(@PathVariable("id") Integer id) {
         return taskService.load(id).getRequirement();
     }
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/status")
+    public @ResponseBody void updateTaskStatus(@PathVariable("id") Integer id, @RequestBody String status) {
+        Task task = taskService.load(id);
+        task.setStatus(Status.valueOf(status));
+
+        taskService.update(task);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/employee")
     public @ResponseBody Employee getTaskEmployee(@PathVariable("id") Integer id) {
         return taskService.load(id).getEmployee();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/user")
+    public @ResponseBody User getTaskUser(@PathVariable("id") Integer id) {
+        return taskService.load(id).getEmployee().getUser();
     }
 
     @RequestMapping(method = RequestMethod.POST)

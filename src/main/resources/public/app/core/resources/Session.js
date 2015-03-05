@@ -24,6 +24,7 @@ angular.module('spwizzard').factory('Session', function($cookieStore) {
         } else {
             role = 'MANAGER';
         }
+        rights.role = role;
 
         switch (role) {
             case 'ADMIN':

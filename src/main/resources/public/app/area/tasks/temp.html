@@ -7,20 +7,20 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="insignificant">№</th>
                         <th>Название</th>
                         <TH>Описание</TH>
                         <TH>Требование</TH>
                         <TH>Срок</TH>
+                        <TH>Статус</TH>
                     </tr>
                 </thead>
                 <tbody ng-repeat="task in controller.tasksForProject">
                     <tr ng-click="controller.editTask(task.id)">
-                        <td class="insignificant">{{$index}}</td>
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
                         <td>{{task.requirement.name}}</td>
                         <td>до {{task.closeDate | date:'yyyy-MM-dd'}}</td>
+                        <td>{{task.status}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -37,7 +37,9 @@
                 <br/>
                 <h3>Действия:</h3>
                 <br/>
-                <button ng-click="controller.createTask()" ng-if="controller.projects[0] !== undefined">Создать задачу</button>
+                <a href="#tasks/tasks_edit?projectId={{controller.currentProjectId}}" ng-if="controller.projects[0] !== undefined">
+                    <button>Создать задачу</button>
+                </a>
                 <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
                     <!--<a href="#projects/project_edit">Перейти к созданию</a>-->
                 </label>

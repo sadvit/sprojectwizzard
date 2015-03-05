@@ -13,7 +13,7 @@ EmployeesController.prototype.init = function() {
     self.TeamsResource.loadAllFull(function(teams) {
         console.log(JSON.stringify(teams));
         self.teams = teams;
-        self.selectTeam(teams[0].id);
+        if(teams !== undefined) self.selectTeam(teams[0].id);
     });
 };
 
