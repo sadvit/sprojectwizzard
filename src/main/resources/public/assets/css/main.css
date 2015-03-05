@@ -167,3 +167,10 @@ img.arrow {
 
 img.arrow[onclick] {
   cursor: pointer; }
+
+.links-block {
+  margin-top: 10px;
+  cursor: pointer;
+  list-style: none; }
+  .links-block li {
+    margin-top: 3px; }

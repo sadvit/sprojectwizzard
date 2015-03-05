@@ -4,14 +4,16 @@
         <div class="single-column">
             <h3>{{controller.action}} проект:</h3>
             <label> Название:
-                <input type="text" ng-model="controller.project.name">
+                <input ng-disabled="!controller.isAllowEdit" type="text" ng-model="controller.project.name">
             </label>
             <label> Описание:
-                <input type="text" ng-model="controller.project.description">
+                <textarea ng-disabled="!controller.isAllowEdit" ng-model="controller.project.description"></textarea>
             </label>
-            <label> Команда:
-                <select ng-model="controller.project.team"
-                        ng-options="team as team.name for team in controller.teams"></select>
+            <label> Текущая команда:
+                <input type="text" ng-model="controller.project.team.name" disabled>
+            </label>
+            <label ng-if="controller.isAllowEdit"> Изменить команду:
+                <select ng-model="controller.project.team" ng-options="team as team.name for team in controller.teams"></select>
             </label>
             <br/>
             <h3>Контактные данные:</h3>
@@ -22,8 +24,8 @@
                 <input type="text" ng-model="controller.project.manager.email" disabled>
             </label>
             <br/>
-            <button type="submit" ng-click="controller.saveProject()">{{controller.action}}</button>
-            <button ng-if="!controller.projectCreation" ng-click="controller.deleteProject()">Удалить</button>
+            <button ng-if="controller.isAllowEdit" ng-click="controller.saveProject()">Сохранить</button>
+            <button ng-if="controller.isAllowEdit" ng-click="controller.deleteProject()">Удалить</button>
         </div>
     </div>
     <sfooter></sfooter>
