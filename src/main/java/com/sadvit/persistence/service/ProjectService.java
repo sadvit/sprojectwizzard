@@ -76,14 +76,23 @@ public class ProjectService {
         projectDAO.delete(id);
     }
 
-    public Map<String, String> getContacts(Integer id) {
+    public Map<Object, Object> getContacts(Integer id) {
         User user = get(id).getManager().getUser();
-        Map<String, String> contacts = new HashMap<String, String>();
+        Map<Object, Object> contacts = new HashMap<Object, Object>();
         String name = user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName();
         String email = user.getEmail();
+        contacts.put("id", user.getId());
         contacts.put("name", name);
         contacts.put("email", email);
         return contacts;
+    }
+
+    public Team getTeamShort(Integer id) {
+        Project project = get(id);
+        Team team = project.getTeam();
+        team.setEmployees(null);
+        team.setProjects(null);
+        return team;
     }
 
 }

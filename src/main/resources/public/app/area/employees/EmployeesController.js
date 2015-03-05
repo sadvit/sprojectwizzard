@@ -10,7 +10,7 @@ function EmployeesController(EmployeesResource, TeamsResource, Session) {
 
 EmployeesController.prototype.init = function() {
     var self = this;
-    self.TeamsResource.loadAll(function(teams) {
+    self.TeamsResource.loadAllFull(function(teams) {
         console.log(JSON.stringify(teams));
         self.teams = teams;
         self.selectTeam(teams[0].id);

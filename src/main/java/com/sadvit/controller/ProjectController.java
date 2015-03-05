@@ -27,12 +27,17 @@ public class ProjectController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/contacts/{id}")
-    public @ResponseBody Map<String, String> getContacts(@PathVariable("id") Integer id) {
+    public @ResponseBody Map<Object, Object> getContacts(@PathVariable("id") Integer id) {
         return projectService.getContacts(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/team/{id}")
-    public @ResponseBody Team getTeam(@PathVariable("id") Integer id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/team/short/{id}")
+    public @ResponseBody Team getTeamShort(@PathVariable("id") Integer id) {
+        return projectService.getTeamShort(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/team/full/{id}")
+    public @ResponseBody Team getTeamFull(@PathVariable("id") Integer id) {
         return projectService.get(id).getTeam();
     }
 

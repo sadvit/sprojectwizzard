@@ -13,8 +13,12 @@ angular.module('spwizzard').factory('ProjectsResource', function($resource) {
             url: '/projects/contacts/:id',
             method: 'GET'
         },
-        'loadTeam' : {
-            url: '/projects/team/:id',
+        'loadTeamShort' : {
+            url: '/projects/team/short/:id',
+            method: 'GET'
+        },
+        'loadTeamFull' : {
+            url: '/projects/team/full/:id',
             method: 'GET'
         },
         'save' : {
