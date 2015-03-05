@@ -18,14 +18,14 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
             projectId: self.projectId
         }, function(data) {
             self.employees = data;
-            self.task.employee = data[0];
+            //self.task.employee = data[0];
     });
 
     self.RequirementsResource.loadAllForProject({
         projectId: self.projectId
     }, function(data) {
         self.requirements = data;
-        self.task.requirement = data[0];
+        //self.task.requirement = data[0];
     });
 
     if(this.taskCreation) {
@@ -35,7 +35,9 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
             description: "",
             difficulty: 0,
             openDate: new Date(),
-            closeDate: new Date()
+            closeDate: new Date(),
+            requirement: self.requirements[0],
+            employee: self.employees[0]
         };
     } else {
         this.action = "Обновить";

@@ -42,7 +42,7 @@
             </table>
             <br/>
             <br/>
-            <button ng-click="controller.saveTeam()">Сохранить/Обновить</button>
+            <button ng-click="controller.saveTeam()">{{controller.action}}</button>
             <button ng-if="!controller.teamCreation" ng-click="controller.deleteTeam()">Удалить</button>
         </div>
     </div>

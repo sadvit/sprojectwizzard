@@ -1,12 +1,14 @@
-function EmployeesEditController(EmployeesResource, TeamsResource, $routeParams, Session) {
+function EmployeesEditController(EmployeesResource, TeamsResource, $routeParams, Session, $location) {
     Object.defineProperty(this, 'EmployeesResource', { writable: true, value: EmployeesResource });
     Object.defineProperty(this, 'TeamsResource', { writable: true, value: TeamsResource });
     Object.defineProperty(this, '$routeParams', { writable: true, value: $routeParams });
     Object.defineProperty(this, 'Session', { writable: true, value: Session });
+    Object.defineProperty(this, '$location', { writable: true, value: $location });
 
     this.teamId = this.$routeParams.id;
     this.teamCreation = this.teamId === undefined;
     this.team = {};
+    this.action = this.teamCreation ? 'Создать' : 'Обновить';
 
     this.init();
 }
@@ -76,10 +78,12 @@ EmployeesEditController.prototype.saveTeam = function() {
     if(self.teamCreation) {
         self.TeamsResource.save(team, function () {
             console.log('done');
+            self.redirect();
         });
     } else {
         self.TeamsResource.update(team, function () {
             console.log('done');
+            self.redirect();
         });
     }
 };
@@ -89,8 +93,13 @@ EmployeesEditController.prototype.deleteTeam = function() {
     self.TeamsResource.delete({
         id: self.teamId
     }, function() {
-        console.log('Team deleted!')
+        console.log('Team deleted!');
+        self.redirect();
     });
+};
+
+EmployeesEditController.prototype.redirect = function() {
+    this.$location.path('employees/');
 };
 
 angular.module('spwizzard').controller('EmployeesEditController', EmployeesEditController);
