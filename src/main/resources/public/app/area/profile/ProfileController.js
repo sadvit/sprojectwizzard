@@ -6,7 +6,7 @@ function ProfileController(UsersResource, $cookieStore) {
 
 ProfileController.prototype.init = function() {
     var self = this;
-    self.user = self.cookies.user;
+    self.user = self.cookies.get('user');
 };
 
 angular.module('spwizzard').controller('ProfileController', ProfileController);
