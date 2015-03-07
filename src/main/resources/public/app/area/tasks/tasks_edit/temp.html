@@ -16,8 +16,12 @@
                     <input type="text" value="{{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}" disabled>
 
                 </label>
-                <select ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'" id="employee" ng-model="controller.task.employee"
+                <select ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'" id="employee"
+                        ng-model="controller.task.employee"
                         ng-options="user as (user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees"></select>
+                <button ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'"
+                        ng-click="controller.task.employee = null">Удалить исполнителя</button>
+
 
                 <label for="requirement">Требование:
                     <input type="text" ng-model="controller.task.requirement.name" disabled>
@@ -39,14 +43,13 @@
                 <textarea ng-disabled="!controller.isEditMode" ng-model="controller.task.description" id="description"></textarea>
             </form>
             <br/>
-            <label for="status">Статус:</label>
-            <p id="status">{{controller.task.status}}</p>
+            <label>Статус: {{controller.task.status}}</label>
             <button ng-if="controller.isEditMode" ng-click="controller.saveTask()">{{controller.action}}</button>
-            <button ng-if="(controller.viewerRole === 'PROGRAMMER' || controller.viewerRole === 'LEADER')
-                    && (controller.task.status === 'NEW' || controller.task.status === 'NEW')"
+            <button ng-if="(controller.viewerRole == 'PROGRAMMER' || controller.viewerRole == 'LEADER')
+                        && (controller.task.status == 'NEW' || controller.task.status == 'REOPEN' || controller.task.status == 'AVAILABLE')"
                     ng-click="controller.setTaskStatus('IN_PROGRESS')">Взять задачу</button>
             <button ng-if="controller.isMyTask && controller.task.status === 'IN_PROGRESS'" ng-click="controller.setTaskStatus('DONE')">Выполнить задачу</button>
-            <button ng-if="controller.task.status === 'DONE' && controller.viewerRole === 'MANAGER'" ng-click="controller.setTaskStatus('REOPEN')">Открыть задачу заново</button>
+            <button ng-if="controller.task.status === 'DONE' && controller.viewerRole === 'ANALYST'" ng-click="controller.setTaskStatus('REOPEN')">Открыть задачу заново</button>
             <button ng-if="!controller.taskCreation && controller.isEditMode" ng-click="controller.deleteTask()">Удалить</button>
         </div>
     </div>

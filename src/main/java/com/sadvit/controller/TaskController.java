@@ -4,21 +4,15 @@ import com.sadvit.persistence.domain.Employee;
 import com.sadvit.persistence.domain.Requirement;
 import com.sadvit.persistence.domain.Task;
 import com.sadvit.persistence.domain.User;
-import com.sadvit.persistence.domain.type.Status;
-import com.sadvit.persistence.service.ProjectService;
 import com.sadvit.persistence.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
-
-    @Autowired
-    private ProjectService projectService;
 
     @Autowired
     private TaskService taskService;
@@ -38,11 +32,8 @@ public class TaskController {
         return taskService.load(id).getRequirement();
     }
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/status")
-    public @ResponseBody void updateTaskStatus(@PathVariable("id") Integer id, @RequestBody String status) {
-        Task task = taskService.load(id);
-        task.setStatus(Status.valueOf(status));
-
-        taskService.update(task);
+    public @ResponseBody void updateTaskStatus(@PathVariable("id") Integer id, @RequestBody String status, @CookieValue(value = "id") Integer userId) {
+        taskService.updateStatus(id, status, userId);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/employee")
@@ -52,12 +43,22 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/user")
     public @ResponseBody User getTaskUser(@PathVariable("id") Integer id) {
-        return taskService.load(id).getEmployee().getUser();
+        Task task = taskService.load(id);
+        if(task.getEmployee() != null) {
+            return task.getEmployee().getUser();
+        } else {
+            return null;
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody void postTask(@RequestBody Task task) {
         taskService.save(task);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody void putTask(@RequestBody Task task) {
+        taskService.update(task);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

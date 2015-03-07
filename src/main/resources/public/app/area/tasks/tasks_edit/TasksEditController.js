@@ -39,7 +39,6 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
                 return e.employee.role !== 'ANALYST';
             });
             self.employees = newData;
-            alert(JSON.stringify(self.employees));
     });
 
     self.RequirementsResource.loadAllForProject({
@@ -63,7 +62,6 @@ TasksEditController.prototype.init = function() {
         self.TasksResource.loadTaskUser({
             id: data.id
         }, function(data) {
-            alert(JSON.stringify(data));
             self.task.employee = data.employee;
             if(self.$cookieStore.get('user').id === data.id) self.isMyTask = true;
         });
