@@ -26,7 +26,7 @@ public class Project extends AbstractEntity {
     private Manager manager;
 
     @JsonManagedReference("manager-requirement")
-    @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="project", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<Requirement> requirements;
 
     public Project() {

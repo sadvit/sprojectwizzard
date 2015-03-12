@@ -15,8 +15,10 @@ TasksController.prototype.init = function() {
     var self = this;
     self.ProjectsResource.loadAll({}, function(data) {
         self.projects = data;
-        self.currentProjectId = data[0].id;
-        self.updateTasks(data[0].id);
+        if(data.length > 0) {
+            self.currentProjectId = data[0].id;
+            self.updateTasks(data[0].id);
+        }
     });
 };
 

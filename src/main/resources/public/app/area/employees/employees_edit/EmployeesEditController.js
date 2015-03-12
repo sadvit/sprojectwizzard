@@ -18,17 +18,17 @@ EmployeesEditController.prototype.init = function() {
     self.EmployeesResource.loadAnalysts(function(analysts) {
         console.log(JSON.stringify(analysts));
         self.analysts = analysts;
-        self.analyst = analysts[0];
+        if(analysts.length > 0) self.analyst = analysts[0];
     });
     self.EmployeesResource.loadLeaders(function(leaders) {
         console.log(JSON.stringify(leaders));
         self.leaders = leaders;
-        self.leader = leaders[0];
+        if(leaders.length > 0) self.leader = leaders[0];
     });
     self.EmployeesResource.loadProgrammers(function(programmers) {
         console.log(JSON.stringify(programmers));
         self.programmers = programmers;
-        self.programmer = programmers[0];
+        if(programmers.length > 0) self.programmer = programmers[0];
     });
 
     if(!self.teamCreation) {

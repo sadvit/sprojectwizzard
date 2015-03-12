@@ -26,7 +26,7 @@ public class Requirement extends AbstractEntity {
     private Project project;
 
     @JsonManagedReference("requirement-task")
-    @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="requirement", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<Task> tasks;
 
     public Requirement() {

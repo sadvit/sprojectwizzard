@@ -15,8 +15,10 @@ RequirementController.prototype.init = function() {
 
     self.ProjectsResource.loadAll({}, function(data) {
         self.projects = data;
-        self.currentProjectId = data[0].id;
-        self.updateRequirements(self.currentProjectId);
+        if(data.length > 0) {
+            self.currentProjectId = data[0].id;
+            self.updateRequirements(self.currentProjectId);
+        }
     });
 };
 

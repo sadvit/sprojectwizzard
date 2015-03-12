@@ -20,7 +20,8 @@
                        value="">
 
                 <div class="select-block">
-                    <label class="value-viewer">Исполнитель: {{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}
+                    <!--<label class="value-viewer">Исполнитель: {{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}-->
+                    <label class="value-viewer">Текущий исполнитель задачи: {{controller.task.employeeBio}}
                     </label>
                     <select class="value-selector"
                             ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'"
@@ -31,10 +32,10 @@
                 </div>
 
                 <button ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'"
-                        ng-click="controller.task.employee = null">Удалить исполнителя</button>
+                        ng-click="controller.deleteEmployee()">Удалить исполнителя</button>
 
                 <div class="select-block">
-                    <label class="value-viewer" for="requirement">Требование: {{controller.task.requirement.name}}
+                    <label class="value-viewer" for="requirement">Текущее требование: {{controller.task.requirementName}}
                     </label>
                     <select class="value-selector" ng-if="controller.isEditMode"
                             id="requirement"

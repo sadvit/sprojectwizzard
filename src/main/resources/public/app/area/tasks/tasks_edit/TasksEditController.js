@@ -23,7 +23,9 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
             description: "",
             difficulty: 0,
             openDate: new Date(),
-            closeDate: new Date()
+            closeDate: new Date(),
+            employeeBio: '',
+            requirementName: ''
         };
     } else {
         self.action = "Обновить";
@@ -39,6 +41,23 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
                 return e.employee.role !== 'ANALYST';
             });
             self.employees = newData;
+            if(!self.taskCreation) {
+                self.isMyTask = false;
+                self.TasksResource.loadTaskUser({
+                    id: self.taskId
+                }, function(data) {
+                    self.task.employee = data.employee;
+                    self.task.employeeBio = data.firstName + ' ' + data.middleName + ' ' + data.lastName;
+                    if(self.$cookieStore.get('user').id === data.id) self.isMyTask = true;
+                });
+
+                self.TasksResource.loadTaskRequirement({
+                    id: self.taskId
+                }, function(data) {
+                    self.task.requirementName = data.name;
+                    self.task.requirement = data;
+                });
+            }
     });
 
     self.RequirementsResource.loadAllForProject({
@@ -57,20 +76,6 @@ TasksEditController.prototype.init = function() {
         self.task = data;
         self.task.openDate = new Date(data.openDate);
         self.task.closeDate = new Date(data.closeDate);
-
-        self.isMyTask = false;
-        self.TasksResource.loadTaskUser({
-            id: data.id
-        }, function(data) {
-            self.task.employee = data.employee;
-            if(self.$cookieStore.get('user').id === data.id) self.isMyTask = true;
-        });
-
-        self.TasksResource.loadTaskRequirement({
-            id: data.id
-        }, function(data) {
-            self.task.requirement = data;
-        });
     }, function(error) {
         console.error('Error loading task. Error status ' + error.status);
     });
@@ -79,6 +84,8 @@ TasksEditController.prototype.init = function() {
 TasksEditController.prototype.saveTask = function() {
     var self = this;
 
+    delete self.task.employeeBio;
+    delete self.task.requirementName;
     if(self.taskCreation) {
         self.TasksResource.save(self.task, function () {
             console.log('task saved');
@@ -108,6 +115,11 @@ TasksEditController.prototype.deleteTask = function() {
         console.log('task deleted');
         self.$location.path('tasks');
     });
+};
+
+TasksEditController.prototype.deleteEmployee = function() {
+    this.task.employeeBio = '';
+    this.task.employee = null;
 };
 
 angular.module('spwizzard').controller('TasksEditController', TasksEditController);
