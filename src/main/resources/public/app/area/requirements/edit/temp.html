@@ -1,9 +1,9 @@
-<DIV id="content" ng-controller="RequirementsEditController as controller">
+<div id="content" ng-controller="RequirementsEditController as controller">
     <slinks></slinks>
-    <H2>{{controller.action}} требование</H2>
-    <DIV id="page">
-        <DIV class="single-column">
-            <FORM>
+    <div id="page">
+        <div class="single-column">
+            <h3>{{controller.action}} требование</h3>
+            <form>
                 <label for="name">Название:</label>
                 <input ng-disabled="!controller.isEditMode" type="text" id="name" ng-model="controller.requirement.name">
 
@@ -16,8 +16,8 @@
 
                 <button ng-if="controller.isEditMode" ng-click="controller.submitRequirement()">{{controller.action}}</button>
                 <button ng-if="!controller.requirementCreation && controller.isEditMode" ng-click="controller.deleteRequirement()">Удалить</button>
-            </FORM>
-        </DIV>
-    </DIV>
+            </form>
+        </div>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>

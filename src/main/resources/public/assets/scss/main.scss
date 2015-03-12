@@ -222,3 +222,34 @@ img.arrow[onclick] {
     margin-top: 3px;
   }
 }
+
+.select-block {
+  display: inline-block;
+  width: 100%;
+  clear: right;
+  margin-bottom: 10px;
+  .value-viewer {
+    display: block;
+    width: 50%;
+    clear: right;
+  }
+  .value-selector {
+    display: block;
+    max-width: 50%;
+    float: left;
+  }
+}
+
+.status-block {
+  text-align: center;
+  border: groove;
+  margin-bottom: 5px;
+  label {
+    margin-top: 0 !important;
+  }
+  span {
+    margin-left: 5px;
+    color: red;
+  }
+  width: 300px;
+}

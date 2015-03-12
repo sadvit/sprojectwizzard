@@ -9,12 +9,15 @@
             <label> Описание:
                 <textarea ng-disabled="!controller.isAllowEdit" ng-model="controller.project.description"></textarea>
             </label>
-            <label> Текущая команда:
-                <input type="text" ng-model="controller.project.team.name" disabled>
-            </label>
-            <label ng-if="controller.isAllowEdit"> Изменить команду:
-                <select ng-model="controller.project.team" ng-options="team as team.name for team in controller.teams"></select>
-            </label>
+
+            <div class="select-block">
+                <label class="value-viewer"> Текущая команда: {{controller.project.team.name}}
+                </label>
+                <select class="value-selector" ng-if="controller.isAllowEdit"
+                        ng-model="controller.project.team"
+                        ng-options="team as team.name for team in controller.teams">
+                </select>
+            </div>
             <br/>
             <h3>Контактные данные:</h3>
             <label> Менеджер:

@@ -3,6 +3,13 @@
     <div id="page">
         <div class="single-column">
             <h3>{{controller.action}} задачу</h3>
+            <br/>
+            <div class="status-block">
+                <label>Статус:
+                    <span>{{controller.task.status}}
+                    </span>
+                </label>
+            </div>
             <form>
                 <label for="difficulty">Сложность: {{controller.task.difficulty}}/100</label>
                 <input ng-disabled="!controller.isEditMode" type="range" id="difficulty" min="0" max="100"
@@ -12,22 +19,29 @@
                 <input ng-disabled="!controller.isEditMode" type="text" id="name" ng-model="controller.task.name"
                        value="">
 
-                <label for="employee">Исполнитель:
-                    <input type="text" value="{{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}" disabled>
+                <div class="select-block">
+                    <label class="value-viewer">Исполнитель: {{controller.task.employee.firstName + ' ' + controller.task.employee.middleName + ' ' + controller.task.employee.lastName}}
+                    </label>
+                    <select class="value-selector"
+                            ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'"
+                            id="employee"
+                            ng-model="controller.task.employee"
+                            ng-options="user as (user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees">
+                    </select>
+                </div>
 
-                </label>
-                <select ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'" id="employee"
-                        ng-model="controller.task.employee"
-                        ng-options="user as (user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.employees"></select>
                 <button ng-if="controller.isEditMode || controller.viewerRole === 'LEADER'"
                         ng-click="controller.task.employee = null">Удалить исполнителя</button>
 
-
-                <label for="requirement">Требование:
-                    <input type="text" ng-model="controller.task.requirement.name" disabled>
-                </label>
-                <select ng-if="controller.isEditMode" id="requirement" ng-model="controller.task.requirement"
-                        ng-options="requirement as requirement.name for requirement in controller.requirements"></select>
+                <div class="select-block">
+                    <label class="value-viewer" for="requirement">Требование: {{controller.task.requirement.name}}
+                    </label>
+                    <select class="value-selector" ng-if="controller.isEditMode"
+                            id="requirement"
+                            ng-model="controller.task.requirement"
+                            ng-options="requirement as requirement.name for requirement in controller.requirements">
+                    </select>
+                </div>
 
                 <div class="date-block">
                     <label class="date-cell"> Дата начала работ:
@@ -43,7 +57,6 @@
                 <textarea ng-disabled="!controller.isEditMode" ng-model="controller.task.description" id="description"></textarea>
             </form>
             <br/>
-            <label>Статус: {{controller.task.status}}</label>
             <button ng-if="controller.isEditMode" ng-click="controller.saveTask()">{{controller.action}}</button>
             <button ng-if="(controller.viewerRole == 'PROGRAMMER' || controller.viewerRole == 'LEADER')
                         && (controller.task.status == 'NEW' || controller.task.status == 'REOPEN' || controller.task.status == 'AVAILABLE')"
