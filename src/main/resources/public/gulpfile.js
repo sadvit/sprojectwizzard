@@ -49,4 +49,8 @@ gulp.task('watch', function() {
     gulp.watch(ourScriptsPath, ['our-scripts'])
 });
 
+gulp.task('watch-all', function() {
+    gulp.start('watch', 'watch_scss');
+});
+
 gulp.task('default', gulpsync.sync(['bower-install', 'bower-scripts', 'our-scripts']));

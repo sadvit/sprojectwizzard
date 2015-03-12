@@ -2,15 +2,17 @@
     <slinks></slinks>
     <div id="page">
         <div class="main-column">
-            <h3>Список работников команды:</h3>
-            <table>
-                <thead>
+            <h3 >{{controller.users.length > 0 ?
+                'Список работников команды:' :
+                'У вас пока что даже команд нет :('}}</h3>
+            <table ng-if="controller.users.length > 0" class="non-clickable">
+                <thead align="left">
                 <tr>
                     <th>Работник</th>
                     <th>Роль</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="user in controller.users">
+                <tbody ng-repeat="user in controller.users | orderBy: 'name'">
                 <tr>
                     <td>{{user.firstName + ' ' + user.middleName}}</td>
                     <td>{{user.employee.role}}</td>
@@ -21,7 +23,7 @@
         <div class="side-column">
             <h3>Команды:</h3>
             <ul class="links-block">
-                <li ng-repeat="team in controller.teams">
+                <li ng-repeat="team in controller.teams | orderBy: 'name'">
                     <a ng-click="controller.selectTeam(team.id)">{{team.name}}</a>
                 </li>
             </ul>

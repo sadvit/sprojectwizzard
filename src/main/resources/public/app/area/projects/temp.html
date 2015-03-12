@@ -2,25 +2,20 @@
     <slinks></slinks>
     <div id="page">
         <div ng-class="controller.leftStyle" >
-            <h3>Список текущих проектов:</h3>
-            <table class="projects-table">
-                <thead>
+            <h3>{{controller.projects.length > 0 ?
+                'Список текущих проектов' :
+                'Проектов нет.'}}</h3>
+            <table ng-if="controller.projects.length > 0" class="projects-table">
+                <thead align="left">
                 <tr>
-                    <th class="insignificant">№</th>
                     <th>Название</th>
                     <th>Описание</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="project in controller.projects">
+                <tbody ng-repeat="project in controller.projects | orderBy: 'name'">
                 <tr ng-click="controller.editProject(project.id)">
-                    <td class="insignificant">{{$index}}</td>
                     <td>{{project.name}}</td>
                     <td>{{project.description}}</td>
-                </tr>
-                <tr ng-hide="controller.projects.length || controller.projects.isUndefined"> <!-- TODO check -->
-                    <td class="insignificant"></td>
-                    <td>No items found</td>
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

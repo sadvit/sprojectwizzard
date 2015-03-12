@@ -2,18 +2,18 @@
     <slinks></slinks>
     <div id="page">
         <div class="main-column">
-            <h3>Требования:</h3>
-            <table>
-                <thead>
+            <h3>{{controller.requirementsForProject.length > 0 ?
+                'Требования' :
+                'От вас никто ничего не требует.'}}</h3>
+            <table ng-if="controller.requirementsForProject.length > 0">
+                <thead align="left">
                     <tr>
-                        <th class="insignificant">№</th>
                         <th>Название</th>
                         <th>Описание</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="requirement in controller.requirementsForProject">
+                <tbody ng-repeat="requirement in controller.requirementsForProject | orderBy: 'name'">
                     <tr ng-click="controller.editRequirement(requirement.id)">
-                        <td class="insignificant">{{$index}}</td>
                         <td>{{requirement.name}}</td>
                         <td>{{requirement.description}}</td>
                     </tr>
@@ -21,22 +21,21 @@
             </table>
         </div>
         <div class="side-column">
-            <h3>Проекты:</h3>
-            <ul class="links-block">
-                <li ng-repeat="project in controller.projects">
+            <h3>{{controller.projects.length > 0 ?
+                'Проекты:' :
+                'Проектов нет.'}}</h3>
+            <ul ng-if="controller.projects.length > 0" class="links-block">
+                <li ng-repeat="project in controller.projects | orderBy: 'name'">
                     <a ng-click="controller.updateRequirements(project.id)">{{project.name}}</a>
                 </li>
             </ul>
             <br/>
-            <div ng-if="controller.isEditMode" class="main-column-buttons">
+            <div ng-if="controller.isEditMode && controller.projects.length > 0" class="main-column-buttons">
                 <h3>Действия:</h3>
                 <br/>
-                <a href="#requirements/requirements_edit/?projectId={{controller.currentProjectId}}" ng-if="controller.projects[0] !== undefined">
+                <a href="#requirements/requirements_edit/?projectId={{controller.currentProjectId}}">
                     <button>Создать требование</button>
                 </a>
-                <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
-                    <!--<a href="#projects/project_edit">Перейти к созданию</a>-->
-                </label>
             </div>
         </div>
     </div>

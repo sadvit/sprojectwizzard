@@ -160,14 +160,37 @@ body {
   button[disabled], button[disabled]:hover {
     background: #999999;
   }
+
   table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
+
+    tr {
+      min-height: 30px;
+      line-height: 30px;
+    }
+    tr[onclick]:hover {
+      cursor: pointer;
+      background: #EEEEEE;
+    }
+    tr:hover {
+      background: transparent;
+    }
+    tr:hover td {
+      cursor: pointer;
+      background: #EEEEEE;
+    }
+    th {
+      border-bottom: 2px solid #CCCCCC;
+    }
   }
-  tr {
-    min-height: 30px;
-    line-height: 30px;
+
+  table.non-clickable {
+    tr:hover td, tr[onclick]:hover {
+      cursor: default !important;
+      background: #EEEEEE;
+    }
   }
   tr[onclick]:hover {
     cursor: pointer;
@@ -221,6 +244,35 @@ img.arrow[onclick] {
   li {
     margin-top: 3px;
   }
+}
+
+@-webkit-keyframes blink {
+  50% { background-color:transparent }
+}
+.status-box {
+  text-align: center;
+  border-radius: 5px;
+}
+.new-task {
+  background-color: #43da53;
+
+  -webkit-animation-direction: normal;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: blink;
+  -webkit-animation-timing-function: ease;
+}
+
+.progress-task {
+  background-color: #6690da;
+}
+
+.done-task {
+  background-color: #dad35f;
+}
+
+.open-task {
+  background-color: #00dac2;
 }
 
 .select-block {

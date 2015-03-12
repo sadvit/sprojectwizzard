@@ -3,9 +3,11 @@
 
     <div id="page">
         <div class="main-column">
-            <h3>Задачи:</h3>
-            <table>
-                <thead>
+            <h3>{{controller.tasksForProject.length > 0 ?
+                'Задачи:' :
+                'Задач нет.'}}</h3>
+            <table ng-if="controller.tasksForProject.length > 0">
+                <thead align="left">
                     <tr>
                         <th>Название</th>
                         <th>Описание</th>
@@ -14,35 +16,34 @@
                         <th>Статус</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="task in controller.tasksForProject">
+                <tbody ng-repeat="task in controller.tasksForProject | orderBy: 'name'">
                     <tr ng-click="controller.editTask(task.id)">
                         <td>{{task.name}}</td>
                         <td>{{task.description}}</td>
                         <td>{{task.requirement.name}}</td>
                         <td>до {{task.closeDate | date:'yyyy-MM-dd'}}</td>
-                        <td>{{task.status}}</td>
+                        <td ng-class="controller.determineStyle(task.status)" class="status-box">{{task.status}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="side-column">
-            <h3>Проекты:</h3>
-            <ul class="links-block">
+            <h3>{{controller.projects.length > 0 ?
+                'Проекты:' :
+                'Проектов нет.'}}</h3>
+            <ul ng-if="controller.projects.length > 0" class="links-block">
                 <li ng-repeat="project in controller.projects | orderBy:'name'">
                     <a ng-click="controller.updateTasks(project.id)">{{project.name}}</a>
                 </li>
             </ul>
 
-            <div ng-if="controller.isEditMode" class="main-column-buttons">
+            <div ng-if="controller.isEditMode && controller.projects.length > 0" class="main-column-buttons">
                 <br/>
                 <h3>Действия:</h3>
                 <br/>
-                <a href="#tasks/tasks_edit?projectId={{controller.currentProjectId}}" ng-if="controller.projects[0] !== undefined">
+                <a href="#tasks/tasks_edit?projectId={{controller.currentProjectId}}">
                     <button>Создать задачу</button>
                 </a>
-                <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов
-                    <!--<a href="#projects/project_edit">Перейти к созданию</a>-->
-                </label>
             </div>
         </div>
     </div>

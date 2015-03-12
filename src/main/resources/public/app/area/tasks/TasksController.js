@@ -43,4 +43,21 @@ TasksController.prototype.editTask = function(taskId) {
     this.$location.search('projectId', self.currentProjectId).path('tasks/tasks_edit/' + taskId);
 };
 
+TasksController.prototype.determineStyle = function(status) {
+    switch(status) {
+        case 'NEW': {
+            return 'new-task';
+        }
+        case 'IN_PROGRESS': {
+            return 'progress-task';
+        }
+        case 'DONE': {
+            return 'done-task';
+        }
+        default: {
+            return 'open-task';
+        }
+    }
+};
+
 angular.module('spwizzard').controller('TasksController', TasksController);

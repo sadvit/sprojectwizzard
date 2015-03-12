@@ -2,9 +2,11 @@
     <slinks></slinks>
     <div id="page">
         <div class="main-column">
-            <h3>Список пользователей:</h3>
-            <table>
-                <thead>
+            <h3>{{controller.users.length > 0 ?
+                'Список пользователей' :
+                'Пользователей нет.'}}</h3>
+            <table ng-if="controller.users.length > 0">
+                <thead align="left">
                     <tr>
                         <th>Логин</th>
                         <th>Имя</th>
@@ -14,7 +16,7 @@
                         <th>Менеджер</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="user in controller.users">
+                <tbody ng-repeat="user in controller.users | orderBy: 'name'">
                     <tr ng-click="controller.editUser(user.id)">
                         <td>{{user.login}}</td>
                         <td>{{user.firstName}}</td>
