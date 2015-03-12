@@ -31,7 +31,7 @@
             <div ng-if="controller.isEditMode" class="main-column-buttons">
                 <h3>Действия:</h3>
                 <br/>
-                <a href="#requirements/edit/?projectId={{controller.currentProjectId}}" ng-if="controller.projects[0] !== undefined">
+                <a href="#requirements/requirements_edit/?projectId={{controller.currentProjectId}}" ng-if="controller.projects[0] !== undefined">
                     <button>Создать требование</button>
                 </a>
                 <label ng-if="controller.projects[0] === undefined" >У вас пока что нет проектов

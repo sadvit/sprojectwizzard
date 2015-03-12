@@ -2,46 +2,29 @@
     <slinks></slinks>
     <div id="page">
         <div class="single-column">
-            <label> Название команды:
+            <div class="role-block">
+                <label>Название команды:</label>
                 <input ng-model="controller.team.name" style="max-width: 300px" type="text">
-            </label>
-            <table class="team-table">
-                <thead>
-                <tr>
-                    <th class="team-table-column">Роль</th>
-                    <th class="team-table-column">Работник</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Аналитик</td>
-                    <td class="team-table-td">
-                        <select ng-model="controller.analyst"
-                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.analysts">
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Старший разработчик</td>
-                    <td>
-                        <select ng-model="controller.leader"
-                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.leaders">
-                        </select>
-                    </td>
-                </tr>
-                <!-- TODO реализовать добавление нескольких разработчиков -->
-                <tr>
-                    <td>Разработчик</td>
-                    <td>
-                        <select ng-model="controller.programmer"
-                                ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.programmers">
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <br/>
-            <br/>
+            </div>
+            <div class="role-block">
+                <label>Аналитик:</label>
+                <select ng-model="controller.analyst"
+                        ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.analysts">
+                </select>
+            </div>
+            <div class="role-block">
+                <label>Старший разработчик:</label>
+                <select ng-model="controller.leader"
+                        ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.leaders">
+                </select>
+            </div>
+            <div class="role-block">
+                <label>Разработчик:</label>
+                <select ng-model="controller.programmer"
+                        ng-options="(user.firstName + ' ' + user.middleName + ' ' + user.lastName) for user in controller.programmers">
+                </select>
+            </div>
+
             <button ng-click="controller.saveTeam()">{{controller.action}}</button>
             <button ng-if="!controller.teamCreation" ng-click="controller.deleteTeam()">Удалить</button>
         </div>

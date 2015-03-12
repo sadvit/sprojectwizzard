@@ -32,12 +32,12 @@ RequirementController.prototype.updateRequirements = function(id) {
 
 RequirementController.prototype.editRequirement = function(requirementId) {
     var self = this;
-    this.$location.search('projectId', self.currentProjectId).path('requirements/edit/' + requirementId);
+    this.$location.search('projectId', self.currentProjectId).path('requirements/requirements_edit/' + requirementId);
 };
 
 RequirementController.prototype.createRequirement = function() {
     var self = this;
-    this.$location.search('projectId', self.currentProjectId).path('requirements/edit');
+    this.$location.search('projectId', self.currentProjectId).path('requirements/requirements_edit');
 };
 
 angular.module('spwizzard').controller('RequirementController', RequirementController);

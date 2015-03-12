@@ -253,3 +253,24 @@ img.arrow[onclick] {
   }
   width: 300px;
 }
+
+.role-block {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+  label {
+    display: block;
+    width: 200px;
+    float: left;
+    margin-top: 0 !important;
+    margin-right: 20px;
+  }
+  input, select {
+    display: block;
+    float: left;
+    clear: right;
+    max-width: 300px;
+  }
+}

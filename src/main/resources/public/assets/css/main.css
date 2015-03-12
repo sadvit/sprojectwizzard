@@ -199,3 +199,21 @@ img.arrow[onclick] {
   .status-block span {
     margin-left: 5px;
     color: red; }
+
+.role-block {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right; }
+  .role-block label {
+    display: block;
+    width: 200px;
+    float: left;
+    margin-top: 0 !important;
+    margin-right: 20px; }
+  .role-block input, .role-block select {
+    display: block;
+    float: left;
+    clear: right;
+    max-width: 300px; }
