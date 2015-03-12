@@ -1,17 +1,17 @@
-<DIV ng-controller="TasksController as controller" id="content">
+<div ng-controller="TasksController as controller" id="content">
     <slinks></slinks>
 
-    <DIV id="page">
-        <DIV class="main-column">
-            <H3>Задачи:</H3>
+    <div id="page">
+        <div class="main-column">
+            <h3>Задачи:</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Название</th>
-                        <TH>Описание</TH>
-                        <TH>Требование</TH>
-                        <TH>Срок</TH>
-                        <TH>Статус</TH>
+                        <th>Описание</th>
+                        <th>Требование</th>
+                        <th>Срок</th>
+                        <th>Статус</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="task in controller.tasksForProject">
@@ -24,11 +24,11 @@
                     </tr>
                 </tbody>
             </table>
-        </DIV>
+        </div>
         <div class="side-column">
             <h3>Проекты:</h3>
             <ul class="links-block">
-                <li ng-repeat="project in controller.projects">
+                <li ng-repeat="project in controller.projects | orderBy:'name'">
                     <a ng-click="controller.updateTasks(project.id)">{{project.name}}</a>
                 </li>
             </ul>
@@ -45,6 +45,6 @@
                 </label>
             </div>
         </div>
-    </DIV>
+    </div>
     <sfooter></sfooter>
-</DIV>
+</div>
