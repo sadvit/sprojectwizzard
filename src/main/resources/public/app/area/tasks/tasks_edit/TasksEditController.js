@@ -48,6 +48,7 @@ function TasksEditController(TasksResource, $routeParams, $location, UsersResour
                 }, function(data) {
                     self.task.employee = data.employee;
                     self.task.employeeBio = data.firstName + ' ' + data.middleName + ' ' + data.lastName;
+                    if(self.task.employeeBio.indexOf('undefined') > -1) self.task.employeeBio = '';
                     if(self.$cookieStore.get('user').id === data.id) self.isMyTask = true;
                 });
 
